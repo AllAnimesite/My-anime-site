@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Success</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .success-box {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+
+    h1 {
+      color: #28a745;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-box">
+    <h1>🎉 Payment Successful!</h1>
+    <p>Thank you for subscribing to the <strong id="plan-name"></strong> plan.</p>
+    <a href="index.html" class="btn">Go to Home</a>
+  </div>
+
+  <script>
+    // Get the selected plan from localStorage
+    const selectedPlan = localStorage.getItem('selectedPlan');
+
+    // Show the plan name
+    document.getElementById('plan-name').textContent = selectedPlan || 'your selected';
+
+    // Clear the selected plan from localStorage
+    localStorage.removeItem('selectedPlan');
+  </script>
+</body>
+</html>

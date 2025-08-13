@@ -1,0 +1,485 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0e0e0e;
+  font-family: 'Arial', sans-serif;
+  color: white;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #141414;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-left,
+.navbar-right,
+.navbar-center {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left a {
+  color: #ccc;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar-left a:hover {
+  color: #fff;
+}
+
+.logo {
+  color: #ff2e63;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.search-input {
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: #2a2a2a;
+  color: white;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.profile-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #ff2e63;
+}
+
+/* Mobile Friendly */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navbar-left,
+  .navbar-right {
+    margin-top: 10px;
+  }
+}
+/* Hamburger Button */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  color: white;
+  z-index: 1001;
+  cursor: pointer;
+  display: none; /* only show on small screen */
+}
+
+/* Sidebar hidden by default */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100px; /* hide off-screen */
+  width: 60px;
+  height: 100%;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+/* Sidebar active (slide in) */
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar-icon {
+  font-size: 24px;
+  margin: 18px 0;
+  text-decoration: none;
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.sidebar-icon:hover,
+.sidebar-icon.active {
+  color: #ff2e63;
+  transform: scale(1.2);
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar {
+    padding-left: 70px; /* prevent overlap */
+  }
+}
+.episode-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+  margin-top: 10px;
+}
+
+.episode-slide {
+  flex: 0 0 auto;
+  width: 200px;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.episode-slide img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.episode-slide button {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  background-color: #f2277e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.episode-slide button:hover {
+  background-color: #ff4081;
+}
+
+/* Optional: Hide scroll bar on mobile */
+.episode-slider::-webkit-scrollbar {
+  display: none;
+}
+/* Episode link styling */
+.episode-link {
+  display: inline-block;
+  background: #ff6600;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.episode-link:hover {
+  background: #ff3300;
+}
+.top-profile {
+  position: absolute; /* stays above navbar */
+  top: 10px;           /* distance from top */
+  right: 10px;         /* distance from right */
+  z-index: 1000;       /* stays above other elements */
+}
+
+.top-profile img {
+  width: 30px;         /* size of icon */
+  height: 30px;
+  border-radius: 50%;  /* make it circular */
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.featured-slider {
+    position: relative;
+    max-width: 100%;
+    height: 460px;
+    overflow: hidden;
+    margin-top: 100px;
+}
+
+.featured-slide {
+    display: none;
+    position: relative;
+    height: 100%;
+}
+
+.featured-slide.active {
+    display: block;
+}
+
+.featured-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(70%);
+}
+
+.featured-content {
+    position: absolute;
+    bottom: 56px;
+    left: 50px;
+    color: #fff;
+}
+
+.featured-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.featured-content p {
+    margin-bottom: 15px;
+}
+
+.watch-btn,
+.list-btn {
+    background: #ff0066;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.list-btn {
+    background: #333;
+}
+
+.dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #ff0066;
+}
+.most-popular {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 24px;
+}
+
+
+.most-popular h2 {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 24px;
+}
+
+.section-header h2 {
+  color: white;
+  font-size: 20px;
+  margin: 0;
+}
+
+.see-all {
+  color: #ff2d55;
+  /* Adjust to match your theme */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.see-all:hover {
+  text-decoration: underline;
+}
+ .all-popular-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+}
+
+.anime-card {
+  width: 150px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+}
+
+.anime-card img {
+  width: 100%;
+  height: 230px; 
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.anime-card h3 {
+  color: white;
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.anime-card button {
+  background-color: #ff2d55;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.section-header h2 {
+  color: white;
+  font-size: 28px;
+  margin: 0;
+}
+
+.see-all {
+  color: #ff2d55;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.see-all:hover {
+  text-decoration: underline;
+}
+.plans-container {
+  display: flex;
+  justify-content: space-between;
+  /* puts first left, last right, middle center */
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.pricing-card {
+  background-color: #1e1e1e;
+  color: #FF00F5;
+  padding: 16px;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: black;
+  transition: transform 0.3s ease;
+}
+.pricing-card button {
+  background-color: deeppink;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pricing-card button:hover {
+  background-color: deeppink;
+}
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+.plans-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+}
+
+.pricing-card {
+  background-color: #1e1e1e;
+  color: whitesmoke;
+  padding: 16px;
+  border-radius: 12px;
+  min-width: 250px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+ .pricing-header {
+  text-align: center;
+  margin: 40px auto; /* Adds vertical spacing and centers it */
+  max-width: 600px;   /* Optional: keeps it from stretching too wide */
+  padding: 0 20px;    /* Responsive padding for smaller screens */
+}
+ .pricing-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.pricing-subtitle {
+  font-size: 1rem;
+  color: #bbb;
+  margin-top: 10px;
+}
+.pricing-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+ .payment-method img {
+    width: 50px;         /* Adjust size */
+    height: auto;        /* Keep aspect ratio */
+    object-fit: contain; /* Prevent stretching */
+    margin-right: 10px;  /* Space between logo and text */
+    vertical-align: middle; /* Align with text */
+    border-radius: 6px;  /* Slightly rounded corners */
+    background: black;   /* Clean background */
+    padding: 5px;        /* Space inside background */
+    box-shadow: 0 2px 5px white(0,0,0,0.1); /* Light shadow */
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Payment Method</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .payment-option {
+        display: flex;
+        align-items: center;
+        background: white;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 1px solid #ddd;
+    }
+    .payment-option:hover {
+        border-color: #007bff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .payment-option img {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+    }
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    .btn:hover {
+        background: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Payment Method</h2>
+
+    <div class="payment-option" onclick="selectPayment('Google Pay')">
+        <img src="/images/upi.png" alt="UPI">
+        UPI
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('Credit Card')">
+        <img src="/images/visa.png" alt="Credit Card">
+        Credit/Debit Card
+    </div>
+
+    <div class="payment-option" onclick="selectPayment('PayPal')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+        PayPal
+    </div>
+
+    <button class="btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+</div>
+
+<script>
+    let selectedMethod = "";
+
+    function selectPayment(method) {
+        selectedMethod = method;
+        alert(method + " selected!");
+    }
+
+    function proceedToCheckout() {
+        if (!selectedMethod) {
+            alert("Please select a payment method!");
+            return;
+        }
+        localStorage.setItem("paymentMethod", selectedMethod);
+        window.location.href = "checkout.html";
+    }
+</script>
+
+</body>
+</html>

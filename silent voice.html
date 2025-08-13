@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Silent voice </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; background: #111; color: white; font-family: Arial; }
+    .banner { width: 100%; height: auto; object-fit: cover; margin-top: 20px;}
+    .container { padding: 16px; }
+    .title { font-size: 24px; font-weight: bold; }
+    .tags { margin: 10px 0; }
+    .tag { background: #e50914; padding: 5px 10px; margin-right: 5px; border-radius: 4px; font-size: 12px; }
+    .play-btn { background: #e50914; padding: 12px 25px; color: white; border: none; border-radius: 6px; font-size: 18px; margin: 15px 0; cursor: pointer; }
+    .description { color: #ccc; font-size: 14px; }
+    .episodes { margin-top: 20px; }
+    .episode-list { display: flex; overflow-x: auto; }
+    .episode { margin-right: 10px; background: #222; border-radius: 8px; width: 120px; text-align: center; flex-shrink: 0; }
+    .episode img { width: 100%; border-radius: 8px 8px 0 0; }
+    .episode p { padding: 5px; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <!-- Banner image -->
+  <img src="/images/silent voice.jpg" class="banner" alt="One Piece">
+
+  <div class="container">
+    <div class="title">Silent voice</div>
+
+    <div class="tags">
+      <span class="tag">Movie</span>
+      <span class="tag">Movie</span>
+      <span class="tag">HD</span>
+      <span class="tag">SUB</span>
+    </div>
+
+    <!-- Play Button -->
+    <button class="play-btn">▶ Play Movie</button>
+
+    <!-- Description -->
+    <div class="description">
+    A Japanese animated film about a former bully, Shoya Ishida, who seeks redemption by reconnecting with Shoko Nishimiya, a deaf girl he previously bullied in elementary school.
+    </div>
+
+    <!-- Episode Slider -->
+    <div class="episodes">
+      <h3>Movie</h3>
+      <div class="episode-list">
+        <a href="/sv_movie.html" class="episode-link">
+        <div class="episode">
+          <img src="/images/silent voice_movie.jpg" alt="Episode 1">
+          <p>Movie</p>
+        </div>
+       </a>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        margin-top: 50px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .summary {
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 6px;
+    }
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #28a745;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background: #218838;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Checkout</h2>
+    <div class="summary">
+        <p><b>Selected Payment Method:</b> <span id="paymentMethod"></span></p>
+        <p><b>Total Amount:</b> ₹300</p>
+    </div>
+    <button class="btn" onclick="confirmPayment()">Pay Now</button>
+</div>
+<!-- Checkout Details Section -->
+<div class="checkout-details">
+    <p>Plan: <span id="checkout-plan"></span></p>
+    <p>Price: <span id="checkout-price"></span></p>
+    <p>Payment Method: <span id="checkout-method"></span></p>
+</div>
+<p>Total: <span id="checkout-price"></span></p>
+<script>
+    document.getElementById("paymentMethod").innerText = localStorage.getItem("paymentMethod") || "Not Selected";
+
+    function confirmPayment() {
+        alert("Payment Successful! Thank you for your purchase.");
+        localStorage.removeItem("paymentMethod");
+        window.location.href = "index.html"; // Change to your homepage
+    }
+</script>
+<script src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const price = localStorage.getItem('selectedPrice');
+    const priceElement = document.getElementById('checkout-price');
+
+    if (price) {
+        priceElement.textContent = price;
+    } else {
+        priceElement.textContent = 'Price not available';
+    }
+});
+</script>
+
+</body>
+</html>
