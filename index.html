@@ -19,7 +19,8 @@
     </div>
 
     <div class="navbar-right">
-      <input type="text" id="searchInput" placeholder="Search..." class="search-input" oninput="searchAnime/>
+      <input type="text" id="searchInput" placeholder="Search..." class="search-input" oninput="searchAnime()">
+
       <img src="/images/anime.png"= alt="Profile" class="profile-icon">
     </div>
   </header>
@@ -101,37 +102,32 @@
 <div class="episode-slider">
   <div class="episode-slide">
     <img src="/images/one piece.jpg" alt="Episode 1">
-   <span class="anime-title" style="display: none;">one piece</span>
+    <h3 class="anime-title">OnePiece</h3>
     <button onclick="window.location.href='ep1.html'">Watch Now</button>
   </div>
   <div class="episode-slide">
     <img src="/images/demon slayer.jpg" alt="demon slayer">
-   <span class="anime-title" style="display: none;">Demon slayer</span>
+    <h3 class="anime-title">Demonslayer</h3>
     <button onclick="window.location.href='demonslayer.html'">Watch Now</button>
   </div>
   <div class="episode-slide">
     <img src="/images/black clover.jpg" alt="season 1">
-    <span class="anime-title" style="display: none;">black clover</span>
     <button onclick="window.location.href='black clover.html'">Watch Now</button>
   </div>
   <div class="episode-slide">
     <img src="/images/my hero academia.jpg" alt="seanson 1">
-    <span class="anime-title" style="display: none;">My Hero Academia</span>
     <button onclick="window.location.href='my hero academia.html'">Watch Now</button>
 </div>
   <div class="episode-slide">
     <img src="/images/chainsaw man.jpg" alt="season 1">
-    <span class="anime-title" style="display: none;">Chainsaw man</span>
     <button onclick="window.location.href='chainsaw man.html'">Watch Now</button>
 </div>
    <div class="episode-slide">
     <img src="/images/tougen anki.jpg" alt="season 1">
-    <span class="anime-title" style="display: none;">Tougen anki</span>
     <button onclick="window.location.href='/tougen aki.html'">Watch Now</button>
   </div>
      <div class="episode-slide">
      <img src="/images/silent voice.jpg" alt="season 1">
-     <span class="anime-title" style="display: none;">Silent voice</span>
      <button onclick="window.location.href='/silent voice.html'">Watch Now</button>
    </div>
 
@@ -161,22 +157,18 @@
   </div>
   <div class="episode-slide">
   <img src="/images/Gacjiakuta.jpg" alt="Gachiakuta">
-  <span class="anime-title" style="display: none;">Gachiakuta</span>
   <button onclick="window.location.href='naruto.html'">Watch Now</button>
 </div>
 <div class="episode-slide">
   <img src="/images/Tokyo revenge.jpg" alt="Tokyo revenge">
-  <span class="anime-title" style="display: none;">Tokyo revenge</span>
   <button onclick="window.location.href='naruto.html'">Watch Now</button>
 </div>
 <div class="episode-slide">
   <img src="/images/blue lock.jpg" alt="Blue lock">
-  <span class="anime-title" style="display: none;">Blue lock</span>
   <button onclick="window.location.href='naruto.html'">Watch Now</button>
 </div>
 <div class="episode-slide">
   <img src="/images/naruto shipuden.jpg" alt="Blue lock">
-  <span class="anime-title" style="display: none;">Blue lock</span>
   <button onclick="window.location.href='naruto.html'">Watch Now</button>
 </div>
 </div>
@@ -275,6 +267,19 @@ setInterval(autoSlide, 4000); // Auto change every 4 seconds
 </script>
 
  <script src="script.js"></script>
+<script>
+function searchAnime() {
+  var q = document.getElementById('searchInput').value.toLowerCase().trim();
+  var slides = document.querySelectorAll('.episode-slide');
+
+  slides.forEach(function(slide){
+    var titleEl = slide.querySelector('.anime-title');
+    var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+    slide.style.display = title.includes(q) ? '' : 'none';
+  });
+}
+</script>
+
 
 </body>
 </html>

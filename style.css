@@ -483,3 +483,6 @@ body {
     padding: 5px;        /* Space inside background */
     box-shadow: 0 2px 5px white(0,0,0,0.1); /* Light shadow */
 }
+ .anime-title {
+    display: none;
+}
