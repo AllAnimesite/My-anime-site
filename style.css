@@ -486,3 +486,31 @@ body {
  .anime-title {
     display: none;
 }
+/* Header layout */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  background: #1e1e1e; /* optional dark theme */
+  color: white;
+}
+
+/* Search bar in header */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Search input styling */
+.search-bar input {
+  max-width: 250px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
