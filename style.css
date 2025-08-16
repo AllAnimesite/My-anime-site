@@ -526,3 +526,12 @@ header h1 {
   color: #c0c0c0; /* metallic silver */
   text-shadow: 1px 1px 2px #000;
 }
+.back-home {
+  color: darkgray; /* You can change this to any color you like */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}
