@@ -148,7 +148,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   padding: 8px 16px;
-  background-color: #f2277e;
+  background-color: #ff2e63;
   color: white;
   border: none;
   border-radius: 6px;
@@ -158,7 +158,7 @@ body {
 }
 
 .episode-slide button:hover {
-  background-color: #ff4081;
+  background-color: #ff2e63;
 }
 
 /* Optional: Hide scroll bar on mobile */
@@ -238,7 +238,7 @@ body {
 
 .watch-btn,
 .list-btn {
-    background: #ff0066;
+    background: #ff2e63;
     border: none;
     padding: 10px 20px;
     margin-right: 10px;
@@ -271,7 +271,7 @@ body {
 }
 
 .dot.active {
-    background-color: #ff0066;
+    background-color: #ff2e63;
 }
 .most-popular {
   display: flex;
@@ -383,7 +383,7 @@ body {
 
 .pricing-card {
   background-color: #1e1e1e;
-  color: #FF00F5;
+  color: #ff2e63;
   padding: 16px;
   border-radius: 12px;
   width: 250px;
@@ -393,7 +393,7 @@ body {
   transition: transform 0.3s ease;
 }
 .pricing-card button {
-  background-color: deeppink;
+  background-color: #ff2e63;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -405,7 +405,7 @@ body {
 }
 
 .pricing-card button:hover {
-  background-color: deeppink;
+  background-color: #ff2e63;
 }
 .pricing-card:hover {
   transform: translateY(-5px);
