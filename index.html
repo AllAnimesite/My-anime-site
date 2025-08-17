@@ -31,25 +31,27 @@
   <img src="/images/profile2.jpg" alt="Profile">
   </a>
 </div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
-<!-- Hamburger button -->
-<div class="hamburger" onclick="toggleSidebar()">☰</div>
-
-<!-- Sidebar menu -->
-<div class="sidebar" id="sidebar">
-  <a href="#" class="sidebar-icon active" title="Home">🏠</a>
-  <a href="#" class="sidebar-icon" title="Categories">🎞️</a>
-  <a href="#" class="sidebar-icon" title="Trending">❤️</a>
-  <a href="#" class="sidebar-icon" title="Favorites">⭐</a>
-  <a href="#" class="sidebar-icon" title="Share">🔗</a>
-  <a href="#" class="sidebar-icon" title="Settings">⚙️</a>
+<div class="menu-container" id="menuContainer">
+  <div class="menu-header">
+    <span class="menu-title">MENU LIST</span>
+  </div>
+  <ul class="menu-list">
+    <li><i class="icon">🏠</i> HOME</li>
+    <li><i class="icon">👤</i> ABOUT US</li>
+    <li><i class="icon">💼</i> SERVICES</li>
+    <li><i class="icon">📅</i> EVENTS</li>
+  </ul>
 </div>
+
 <script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("active");
+  function toggleMenu() {
+    const menu = document.getElementById("menuContainer");
+    menu.classList.toggle("active");
   }
 </script>
+
 </header>
 <!-- Featured Carousel Slider -->
 <div class="featured-slider">
