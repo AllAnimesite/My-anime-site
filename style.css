@@ -590,5 +590,10 @@ header h1 {
 .menu-list li:hover {
   background-color: #f5f5f5;
 }
-
+.menu-list li .icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  object-fit: contain;
+}
 
