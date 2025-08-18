@@ -343,10 +343,39 @@ body {
   background-color: #ff2d55;
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 6px 5px;
+  font-size: 12px;
   border-radius: 4px;
   cursor: pointer;
 }
+.anime-card > button:first-of-type {
+  display: block;
+  width: fit-content;
+  margin: 0;
+}
+
+.anime-card .icon-button {
+  position: relative;
+  top: -23px;
+  right: 0;
+  background: none !important;
+  border: none;
+  padding: 0;
+  margin-bottom: 6px;  /* space between My List and Watch Now */
+  box-shadow: none;
+  display: flex;                /* flex to align text & icon */
+  align-items: center;
+  justify-content: flex-start;
+  float: right;
+}
+
+.anime-card .icon-button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+
 .section-header {
   display: flex;
   justify-content: space-between;

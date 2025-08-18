@@ -1,51 +1,94 @@
- // Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function () {
-    // Get all buttons with the class 'select-plan'
-    const selectButtons = document.querySelectorAll('.select-plan');
+// Handle plan selection buttons
+document.addEventListener('DOMContentLoaded', () => {
+  const selectButtons = document.querySelectorAll('.select-plan');
 
-    // Loop through each button and add a click event listener
-    selectButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            // Get the value of the data-plan attribute
-            const selectedPlan = this.getAttribute('data-plan');
+  selectButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedPlan = button.getAttribute('data-plan');
+      localStorage.setItem('selectedPlan', selectedPlan);
+      alert(`You selected the ${selectedPlan} plan!`);
+      // window.location.href = 'payment.html'; // Uncomment if redirect needed
+    });
+  });
 
-            // Store the selected plan in localStorage (optional)
-            localStorage.setItem('selectedPlan', selectedPlan);
+  // If you're on mylist.html, load saved anime list
+  if (document.getElementById('myListContainer')) {
+    loadMyList();
+  }
 
-            // Show confirmation or redirect (you can customize this)
-            alert(`You selected the ${selectedPlan} plan!`);
+  // If you're on checkout page, display checkout details
+  if (document.getElementById('checkout-plan')) {
+    const planName = localStorage.getItem('selectedPlan') || 'Not selected';
+    const price = localStorage.getItem('selectedPrice') || 'Not available';
+    const method = localStorage.getItem('paymentMethod') || 'Not selected';
 
-            // Optional: Redirect to a new page
-            // window.location.href = 'payment.html';
-        });
-    });
+    document.getElementById('checkout-plan').textContent = planName;
+    document.getElementById('checkout-price').textContent = price;
+    document.getElementById('checkout-method').textContent = method;
+  }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const selectButtons = document.querySelectorAll('.select-plan');
+// Function to add anime to My List
+function addToList(title, image, link) {
+  let myList = JSON.parse(localStorage.getItem("myList")) || [];
 
-    selectButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const selectedPlan = this.getAttribute('data-plan');
-
-            // Save the selected plan
-            localStorage.setItem('selectedPlan', selectedPlan);
-
-            // Redirect to payment page
-            window.location.href = 'payment.html';
-        });
-    });
-});
-function proceedToCheckout() {
-  window.location.href = 'checkout.html';
+  // Prevent duplicates
+  if (!myList.some(item => item.title === title)) {
+    myList.push({ title, image, link });
+    localStorage.setItem("myList", JSON.stringify(myList));
+    alert(`${title} added to My List!`);
+  } else {
+    alert(`${title} is already in My List.`);
+  }
 }
-// Show details in checkout page
-if (document.getElementById('checkout-plan')) {
-    const planName = localStorage.getItem('selectedPlan');
-    const price = localStorage.getItem('selectedPrice');
-    const method = localStorage.getItem('paymentMethod');
 
-    document.getElementById('checkout-plan').textContent = planName || 'Not selected';
-    document.getElementById('checkout-price').textContent = price || 'Not available';
-    document.getElementById('checkout-method').textContent = method || 'Not selected';
+// Load and display saved anime list on mylist.html
+function loadMyList() {
+  const container = document.getElementById("myListContainer");
+  let myList = JSON.parse(localStorage.getItem("myList")) || [];
+
+  if (!container) return; // Safety check
+  container.innerHTML = ""; // Clear container first
+
+  if (myList.length === 0) {
+    container.innerHTML = "<p>No anime added to My List yet.</p>";
+    return;
+  }
+
+  myList.forEach((anime, index) => {
+    const card = document.createElement("div");
+    card.classList.add("anime-card");
+    card.innerHTML = `
+      <img src="${anime.image}" alt="${anime.title}">
+      <h3>${anime.title}</h3>
+      <button onclick="window.location.href='${anime.link}'">Watch Now</button>
+      <button onclick="removeFromList(${index})">Remove</button>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Remove anime from list by index
+function removeFromList(index) {
+  let myList = JSON.parse(localStorage.getItem("myList")) || [];
+  myList.splice(index, 1);
+  localStorage.setItem("myList", JSON.stringify(myList));
+  loadMyList(); // Reload list without full page refresh
+}
+
+// (Optional) Display anime cards dynamically
+function displayAnimeList(animeList, listContainer) {
+  if (!listContainer) return;
+
+  animeList.forEach(anime => {
+    const card = document.createElement("div");
+    card.className = "anime-card";
+    card.innerHTML = `
+      <img src="${anime.image}" alt="${anime.title}" />
+      <h3 class="anime-title">${anime.title}</h3>
+      <button onclick="addToList('${anime.title}', '${anime.image}', '${anime.link}')">Add to My List</button>
+      <button onclick="window.location.href='${anime.link}'">Watch Now</button>
+    `;
+    listContainer.appendChild(card);
+  });
 }

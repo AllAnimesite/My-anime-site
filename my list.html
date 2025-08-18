@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My List</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Optional styles if not already in your CSS */
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #myListContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .anime-card {
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+    .anime-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .anime-card button {
+      margin-top: 10px;
+      background-color: #ff2c74;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .anime-card button:hover {
+      background-color: #e02060;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Watch List</h1>
+  <div id="myListContainer"></div>
+
+  <script>
+    // Load and show items from localStorage
+    function loadMyList() {
+      const container = document.getElementById("myListContainer");
+      const myList = JSON.parse(localStorage.getItem("myList")) || [];
+
+      if (myList.length === 0) {     container.innerHTML = "<p style='text-align:center;'>Your list is empty.</p>";
+        return;
+        }
+
+      myList.forEach((anime, index) => {
+        const card = document.createElement("div");
+        card.className = "anime-card";
+        card.innerHTML = `
+          <img src="${anime.image}" alt="${anime.title}">
+          <h3>${anime.title}</h3>
+          <button onclick="window.location.href='${anime.link}'">Watch Now</button>
+          <button onclick="removeFromList(${index})">Remove</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Remove item
+    function removeFromList(index) {
+      let myList = JSON.parse(localStorage.getItem("myList")) || [];
+      myList.splice(index, 1);
+      localStorage.setItem("myList", JSON.stringify(myList));
+      location.reload(); // Refresh the page
+    }
+
+    // Call function when page loads
+    window.onload = loadMyList;
+  </script>
+
+</body>
+</html>
