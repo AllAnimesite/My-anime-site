@@ -24,16 +24,28 @@
       <img src="/images/gintama the final.jpg" alt="Anime Title">
       <h3 class="anime-title">Gintama: the final</h3>
       <button onclick="window.location.href='/gintama the final.html'">Watch Now</button>
+      <button onclick="addToList('Gintama: the final', '/images/gintama the final.jpg', '/gintama the final.html')" class="icon-button">
+  <img src="/images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+  <span>My List</span>
+</button>
     </div>
     <div class="anime-card search-items">
     <img src="/images/silent voice ep.jpg" alt="Silent Voice">
     <h3 class="anime-title">silent voice</h3>
     <button onclick="window.location.href='/silent voice.html'">Watch Now</button>
+    <button onclick="addToList('Silent voice', '/images/silent voice ep.jpg', '/silent voice.html')" class="icon-button">
+  <img src="/images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+  <span>My List</span>
+</button>
     </div>
     <div class="anime-card search-items">
     <img src="/images/violet evergarden.jpg" alt="Silent Voice">
     <h3 class="anime-title">Violet evergarden</h3>
-    <button onclick="window.location.href='/silent voice.html'">Watch Now</button>
+    <button onclick="window.location.href='/violet evergarden.html'">Watch Now</button>
+    <button onclick="addToList('Violet evergarden', '/images/violet evergarden.jpg', '/violet evergarden.html')" class="icon-button">
+  <img src="/images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+  <span>My List</span>
+</button>
   </div>
   <div class="anime-card search-items">
   <img src="/images/your name.jpg" alt="Silent Voice">
@@ -47,14 +59,29 @@
 <script>
   function searchAnime() {
     var q = document.getElementById('searchInput').value.toLowerCase().trim();
-    var slides = document.querySelectorAll('.anime-card'); // Updated selector
+    var slides = document.querySelectorAll('.anime-card');
     slides.forEach(function(slide) {
       var titleEl = slide.querySelector('.anime-title') || slide.querySelector('h3');
       var title = titleEl ? titleEl.textContent.toLowerCase() : '';
       slide.style.display = title.includes(q) ? '' : 'none';
     });
   }
+
+  // ✅ Define addToList function
+  function addToList(title, image, link) {
+    let myList = JSON.parse(localStorage.getItem("myList")) || [];
+
+    // Avoid duplicates
+    if (!myList.some(item => item.title === title)) {
+      myList.push({ title, image, link });
+      localStorage.setItem("myList", JSON.stringify(myList));
+      alert(`${title} added to My List!`);
+} else {
+   alert(`${title} is already in My List.`);
+}
+
 </script>
+<script src="script.js"></script>
 
 </body>
 </html>
