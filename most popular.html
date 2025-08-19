@@ -135,7 +135,7 @@
 </div>  
 <div class="anime-card">
   <img src="/images/onepunchman.jpg" alt="one punch man" />
-  <h3 class="anime-title">Paranoia Agent</h3>
+  <h3 class="anime-title">Onepunch man</h3>
   <button onclick="window.location.href='/onepunchman.html'">Watch Now</button>
   <button onclick="addToList('paranoia', '/images/onepunchman.jpg', '/onepunchman.html')" class="icon-button">
       <img src="/images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
@@ -173,27 +173,27 @@
   function searchAnime() {
     var q = document.getElementById('searchInput').value.toLowerCase().trim();
     var slides = document.querySelectorAll('.anime-card');
-    slides.forEach(function(slide) {
+
+    slides.forEach(function (slide) {
       var titleEl = slide.querySelector('.anime-title') || slide.querySelector('h3');
       var title = titleEl ? titleEl.textContent.toLowerCase() : '';
       slide.style.display = title.includes(q) ? '' : 'none';
     });
   }
 
-  // ✅ Define addToList function
   function addToList(title, image, link) {
     let myList = JSON.parse(localStorage.getItem("myList")) || [];
 
-    // Avoid duplicates
     if (!myList.some(item => item.title === title)) {
       myList.push({ title, image, link });
       localStorage.setItem("myList", JSON.stringify(myList));
       alert(`${title} added to My List!`);
-} else {
-   alert(`${title} is already in My List.`);
-}
-
+    } else {
+      alert(`${title} is already in My List.`);
+    }
+  }
 </script>
+
 <script src="script.js"></script>
 
 
