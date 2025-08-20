@@ -10,7 +10,9 @@
   <!-- Loader Screen -->
   <div id="loader">
     <div class="loader-content">
-      <div class="logo">ALL.ANIME</div>
+      <div class="logo">
+  <img src="/images/loader1.PNG" alt="ALL.ANIME Logo">
+</div>
       <div class="loader-ellipsis">
         <div></div>
         <div></div>
@@ -327,7 +329,7 @@ function searchAnime() {
           loader.remove();
           content.style.display = "block";
         }, 600);
-      }, 2000);
+      }, 3000);
       sessionStorage.setItem("visited", "true");
     }
   });
