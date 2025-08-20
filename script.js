@@ -92,3 +92,24 @@ function displayAnimeList(animeList, listContainer) {
     listContainer.appendChild(card);
   });
 }
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+
+  // Check if user has already visited
+  if (!sessionStorage.getItem("visited")) {
+    // First time: show loader
+    setTimeout(() => {
+      loader.style.opacity = '0';
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500); // fade out
+    }, 2000); // show for 2s
+
+    // Mark as visited
+    sessionStorage.setItem("visited", "true");
+  } else {
+    // Already visited: hide loader instantly
+    loader.style.display = 'none';
+  }
+});
+

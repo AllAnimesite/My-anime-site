@@ -625,4 +625,50 @@ header h1 {
   margin-right: 10px;
   object-fit: contain;
 }
+/* Splash loader styles */
+.splash-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 0.5s ease;
+}
+
+.loader-content .logo {
+  font-size: 3em;
+  font-weight: bold;
+  color: #ff3c00; /* You can change this to match your branding */
+  animation: logoPulse 1.5s infinite;
+}
+/* Spinner below the logo */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ccc;
+  border-top-color: #ff3c00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-top: 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centers logo and spinner horizontally */
+  text-align: center;
+}
+
+
 
