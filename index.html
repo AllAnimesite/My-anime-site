@@ -7,13 +7,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Splash Screen Loader -->
-  <div id="loader" class="splash-loader">
+  <!-- Loader Screen -->
+  <div id="loader">
     <div class="loader-content">
-      <h1 class="logo">AllAnime</h1>
-      <div class="spinner"></div>
+      <div class="logo">ALL.ANIME</div>
+      <div class="loader-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
+
+  <!-- Main Content (hidden until loader is done) -->
+  <div id="content" style="display:none;">
+
   <header class="navbar">
     <div class="navbar-left">
       <a href="#">Movies</a>
@@ -301,6 +309,28 @@ function searchAnime() {
     slide.style.display = title.includes(q) ? '' : 'none';
   });
 }
+</script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById("loader");
+    const content = document.getElementById("content");
+
+    // Check if already visited
+    if (sessionStorage.getItem("visited")) {
+      loader.remove(); // never show again
+      content.style.display = "block";
+    } else {
+      // First visit show loader for 2s
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        setTimeout(() => {
+          loader.remove();
+          content.style.display = "block";
+        }, 600);
+      }, 2000);
+      sessionStorage.setItem("visited", "true");
+    }
+  });
 </script>
 
 
