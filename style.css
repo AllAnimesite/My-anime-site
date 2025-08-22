@@ -688,4 +688,40 @@ header h1 {
     opacity: 1;
   }
 }
+.pagination {
+  display: flex;
+  justify-content: center;   /* ✅ center horizontally */
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;               /* ✅ allow it to stretch full width */
+}
+
+.pagination button {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  color: #007bff;
+  user-select: none;
+}
+
+.pagination button:disabled {
+  color: #aaa;
+  cursor: default;
+}
+
+.pagination .current-page {
+  font-weight: bold;
+  padding: 5px 12px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  user-select: none;
+}
+
+
+
+
+
 
