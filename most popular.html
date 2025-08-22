@@ -371,7 +371,6 @@
       <span>My List</span>
   </button>
 </div>
-
 <div class="anime-card">
   <img src="/images/hellsing.jpg" alt="hellsing" />
   <h3 class="anime-title">Hellsing</h3>
@@ -381,12 +380,35 @@
       <span>My List</span>
   </button>
 </div>
-
-
-
+<div class="anime-card">
+  <img src="/images/parasyte.jpg" alt="hellsing" />
+  <h3 class="anime-title">Parasyte</h3>
+  <button onclick="window.location.href='/parasyte.html'">Watch Now</button>
+  <button onclick="addToList('parasyte', '/images/parasyte.jpg', '/parasyte.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="/images/lookism.jpg" alt="hellsing" />
+  <h3 class="anime-title">Lookism</h3>
+  <button onclick="window.location.href='/lookism.html'">Watch Now</button>
+  <button onclick="addToList('parasyte', '/images/lookism.jpg', '/lookism.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="/images/sakamoto.jpg" alt="hellsing" />
+  <h3 class="anime-title">Sakamoto days season 1</h3>
+  <button onclick="window.location.href='/lookism.html'">Watch Now</button>
+  <button onclick="addToList('parasyte', '/images/sakamoto.jpg', '/lookism.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
 <div id="pagination" class="pagination"></div>
 </div>
-
     <!-- Add more anime here -->
   </main>
 <script>
@@ -396,7 +418,7 @@
 
     slides.forEach(function (slide) {
       var titleEl = slide.querySelector('.anime-title') || slide.querySelector('h3');
-      var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+          var title = titleEl ? titleEl.textContent.toLowerCase() : '';
       slide.style.display = title.includes(q) ? '' : 'none';
     });
   }
@@ -415,8 +437,6 @@
 </script>
 
 <script src="script.js"></script>
-
-</script>
 
 </body>
 </html>
