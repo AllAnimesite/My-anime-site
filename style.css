@@ -722,6 +722,16 @@ header h1 {
   border-radius: 4px;
   user-select: none;
 }
+@font-face {
+  font-family: 'Aboro';
+  src: url('fonts/Aboro.ttf') format('truetype');
+}
+
+h1, h3, .filter-button {
+  font-family: 'Aboro', sans-serif;
+  text-transform: uppercase;
+}
+
 
 
 
