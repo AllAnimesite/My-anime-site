@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Current Page <3>
     const pageDisplay = document.createElement("span");
     pageDisplay.className = "current-page";
-    pageDisplay.textContent = `<${page}>`;
+    pageDisplay.textContent = `${page}`;
     paginationContainer.appendChild(pageDisplay);
 
     // Next >
