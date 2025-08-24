@@ -196,7 +196,7 @@
   </button>
 </div>
 
-<div class="anime-card">
+<div class="anime-card" data-genre="Adventure,Action">
   <img src="/images/monster.jpg" alt="monster" />
   <h3 class="anime-title">Monster</h3>
   <button onclick="window.location.href='/monster.html'">Watch Now</button>
@@ -206,7 +206,7 @@
   </button>
 </div>
 
-<div class="anime-card">
+<div class="anime-card" data-genre="Superpower,Action">
   <img src="/images/mobpyscho100.jpg" alt="monster" />
   <h3 class="anime-title">Mob Psycho 100</h3>
   <button onclick="window.location.href='/mobpsycho100.html'">Watch Now</button>
@@ -487,6 +487,34 @@
 </script>
 
 <script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Get filters from localStorage or default to empty array
+  const filters = JSON.parse(localStorage.getItem('selectedFilters')) || [];
+
+  // Get all anime cards
+  const cards = document.querySelectorAll('.anime-card');
+
+  cards.forEach(card => {
+    const genreAttr = card.getAttribute('data-genre');
+    const genres = genreAttr
+      ? genreAttr.toLowerCase().split(',').map(g => g.trim())
+      : [];
+      console.log("Filters:", filters);
+console.log("Card genres:", genres);
+
+
+    const matches = (
+      filters.length === 0 ||
+      filters.includes('all') ||
+      filters.some(filter => genres.includes(filter.toLowerCase()))
+    );
+
+    card.style.display = matches ? 'block' : 'none';
+  });
+});
+</script>
+
 
 </body>
 </html>

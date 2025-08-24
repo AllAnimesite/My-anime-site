@@ -135,6 +135,7 @@ h1, h3, .filter-button {
         <button class="filter-button">Romance</button>
         <button class="filter-button">Sci-Fi</button>
         <button class="filter-button">Supernatural</button>
+        <button class="filter-button">Superpower</button>
         <!-- Add more genres as needed -->
       </div>
     </div>
@@ -146,33 +147,50 @@ h1, h3, .filter-button {
     </div>
 
   </div>
+<script>
+// Toggle active class for filter buttons
+document.querySelectorAll('.filter-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const text = button.innerText.trim().toLowerCase();
 
-  <script>
-    // Toggle button active state
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.addEventListener('click', () => {
-        const siblings = button.parentElement.querySelectorAll('.filter-button');
-        if (button.innerText === 'All') {
-          siblings.forEach(btn => btn.classList.remove('active'));
-        }
-        button.classList.toggle('active');
-      });
-    });
+    if (text === 'all') {
+      // Deactivate all others
+      document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    } else {
+      // Toggle this button
+      button.classList.toggle('active');
 
-    function resetFilters() {
-      document.querySelectorAll('.filter-button').forEach(button => {
-        button.classList.remove('active');
-      });
-      // Optionally reselect default "All"
-      document.querySelectorAll('.filter-group').forEach(group => {
-        group.querySelector('.filter-button').classList.add('active');
-      });
+      // Remove 'All' if any other filter is selected
+      const allBtn = Array.from(document.querySelectorAll('.filter-button'))
+        .find(btn => btn.innerText.trim().toLowerCase() === 'all');
+      if (allBtn) {
+        allBtn.classList.remove('active');
+      }
     }
+  });
+});
 
-    function applyFilters() {
-      alert("Filters applied! (You can link this to your backend or filter logic)");
-    }
-  </script>
+// Reset all filters
+function resetFilters() {
+  document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+}
+
+// Apply filters and save to localStorage
+function applyFilters() {
+  const selectedFilters = [];
+
+  document.querySelectorAll('.filter-button.active').forEach(button => {
+    selectedFilters.push(button.innerText.trim().toLowerCase());
+  });
+
+  localStorage.setItem('selectedFilters', JSON.stringify(selectedFilters));
+
+  // Redirect to filtered list page
+  window.location.href = '/most popular.html';
+}
+</script>
+
 
 </body>
 </html>
