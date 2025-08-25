@@ -32,7 +32,7 @@ body {
 .signup-container button {
   width: 100%;
   padding: 10px;
-  background: #FF007F;
+  background: #6A1AA5;
   border: none;
   color: white;
   font-size: 16px;
@@ -41,7 +41,7 @@ body {
 }
 
 .signup-container button:hover {
-  background: #FF007F;
+  background: #6A1AA5;
 }
 
 .signup-container p {
@@ -49,7 +49,7 @@ body {
   font-size: 14px;
 }
 .signup-container p a {
-  color: #FF007F;
+  color: #6A1AA5;
   text-decoration: none;
 }
 
