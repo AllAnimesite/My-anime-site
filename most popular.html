@@ -209,8 +209,8 @@
 <div class="anime-card" data-genre="Superpower,Action">
   <img src="/images/mobpyscho100.jpg" alt="monster" />
   <h3 class="anime-title">Mob Psycho 100</h3>
-  <button onclick="window.location.href='/mobpsycho100.html'">Watch Now</button>
-  <button onclick="addToList('Mob Psycho 100', '/images/mobpyscho100.jpg', 'mobpsycho100.html')" class="icon-button">
+  <button onclick="window.location.href='/mobpyscho100.html'">Watch Now</button>
+  <button onclick="addToList('Mob Psycho 100', '/images/mobpyscho100.jpg', '/mobpyscho100.html')" class="icon-button">
       <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
       <span>My List</span>
   </button>
@@ -581,14 +581,7 @@
   </button>
 </div>
 <!-- Pagination -->
-<div id="pagination" class="pagination">
-  <a href="#" class="prev">‹</a>
-  <a href="#" class="page-num">1</a>
-  <a href="#" class="page-num">2</a>
-  <a href="#" class="page-num">3</a>
-  <a href="#" class="page-num">4</a>
-  <a href="#" class="next">›</a>
-</div>
+<div id="pagination"></div>
 
 </div>
     <!-- Add more anime here -->
@@ -647,74 +640,144 @@ console.log("Card genres:", genres);
 });
 </script>
 
+
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const cards = document.querySelectorAll(".anime-card");
-    const searchInput = document.querySelector("#searchInput"); // 👈 make sure your search box has this id
-    const itemsPerPage = 20;
+(function(){
+  if (window._animePaginationInit) return;
+  window._animePaginationInit = true;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const cards = Array.from(document.querySelectorAll('.anime-card'));
+    if (!cards.length) {
+      console.warn('Pagination: no elements found with class .anime-card');
+      return;
+    }
+
+    // store original display (so we restore correct layout)
+    cards.forEach(card => {
+      const d = getComputedStyle(card).display;
+      card.dataset._origDisplay = (d && d !== 'none') ? d : 'block';
+      card.dataset._match = '1'; // used for search filtering
+    });
+
+    const cardsPerPage = 20;
     let currentPage = 1;
-    let filteredCards = [...cards]; // By default, all cards
-    const totalPages = () => Math.ceil(filteredCards.length / itemsPerPage);
+    const paginationId = 'pagination';
+    let pagination = document.getElementById(paginationId);
+    if (!pagination) {
+      pagination = document.createElement('div');
+      pagination.id = paginationId;
+      document.body.appendChild(pagination);
+    }
+
+    function getFilteredCards() {
+      return cards.filter(c => c.dataset._match !== '0');
+    }
+
+    function renderPagination() {
+      const filtered = getFilteredCards();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
+
+      // hide pagination when no results
+      if (filtered.length === 0) {
+        pagination.innerHTML = '';
+        return;
+      }
+
+      // build << < current > >>
+      pagination.innerHTML = '';
+      const makeBtn = (html, token, disabled) => {
+        const a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = html;
+        a.dataset.page = token;
+        if (disabled) a.classList.add('disabled');
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (a.classList.contains('disabled')) return;
+          handleNav(token);
+        });
+        return a;
+      };
+
+      pagination.appendChild(makeBtn('«', 'first', currentPage === 1));
+      pagination.appendChild(makeBtn('‹', 'prev', currentPage === 1));
+
+      const span = document.createElement('span');
+      span.className = 'page-num';
+      span.textContent = currentPage;
+      pagination.appendChild(span);
+
+      pagination.appendChild(makeBtn('›', 'next', currentPage === totalPages));
+      pagination.appendChild(makeBtn('»', 'last', currentPage === totalPages));
+    }
+
+    function handleNav(token) {
+      const filtered = getFilteredCards();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
+
+      if (token === 'first') showPage(1);
+      else if (token === 'prev') showPage(Math.max(1, currentPage - 1));
+      else if (token === 'next') showPage(Math.min(totalPages, currentPage + 1));
+      else if (token === 'last') showPage(totalPages);
+    }
 
     function showPage(page) {
-        currentPage = page;
+      const filtered = getFilteredCards();
+      if (filtered.length === 0) {
+        // nothing matches: hide all cards and hide pagination
+        cards.forEach(c => c.style.display = 'none');
+        renderPagination();
+        return;
+      }
 
-        // Hide all
-        cards.forEach(card => card.style.display = "none");
+      const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
+      if (page < 1) page = 1;
+      if (page > totalPages) page = totalPages;
+      currentPage = page;
 
-        // Show only filtered + paginated
-        let start = (page - 1) * itemsPerPage;
-        let end = start + itemsPerPage;
-        for (let i = start; i < end && i < filteredCards.length; i++) {
-            filteredCards[i].style.display = "block";
-        }
+      // hide everything then show slice from filtered list
+      cards.forEach(c => c.style.display = 'none');
 
-        // Update active link
-        document.querySelectorAll("#pagination .page-num").forEach((btn, index) => {
-            btn.classList.toggle("active", index + 1 === page);
-        });
+      const start = (page - 1) * cardsPerPage;
+      const end = start + cardsPerPage;
+      filtered.slice(start, end).forEach(card => {
+        card.style.display = card.dataset._origDisplay || '';
+      });
+
+      renderPagination();
     }
 
-    function setupPagination() {
-        // Always reset to page 1 when filtering
-        showPage(1);
-    }
-
-    // Pagination buttons
-    document.querySelectorAll("#pagination .page-num").forEach((btn, index) => {
-        btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            showPage(index + 1);
-        });
-    });
-
-    document.querySelector("#pagination .prev").addEventListener("click", function (e) {
-        e.preventDefault();
-        if (currentPage > 1) showPage(currentPage - 1);
-    });
-
-    document.querySelector("#pagination .next").addEventListener("click", function (e) {
-        e.preventDefault();
-        if (currentPage < totalPages()) showPage(currentPage + 1);
-    });
-
-    // 🔍 Search filter
-    searchInput.addEventListener("input", function () {
-        let query = this.value.toLowerCase();
-        if (query.trim() === "") {
-            // Reset to all cards
-            filteredCards = [...cards];
+    // search wiring (optional)
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        const q = this.value.trim().toLowerCase();
+        if (q === '') {
+          cards.forEach(c => c.dataset._match = '1');
         } else {
-            filteredCards = [...cards].filter(card =>
-                card.textContent.toLowerCase().includes(query)
-            );
+          cards.forEach(c => {
+            const text = (c.textContent || '').toLowerCase();
+            c.dataset._match = text.includes(q) ? '1' : '0';
+          });
         }
-        setupPagination();
-    });
+        // reset to first page after filter change
+        showPage(1);
+      });
+    }
 
-    // Start on first page
+    // initialize
     showPage(1);
-});
+
+    // for debugging from console if needed
+    window._paginate = {
+      showPage,
+      renderPagination,
+      cardsCount: cards.length
+    };
+    console.log('Pagination initialized — cards:', cards.length);
+  });
+})();
 </script>
 
 </body>
