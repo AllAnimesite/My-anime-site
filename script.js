@@ -92,78 +92,9 @@ function displayAnimeList(animeList, listContainer) {
     listContainer.appendChild(card);
   });
 }
-document.addEventListener("DOMContentLoaded", () => {
-  const cardsPerPage = 20;
-  const animeCards = document.querySelectorAll(".anime-card");
-  const paginationContainer = document.getElementById("pagination");
 
-  const totalPages = Math.ceil(animeCards.length / cardsPerPage);
-  let currentPage = 1;
 
-  function showPage(page) {
-    const start = (page - 1) * cardsPerPage;
-    const end = start + cardsPerPage;
 
-    animeCards.forEach((card, index) => {
-      card.style.display = index >= start && index < end ? "block" : "none";
-    });
-
-    renderPagination(page);
-  }
-
-  function renderPagination(page) {
-    paginationContainer.innerHTML = "";
-
-    // First <<
-    const firstBtn = document.createElement("button");
-    firstBtn.textContent = "«";
-    firstBtn.disabled = page === 1;
-    firstBtn.addEventListener("click", () => {
-      currentPage = 1;
-      showPage(currentPage);
-    });
-    paginationContainer.appendChild(firstBtn);
-
-    // Previous <
-    const prevBtn = document.createElement("button");
-    prevBtn.textContent = "‹";
-    prevBtn.disabled = page === 1;
-    prevBtn.addEventListener("click", () => {
-      currentPage--;
-      showPage(currentPage);
-    });
-    paginationContainer.appendChild(prevBtn);
-
-    // Current Page <3>
-    const pageDisplay = document.createElement("span");
-    pageDisplay.className = "current-page";
-    pageDisplay.textContent = `${page}`;
-    paginationContainer.appendChild(pageDisplay);
-
-    // Next >
-    const nextBtn = document.createElement("button");
-    nextBtn.textContent = "›";
-    nextBtn.disabled = page === totalPages;
-    nextBtn.addEventListener("click", () => {
-      currentPage++;
-      showPage(currentPage);
-    });
-    paginationContainer.appendChild(nextBtn);
-
-    // Last >>
-    const lastBtn = document.createElement("button");
-    lastBtn.textContent = "»";
-    lastBtn.disabled = page === totalPages;
-    lastBtn.addEventListener("click", () => {
-      currentPage = totalPages;
-      showPage(currentPage);
-    });
-    paginationContainer.appendChild(lastBtn);
-  }
-
-  // Initial call
-  showPage(currentPage);
-});
 
 
 
