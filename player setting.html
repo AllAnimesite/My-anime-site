@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Settings</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .player-settings {
+      margin-top: 20px;
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="player-settings">
+    <h2>Player Settings</h2>
+    <div class="setting-item">
+      <label for="skipToggle">Show Skip intro/outro</label>
+      <input type="checkbox" id="skipToggle">
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const skipToggle = document.getElementById('skipToggle');
+
+      // Load from localStorage
+      const isSkipEnabled = localStorage.getItem('skipIntroOutro') === 'true';
+      skipToggle.checked = isSkipEnabled;
+
+      // Save to localStorage when toggled
+      skipToggle.addEventListener('change', () => {
+        localStorage.setItem('skipIntroOutro', skipToggle.checked);
+      });
+    });
+  </script>
+</body>
+</html>
