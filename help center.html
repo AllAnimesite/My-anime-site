@@ -60,10 +60,6 @@
     Help Center
   </div>
 
-  <a class="help-item" href="https://yourwebsite.com" target="_blank">
-    <span class="help-icon">🌐</span> Website
-  </a>
-
   <a class="help-item" href="https://twitter.com/yourpage" target="_blank">
     <span class="help-icon">🐦</span> Twitter
   </a>
@@ -77,6 +73,16 @@
       window.history.back(); // navigates back to profile page
     }
   </script>
-
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"188f237f09d9fe21019c79070b8e3ad2b","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
 </body>
 </html>
