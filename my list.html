@@ -79,17 +79,65 @@
       });
     }
 
-    // Remove item
     function removeFromList(index) {
-      let myList = JSON.parse(localStorage.getItem("myList")) || [];
-      myList.splice(index, 1);
-      localStorage.setItem("myList", JSON.stringify(myList));
-      location.reload(); // Refresh the page
-    }
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!loggedInUser) return;
+
+  let key = "myList_" + loggedInUser.email;
+  let myList = JSON.parse(localStorage.getItem(key)) || [];
+
+  myList.splice(index, 1);
+  localStorage.setItem(key, JSON.stringify(myList));
+  location.reload(); // Refresh the page
+}
+
 
     // Call function when page loads
     window.onload = loadMyList;
   </script>
+<script>
+  function loadMyList() {
+    const container = document.getElementById("myListContainer");
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    // 🔒 If not logged in → show login card
+    if (!loggedInUser) {
+      container.innerHTML = `
+        <div style="background:#1e1e1e; padding:20px; margin:20px; border-radius:12px; text-align:center;">
+          <h3>My profile</h3>
+          <p>Sign in to synchronize your anime</p>
+          <button style="background:red; color:#fff; border:none; padding:12px 25px; border-radius:25px; cursor:pointer;"
+            onclick="window.location.href='login.html'">
+            Continue
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    // ✅ Load user’s saved list (different for each user)
+    const myList = JSON.parse(localStorage.getItem("myList_" + loggedInUser.email)) || [];
+
+    if (myList.length === 0) {
+      container.innerHTML = "<p style='text-align:center;'>Your list is empty.</p>";
+      return;
+    }
+
+    myList.forEach((anime, index) => {
+      const card = document.createElement("div");
+      card.className = "anime-card";
+      card.innerHTML = `
+  <img src="${anime.image}" alt="${anime.title}" style="width:100%; height:200px; object-fit:cover;">
+  <h3>${anime.title}</h3>
+  <button onclick="window.location.href='${anime.link}'">Watch Now</button>
+  <button onclick="removeFromList(${index})">Remove</button>
+`;
+      container.appendChild(card);
+    });
+  }
+
+  window.onload = loadMyList;
+</script>
 
 </body>
 </html>

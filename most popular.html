@@ -1197,6 +1197,35 @@ console.log("Card genres:", genres);
   });
 })();
 </script>
+<script>
+function addToList(title, image, link) {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    // 🔒 If user is not logged in → redirect to login
+    if (!loggedInUser) {
+        alert("Please log in to add anime to your list.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // 🔑 Unique list key for each user
+    const myListKey = "myList_" + loggedInUser.email;
+    let myList = JSON.parse(localStorage.getItem(myListKey)) || [];
+
+    // ✅ Avoid duplicates
+    const exists = myList.some(anime => anime.title === title);
+    if (exists) {
+        alert("This anime is already in your list!");
+        return;
+    }
+
+    // ➕ Add new anime
+    myList.push({ title, image, link });
+    localStorage.setItem(myListKey, JSON.stringify(myList));
+
+    alert(title + " has been added to your list!");
+}
+</script>
 
 </body>
 </html>
