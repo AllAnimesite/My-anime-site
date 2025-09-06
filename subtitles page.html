@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subtitle Settings</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 24px;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .subtitle-preview {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      margin: 20px auto;
+      width: fit-content;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .setting {
+      margin-bottom: 20px;
+    }
+
+    .setting label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .slider {
+      width: 100%;
+    }
+
+    .save-btn {
+      background-color: #6A1AA5;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .save-btn:hover {
+      background-color: #6A1AA5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Subtitle settings</h1>
+
+  <div class="container">
+    <div class="subtitle-preview" id="preview">
+      Lorem Ipsum is simply dummy text.
+    </div>
+
+    <div class="setting">
+      <label for="size">Size</label>
+      <input type="range" id="size" class="slider" min="10" max="50" value="20">
+    </div>
+
+    <div class="setting">
+      <label for="style">Style</label>
+      <input type="range" id="style" class="slider" min="100" max="900" step="100" value="700">
+    </div>
+
+    <div class="setting">
+      <label for="color">Color</label>
+      <input type="color" id="color" value="#ffffff">
+    </div>
+
+    <div class="setting">
+      <label for="position">Position</label>
+      <input type="range" id="position" class="slider" min="0" max="100" value="50">
+    </div>
+
+    <div class="setting">
+      <label for="shadow">Shadow</label>
+      <input type="range" id="shadow" class="slider" min="0" max="20" value="2">
+    </div>
+
+    <div class="setting">
+      <label for="opacity">Opacity</label>
+      <input type="range" id="opacity" class="slider" min="0" max="1" step="0.1" value="1">
+    </div>
+
+    <button class="save-btn">Save</button>
+  </div>
+
+  <script>
+    const preview = document.getElementById('preview');
+    const size = document.getElementById('size');
+    const style = document.getElementById('style');
+    const color = document.getElementById('color');
+    const position = document.getElementById('position');
+    const shadow = document.getElementById('shadow');
+    const opacity = document.getElementById('opacity');
+
+    function updatePreview() {
+      preview.style.fontSize = size.value + 'px';
+      preview.style.fontWeight = style.value;
+      preview.style.color = color.value;
+      preview.style.marginTop = position.value + 'px';
+      if (parseInt(shadow.value) > 0) {
+  preview.style.textShadow = `${shadow.value}px ${shadow.value}px ${shadow.value}px black`;
+} else {
+  preview.style.textShadow = 'none';
+}
+      preview.style.opacity = opacity.value;
+    }
+
+    [size, style, color, position, shadow, opacity].forEach(input => {
+      input.addEventListener('input', updatePreview);
+    });
+
+    updatePreview(); // Initial preview update
+    // Load saved settings
+const savedSettings = JSON.parse(localStorage.getItem('subtitleSettings'));
+if (savedSettings) {
+  size.value = savedSettings.size;
+  style.value = savedSettings.style;
+  color.value = savedSettings.color;
+  position.value = savedSettings.position;
+  shadow.value = savedSettings.shadow;
+  opacity.value = savedSettings.opacity;
+  updatePreview();
+}
+// Save settings to localStorage
+const saveButton = document.querySelector('.save-btn');
+
+saveButton.addEventListener('click', () => {
+  const settings = {
+    size: size.value,
+    style: style.value,
+    color: color.value,
+    position: position.value,
+    shadow: shadow.value,
+    opacity: opacity.value
+  };
+  localStorage.setItem('subtitleSettings', JSON.stringify(settings));
+  alert('Settings saved!');
+});
+
+  </script>
+</body>
+</html>
