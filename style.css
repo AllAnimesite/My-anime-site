@@ -720,13 +720,91 @@ header h1 {
   opacity: 0.45;
   pointer-events: none;
 }
+  body {
+    background-color: #111;
+    font-family: 'Segoe UI', sans-serif;
+  }
 
+  .related-wrapper {
+    padding: 20px;
+    background: #1a1a1a;
+    color: #fff;
+  }
 
+  .related-header {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    background: #6A1AA5;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
 
+  .related-header .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
 
+  .range-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #000;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid #6A1Aa5;
+  }
 
+  .range-links a {
+    color: #6A1Aa5;
+    text-decoration: none;
+    font-weight: bold;
+  }
 
+  .range-links a:hover {
+    text-decoration: underline;
+  }
 
+  .episode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+  }
 
+  .ep-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #444;
+    transition: 0.2s;
+  }
 
+  .ep-button:hover {
+    background: #000;
+    border-color: #6A1AA5;
+    box-shadow: 0 0 10px #6A1AA5;
+    transform: scale(1.02);
+  }
 
+  .ep-button .sub {
+    font-size: 12px;
+    color: #ccc;
+    margin-left: 6px;
+  }
+
+  .ep-button.active {
+    background-color: #6A1AA5;
+    color: #000;
+    font-weight: bold;
+  }
