@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Look Back</title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; background: #111; color: white; font-family: Arial; }
+    .banner { width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block;}
+    .container { padding: 16px; }
+    .title { font-size: 24px; font-weight: bold; }
+    .tags { margin: 10px 0; }
+    .tag { background: #6A1AA5; padding: 5px 10px; margin-right: 5px; border-radius: 4px; font-size: 12px; }
+    .play-btn { background: #6A1AA5; padding: 12px 25px; color: white; border: none; border-radius: 6px; font-size: 18px; margin: 15px 0; cursor: pointer; }
+    .description { color: #ccc; font-size: 14px; }
+    .episodes { margin-top: 20px; }
+    .episode-list { display: flex; overflow-x: auto; }
+    .episode { margin-right: 10px; background: #222; border-radius: 8px; width: 120px; text-align: center; flex-shrink: 0; }
+    .episode img { width: 100%; border-radius: 8px 8px 0 0; }
+    .episode p { padding: 5px; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <!-- Banner image -->
+  <img src="/look back.jpg" class="banner" alt="Look Back">
+
+  <div class="container">
+    <div class="title">Look Back</div>
+
+    <div class="tags">
+      <span class="tag">Season 1</span>
+      <span class="tag">Episode 1</span>
+      <span class="tag">HD</span>
+      <span class="tag">SUB</span>
+    </div>
+
+    <!-- Play Button -->
+    <button class="play-btn">▶ Play Episode</button>
+
+    <!-- Description -->
+    <div class="description">
+    Ayumu Fujino may only be in the fourth grade, but she already basks in high praise for her hand-drawn four-panel comics featured in the school's newspaper. However, when she is asked to share the page with Kyoumoto—a reclusive student she has never met—Fujino feels inadequate for the first time: her free-spirited drawings look embarrassingly amateurish next to Kyoumoto's breathtakingly detailed art.
+
+For a year, Fujino shuts out the world, obsessively studying manga creation and drawing tirelessly to catch up to her faceless competition. But Kyoumoto's talent far exceeds hers, and Fujino quits it all. Another year passes, and on the day of their graduation, Fujino finally meets Kyoumoto. This unkempt, shy, and stuttering girl has actually been Fujino's biggest fan all along. Their encounter reignites Fujino's passion for art and sparks the beginning of a years-long friendship built on rivalry, admiration, and their shared love of manga.
+    </div>
+
+    <!-- Episode Slider -->
+    <div class="episodes">
+      <h3>More Episodes</h3>
+      <div class="episode-list">
+      <a href="ds_ep1.html" class="episode-link">
+        <div class="episode">
+          <img src="/look back.jpg" alt="Episode 1">
+          <p>Episode 1</p>
+        </div>
+       </a>
+     
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
