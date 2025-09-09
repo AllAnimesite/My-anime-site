@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     .container { padding: 16px; }
     .title { font-size: 24px; font-weight: bold; }
     .tags { margin: 10px 0; }
-    .tag { background: #e50914; padding: 5px 10px; m#42445Aargin-right: 5px; border-radius: 4px; font-size: 12px; }
+    .tag { background: #e50914; padding: 5px 10px; margin-right: 5px; border-radius: 4px; font-size: 12px; }
     .play-btn { background: #e50914; padding: 12px 25px; color: white; border: none; border-radius: 6px; font-size: 18px; margin: 15px 0; cursor: pointer; }
     .description { color: #ccc; font-size: 14px; }
     .episodes { margin-top: 20px; }
@@ -18,6 +18,11 @@
     .episode { margin-right: 10px; background: #222; border-radius: 8px; width: 120px; text-align: center; flex-shrink: 0; }
     .episode img { width: 100%; border-radius: 8px 8px 0 0; }
     .episode p { padding: 5px; font-size: 13px; }
+    #player { margin-top: 20px; text-align: center; }
+    iframe { width: 80%; height: 480px; border: none; border-radius: 10px; }
+    .server-buttons { margin-top: 10px; text-align: center; }
+    .server-btn { background: #444; color: white; border: none; padding: 8px 16px; margin: 5px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+    .server-btn:hover { background: #666; }
   </style>
 </head>
 <body>
@@ -36,75 +41,82 @@
     </div>
 
     <!-- Play Button -->
-    <button class="play-btn">▶ Play Episode</button>
+    <button class="play-btn" onclick="playEpisode(1)">▶ Play Episode</button>
+
+    <!-- Video Player -->
+    <div id="player"></div>
+
+    <!-- Server Selector -->
+    <div class="server-buttons" id="serverButtons" style="display:none;">
+      <button class="server-btn" onclick="switchServer(1)">Server 1</button>
+      <button class="server-btn" onclick="switchServer(2)">Server 2</button>
+      <button class="server-btn" onclick="switchServer(3)">Server 3</button>
+    </div>
 
     <!-- Description -->
     <div class="description">
-   One-Punch Man is about Saitama, a superhero so powerful he can defeat any enemy with a single punch, which has left him bored and seeking a worthy challenge. 
+      One-Punch Man is about Saitama, a superhero so powerful he can defeat any enemy with a single punch, which has left him bored and seeking a worthy challenge. 
     </div>
 
     <!-- Episode Slider -->
     <div class="episodes">
       <h3>More Episodes</h3>
       <div class="episode-list">
-      <a href="/DN_ep1.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/episodepageOPM.jpg" alt="Episode 1">
-          <p>Episode 1</p>
-        </div>
-       <a href="/DN_ep1.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/episodepageOPM.jpg" alt="Episode 2">
-          <p>Episode 2</p>
-        </div>
-       <a href="/DN_ep1.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/episodepageOPM.jpg" alt="Episode 3">
-          <p>Episode 3</p>
-        </div>
-       <a href="/DN_ep1.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/episodepageOPM.jpg" alt="Episode 4">
-          <p>Episode 4</p>
-       </div>
-       <a href="/DN_ep1.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/episodepageOPM.jpg" alt="Episode 5">
-         <p>Episode 5</p>
-       </div>
-      <a href="/DN_ep1.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/episodepageOPM.jpg" alt="Episode 4">
-         <p>Episode 6</p>
-       </div>
-       <a href="/DN_ep1.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/episodepageOPM.jpg" alt="Episode 4">
-         <p>Episode 7</p>
-       </div>
-       <a href="/DN_ep1.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/episodepageOPM.jpg" alt="Episode 4">
-         <p>Episode 8</p>
-       </div>
-       <a href="/DN_ep1.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/episodepageOPM.jpg" alt="Episode 4">
-         <p>Episode 9</p>
-       </div>
-       <a href="/DN_ep1.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/episodepageOPM.jpg" alt="Episode 4">
-         <p>Episode 10</p>
-       </div>
-        <a href="/DN_ep1.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/episodepageOPM.jpg" alt="Episode 4">
-         <p>Episode 11</p>
-       </div>
+        <a href="#" onclick="playEpisode(1)" class="episode-link">
+          <div class="episode">
+            <img src="/images/episodepageOPM.jpg" alt="Episode 1">
+            <p>Episode 1</p>
+          </div>
+        </a>
+        <a href="#" onclick="playEpisode(2)" class="episode-link">
+          <div class="episode">
+            <img src="/images/episodepageOPM.jpg" alt="Episode 2">
+            <p>Episode 2</p>
+          </div>
+        </a>
+        <a href="#" onclick="playEpisode(3)" class="episode-link">
+          <div class="episode">
+            <img src="/images/episodepageOPM.jpg" alt="Episode 3">
+            <p>Episode 3</p>
+          </div>
+        </a>
+        <!-- Add more episodes -->
       </div>
     </div>
   </div>
+
+  <script>
+    let currentEpisode = 1;
+    let currentServer = 1;
+
+    function playEpisode(epNumber) {
+      currentEpisode = epNumber;
+      currentServer = 1;
+      loadPlayer();
+      document.getElementById("serverButtons").style.display = "block";
+    }
+
+    function switchServer(server) {
+      currentServer = server;
+      loadPlayer();
+    }
+
+    function loadPlayer() {
+      let embedUrl = "";
+
+      // Define different servers
+      if (currentServer === 1) {
+        embedUrl = `https://2anime.xyz/embed/one-punch-man-episode-${currentEpisode}`;
+      } else if (currentServer === 2) {
+        embedUrl = `https://example.com/server2/one-punch-man-episode-${currentEpisode}`;
+      } else if (currentServer === 3) {
+        embedUrl = `https://example.com/server3/one-punch-man-episode-${currentEpisode}`;
+      }
+
+      document.getElementById("player").innerHTML = 
+        `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+    }
+  </script>
 
 </body>
 </html>
