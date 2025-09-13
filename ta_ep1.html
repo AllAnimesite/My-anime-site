@@ -3,78 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tougen Anki - Episode 1</title>
-  <link rel="stylesheet" href="style.css">
+  <title>tougen anki</title>
+  <link rel="stylesheet" href="style.css"> <!-- Your main CSS -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <style>
-    body { background: #111; color: white; font-family: Arial, sans-serif; text-align: center; }
-    h1 { font-size: 35px; font-family: 'Orbitron', sans-serif; color: firebrick; text-transform: uppercase; letter-spacing: 2px; }
-    .video-box {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 6px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #ff0040, #00f0ff);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 64, 0.3);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .video-box:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 25px #0ff, 0 0 50px #f04;
-    }
-    iframe { width: 100%; height: 450px; border-radius: 10px; }
-    .server-buttons { margin-top: 15px; }
-    .server-btn {
-      background: #222; color: white; border: none; padding: 8px 16px;
-      margin: 5px; border-radius: 6px; cursor: pointer; font-size: 14px;
-      transition: background 0.3s;
-    }
-    .server-btn:hover { background: #444; }
-    button.back { margin-top: 20px; padding: 10px 20px; background: firebrick; color: white; border: none; border-radius: 8px; cursor: pointer; }
-    button.back:hover { background: #b22222; }
-  </style>
+
 </head>
 <body>
 
   <div class="episode-container">
-    <h1>Tougen Anki - Episode 1</h1>
-
+    <h1 style="font-size: 35px; font-family: 'Orbitron', sans-serif; color: firebrick; text-transform: uppercase; letter-spacing: 2px;">
+  Tougen Anki Episode 1
+</h1>
+    
     <!-- Episode Thumbnail -->
-    <img src="/images/tougen anki ep1.jpg" alt="Tougen Anki Episode 1" style="width:100%; max-width:800px; border-radius:10px;">
+    <img src="/images/tougen anki ep1.jpg" alt="Demon Slayer Episode 1" style="width:100%; max-width:800px; border-radius:10px;">
 
     <!-- Futuristic Styled Video Box -->
-    <div class="video-box">
-      <iframe id="videoPlayer" 
-        src="https://drive.google.com/file/d/13T_8f9tQuL82FU8YQn2_GfwXVKMkQRos/preview" 
-        allow="autoplay" allowfullscreen>
-      </iframe>
-    </div>
+<div style="
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 6px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff0040, #00f0ff);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 64, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+"
+  onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 0 25px #0ff, 0 0 50px #f04';"
+  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 64, 0.3)';"
+>
 
-    <!-- Server Buttons -->
-    <div class="server-buttons">
-      <button class="server-btn" onclick="switchServer(1)">Server 1 (Google Drive)</button>
-      <button class="server-btn" onclick="switchServer(2)">Server 2 (API Embed)</button>
-      <button class="server-btn" onclick="switchServer(3)">Server 3 (Backup)</button>
-    </div>
+<iframe
+  src="https://vidnest.fun/anime/177474/1/sub"
+  width="100%"
+  height="250"
+  allow="autoplay"
+  allowfullscreen>
+</iframe>
+</div>
 
     <!-- Back Button -->
-    <div>
-      <button class="back" onclick="window.location.href='index.html'">⬅ Back to Episodes</button>
-    </div>
+    <a href="/demonslayer.html" class="back-button">← Back to Episodes</a>
+<div class="related-wrapper">
+  <div class="related-header">
+    <img src="/images/p logo.png" class="avatar" alt="Character">
+    <span>RELATED EPISODE</span>
   </div>
 
-  <script>
-    function switchServer(server) {
-      let player = document.getElementById("videoPlayer");
-      if (server === 1) {
-        player.src = "https://drive.google.com/file/d/13T_8f9tQuL82FU8YQn2_GfwXVKMkQRos/preview";
-      } else if (server === 2) {
-        player.src = "https://2anime.xyz/embed/tougen-anki-episode-1"; // API embed
-      } else if (server === 3) {
-        player.src = "https://example.com/tougen-anki-ep1"; // backup server
-      }
-    }
-  </script>
+  <!-- Episode Range Links -->
+  <div class="range-links">
+    <a href="#">1-24</a>
+  </div>
+
+  <!-- Episode Grid -->
+  <div class="episode-grid">
+    <!-- Repeat for each episode -->
+    <a href="/ds_ep1.html" class="ep-button active">
+      <span>EP 1</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 2</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 3</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep4.html" class="ep-button ">
+      <span>EP 4</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep5.html" class="ep-button">
+      <span>EP 5</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 6</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep1.html" class="ep-button ">
+      <span>EP 7</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 8</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 9</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep1.html" class="ep-button ">
+      <span>EP 10</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 11</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 12</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep1.html" class="ep-button ">
+      <span>EP 13</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 14</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 15</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep1.html" class="ep-button ">
+      <span>EP 16</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 17</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 18</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep1.html" class="ep-button ">
+      <span>EP 19</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 20</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 21</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep1.html" class="ep-button ">
+      <span>EP 22</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 23</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 24</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep2.html" class="ep-button">
+      <span>EP 25</span> <span class="sub">SUB</span>
+    </a>
+    <a href="/ds_ep3.html" class="ep-button">
+      <span>EP 26</span> <span class="sub">SUB</span>
+    </a>
+    <!-- Add more -->
+  </div>
+</div>
+
 
 </body>
 </html>
