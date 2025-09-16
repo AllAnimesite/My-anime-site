@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Eighty-Six</title></title>
+  <title>86:Eighty Six</title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <style>
     body { margin: 0; background: #111; color: white; font-family: Arial; }
     .banner { width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block;}
@@ -23,10 +24,10 @@
 <body>
 
   <!-- Banner image -->
-  <img src="/images/eighty-six.jpg" class="banner" alt="eighty-six">
+  <img src="/images/86-eighty-six.jpg" class="banner" alt="86: Eighty Six">
 
   <div class="container">
-    <div class="title">Eighty-Six</div>
+    <div class="title">86: Eighty Six</div>
 
     <div class="tags">
       <span class="tag">Season 1</span>
@@ -36,52 +37,129 @@
     </div>
 
     <!-- Play Button -->
-    <button class="play-btn">▶ Play Episode</button>
+    <a href="/86:EIGHTY SIX all episodes /86episodes.html">
+    <button class="play-btn">▶ WATCH NOW</button>
+    </a>
 
     <!-- Description -->
     <div class="description">
-      86 (Eighty Six) is an anime about the Republic of San Magnolia, which forces the persecuted "86" to pilot mechs in a war falsely claimed to be fought by unmanned drones. It follows Lena, an idealistic handler, and Shin, the 86’s battle-hardened leader, as she discovers the harsh truth behind the so-called "bloodless" war.
 
 
-    </div>
+Called “Juggernaut,” these are the unmanned combat drones developed by the Republic of San Magnolia in answer to the attacks by the autonomous unmanned drones of the neighboring Empire of Giad, the “Legion”. But they’re only unmanned in name. In reality, they are piloted by the Eighty-sixers—those considered to be less than human and treated as mere tools.
 
-    <!-- Episode Slider -->
-    <div class="episodes">
-      <h3>More Episodes</h3>
-      <div class="episode-list">
-      <a href="ds_ep1.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/eighty-six.jpg" alt="Episode 1">
-          <p>Episode 1</p>
-        </div>
-       </a>
-      <a href="ds_ep2.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/eighty-six.jpg" alt="Episode 2">
-          <p>Episode 2</p>
-        </div>
-       </a>
-      <a href="ds_ep3.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/eighty-six.jpg" alt="Episode 3">
-          <p>Episode 3</p>
-        </div>
-       </a>
-      <a href="ds_ep4.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/eighty-six.jpg" alt="Episode 4">
-          <p>Episode 4</p>
-        </div>
-       </a>
-      <a href="ds_ep5.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/eighty-six.jpg" alt="Episode 5">
-          <p>Episode 5</p>
+Determined to achieve his own mysterious ends, Shin, the captain of Spearhead Squadron, which is comprised of Eighty-sixers, continues to fight a hopeless war on a battlefield where only death awaits him.
        </div>
-      </a>
       </div>
     </div>
   </div>
+<!-- More like this -->
+<h2>More like this</h2>
+<div class="more-like-this">
+  
+   <a href="/ep1.html">
+  <div class="anime-card">
+    <img src="/images/onepiece episodes.jpg" alt="One Piece">
+    <p>One Piece</p>
+  </div>
+   </a>
+  <a href="/naruto shipuden.html">
+  <div class="anime-card">
+    <img src="/images/naruto shipuden.jpg" alt="Naruto Shippuden">
+    <p>Naruto Shippuden</p>
+  </div>
+  </a>
+<a href="/demonslayer.html">
+  <div class="anime-card">
+    <img src="/Demon Slayer 1.jpg" alt="Demon slayer">
+    <p>Demon Slayer</p>
+  </div>
+</a>
+<a href="/ep1.html">
+  <div class="anime-card">
+    <img src="/images/Bleach.jpg" alt="One Piece">
+    <p>Bleach</p>
+  </div>
+   </a>
+  <a href="/naruto shipuden.html">
+  <div class="anime-card">
+    <img src="/images/black clover.jpg" alt="Black Clover">
+    <p>Black Clover</p>
+  </div>
+  </a>
+<a href="/demonslayer.html">
+  <div class="anime-card">
+    <img src="/images/dan da dan.jpg" alt="Demon slayer">
+    <p>Dan Da Dan</p>
+  </div>
+</a>
+  <!-- Add more cards as needed -->
+</div>
 
+<!-- Comments Section -->
+<h2>Comments</h2>
+<div id="commentsSection">
+  <div id="commentForm" style="display: none;">
+    <textarea id="userComment" placeholder="Write a comment..."></textarea>
+    <button onclick="postComment()">Post</button>
+  </div>
+  <p id="loginMessage">Please <a href="login.html">login</a> or <a href="signup.html">sign up</a> to comment.</p>
+  <div id="commentList"></div>
+</div>
+<script>
+  // Check if user is logged in
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  const commentForm = document.getElementById("commentForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const commentList = document.getElementById("commentList");
+
+  if (loggedInUser) {
+    commentForm.style.display = "block";
+    loginMessage.style.display = "none";
+  }
+
+  // Load existing comments
+  const comments = JSON.parse(localStorage.getItem("blackcloverComments")) || [];
+
+function renderComments() {
+  commentList.innerHTML = "";
+  comments.forEach((comment, index) => {
+    const div = document.createElement("div");
+    div.className = "comment";
+
+    div.innerHTML = `
+      <strong>${comment.user}</strong>: ${comment.text}
+      <button onclick="deleteComment(${index})" class="delete-btn">Delete</button>
+    `;
+
+    commentList.appendChild(div);
+  });
+}
+
+
+  function postComment() {
+    const commentText = document.getElementById("userComment").value.trim();
+    if (!commentText) return;
+
+    const newComment = {
+      user: loggedInUser.fullName,
+      text: commentText
+    };
+
+    comments.push(newComment);
+    localStorage.setItem("akameComments", JSON.stringify(comments));
+    document.getElementById("userComment").value = "";
+    renderComments();
+  }
+  function deleteComment(index) {
+  if (confirm("Are you sure you want to delete this comment?")) {
+    comments.splice(index, 1); // Remove the comment
+    localStorage.setItem("akameComments", JSON.stringify(comments)); // Save updated list
+    renderComments(); // Re-render comments
+  }
+}
+
+</script>
 </body>
 </html>
+

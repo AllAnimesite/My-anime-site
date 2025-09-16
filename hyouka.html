@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Hyouka</title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <style>
     body { margin: 0; background: #111; color: white; font-family: Arial; }
     .banner { width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block;}
@@ -23,7 +24,7 @@
 <body>
 
   <!-- Banner image -->
-  <img src="/images/hyouka.jpg" class="banner" alt="hyoyka">
+  <img src="/images/hyouka.jpg" class="banner" alt="hyouka">
 
   <div class="container">
     <div class="title">Hyouka</div>
@@ -36,52 +37,131 @@
     </div>
 
     <!-- Play Button -->
-    <button class="play-btn">▶ Play Episode</button>
+    <a href="/HYOUKA ALL episodes /hyoukaeps.html">
+    <button class="play-btn">▶ WATCH NOW</button>
+    </a>
 
     <!-- Description -->
     <div class="description">
-Hyouka is a slice-of-life anime about Houtarou Oreki, a laid-back student who joins the Classic Literature Club and, alongside the curious Eru Chitanda, begins solving everyday mysteries that uncover hidden truths and personal growth.
 
 
-    </div>
+Energy-conservative high school student Houtarou Oreki ends up with more than he bargained for when he signs up for the Classic Literature Club at his sister's behest—especially when he realizes how deep-rooted the club's history really is. Begrudgingly, Oreki is dragged into an investigation concerning the 45-year-old mystery that surrounds the club room.
 
-    <!-- Episode Slider -->
-    <div class="episodes">
-      <h3>More Episodes</h3>
-      <div class="episode-list">
-      <a href="ds_ep1.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/hyouka.jpg" alt="Episode 1">
-          <p>Episode 1</p>
-        </div>
-       </a>
-      <a href="ds_ep2.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/hyouka.jpg" alt="Episode 2">
-          <p>Episode 2</p>
-        </div>
-       </a>
-      <a href="ds_ep3.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/hyouka.jpg" alt="Episode 3">
-          <p>Episode 3</p>
-        </div>
-       </a>
-      <a href="ds_ep4.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/hyouka.jpg" alt="Episode 4">
-          <p>Episode 4</p>
-        </div>
-       </a>
-      <a href="ds_ep5.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/hyouka.jpg" alt="Episode 5">
-          <p>Episode 5</p>
+Accompanied by his fellow club members, the knowledgeable Satoshi Fukube, the stern but benign Mayaka Ibara, and the ever-curious Eru Chitanda, Oreki must combat deadlines and lack of information with resourcefulness and hidden talent, in order to not only find the truth buried beneath the dust of works created years before them, but of other side cases as well.
+
+Based on the award-winning Koten-bu light novel series, and directed by Yasuhiro Takemoto of Suzumiya Haruhi no Shoushitsu, Hyouka shows that normal life can be full of small mysteries, be it family history, a student film, or even the withered flowers that make up a ghost story.
        </div>
-      </a>
       </div>
     </div>
   </div>
+<!-- More like this -->
+<h2>More like this</h2>
+<div class="more-like-this">
+  
+   <a href="/ep1.html">
+  <div class="anime-card">
+    <img src="/images/onepiece episodes.jpg" alt="One Piece">
+    <p>One Piece</p>
+  </div>
+   </a>
+  <a href="/naruto shipuden.html">
+  <div class="anime-card">
+    <img src="/images/naruto shipuden.jpg" alt="Naruto Shippuden">
+    <p>Naruto Shippuden</p>
+  </div>
+  </a>
+<a href="/demonslayer.html">
+  <div class="anime-card">
+    <img src="/Demon Slayer 1.jpg" alt="Demon slayer">
+    <p>Demon Slayer</p>
+  </div>
+</a>
+<a href="/ep1.html">
+  <div class="anime-card">
+    <img src="/images/Bleach.jpg" alt="One Piece">
+    <p>Bleach</p>
+  </div>
+   </a>
+  <a href="/naruto shipuden.html">
+  <div class="anime-card">
+    <img src="/images/black clover.jpg" alt="Black Clover">
+    <p>Black Clover</p>
+  </div>
+  </a>
+<a href="/demonslayer.html">
+  <div class="anime-card">
+    <img src="/images/dan da dan.jpg" alt="Demon slayer">
+    <p>Dan Da Dan</p>
+  </div>
+</a>
+  <!-- Add more cards as needed -->
+</div>
 
+<!-- Comments Section -->
+<h2>Comments</h2>
+<div id="commentsSection">
+  <div id="commentForm" style="display: none;">
+    <textarea id="userComment" placeholder="Write a comment..."></textarea>
+    <button onclick="postComment()">Post</button>
+  </div>
+  <p id="loginMessage">Please <a href="login.html">login</a> or <a href="signup.html">sign up</a> to comment.</p>
+  <div id="commentList"></div>
+</div>
+<script>
+  // Check if user is logged in
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  const commentForm = document.getElementById("commentForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const commentList = document.getElementById("commentList");
+
+  if (loggedInUser) {
+    commentForm.style.display = "block";
+    loginMessage.style.display = "none";
+  }
+
+  // Load existing comments
+  const comments = JSON.parse(localStorage.getItem("blackcloverComments")) || [];
+
+function renderComments() {
+  commentList.innerHTML = "";
+  comments.forEach((comment, index) => {
+    const div = document.createElement("div");
+    div.className = "comment";
+
+    div.innerHTML = `
+      <strong>${comment.user}</strong>: ${comment.text}
+      <button onclick="deleteComment(${index})" class="delete-btn">Delete</button>
+    `;
+
+    commentList.appendChild(div);
+  });
+}
+
+
+  function postComment() {
+    const commentText = document.getElementById("userComment").value.trim();
+    if (!commentText) return;
+
+    const newComment = {
+      user: loggedInUser.fullName,
+      text: commentText
+    };
+
+    comments.push(newComment);
+    localStorage.setItem("akameComments", JSON.stringify(comments));
+    document.getElementById("userComment").value = "";
+    renderComments();
+  }
+  function deleteComment(index) {
+  if (confirm("Are you sure you want to delete this comment?")) {
+    comments.splice(index, 1); // Remove the comment
+    localStorage.setItem("akameComments", JSON.stringify(comments)); // Save updated list
+    renderComments(); // Re-render comments
+  }
+}
+
+</script>
 </body>
 </html>
+
