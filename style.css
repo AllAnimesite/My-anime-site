@@ -841,6 +841,10 @@ header h1 {
   /* ADD THIS */
   white-space: nowrap;
 }
+.more-like-this a {
+  text-decoration: none;
+  color: inherit;
+}
 
 
 .anime-card {
