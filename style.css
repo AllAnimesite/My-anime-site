@@ -311,15 +311,16 @@ body {
 .see-all:hover {
   text-decoration: underline;
 }
- .all-popular-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
+.all-popular-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 160px)); 
+  justify-content: center; /* keep grid centered */
+  gap: 12px; /* small fixed gap */
+  padding: 12px;
 }
 
 .anime-card {
-  width: 150px;
+  width: 160px;   /* fixed card width */
   background-color: #1e1e1e;
   border-radius: 8px;
   padding: 8px;
