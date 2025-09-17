@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anohana</title>
+  <title>Naruto shipuden</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -160,7 +160,7 @@
       </div>
     </div>
 
-    <a href="/anohana.html" class="back-button">← Back to Episodes</a>
+    <a href="/naruto shipuden.html" class="back-button">← Back to Episodes</a>
 
     <div class="related-wrapper">
       <div class="related-header">
@@ -181,15 +181,15 @@
 
 <script>
   const episodes = {};
-  const totalEpisodes = 11; // set actual number of episodes here
-  const rangeSize = 11; // 👈 how many episodes per page (I set 50 for easier navigation)
+  const totalEpisodes = 500; // set actual number of episodes here
+  const rangeSize = 50; // 👈 how many episodes per page (I set 50 for easier navigation)
 
   // Generate all episodes
   for (let i = 1; i <= totalEpisodes; i++) {
     episodes[i] = {
-      title: `Anohana: The Flower We Saw That Day episode ${i}`,
-      video: `https://vidnest.fun/anime/9989/${i}/sub`,
-      thumb: "/images/anohanaep.jpg"
+      title: `Naruto Shipuden episode ${i}`,
+      video: `https://vidnest.fun/anime/1735/${i}/sub`,
+      thumb: "/images/naruto shipuden.jpg"
     };
   }
 
@@ -242,5 +242,3 @@
     nav.innerHTML += `<a disabled>Next →</a>`
   }
 </script>
-</body>
-</html>
