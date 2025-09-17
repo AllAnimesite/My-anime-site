@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bleach</title>
+  <title>Dan Da Dan</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -160,7 +160,7 @@
       </div>
     </div>
 
-    <a href="/bleach.html" class="back-button">← Back to Episodes</a>
+    <a href="/dan da dan.html" class="back-button">← Back to Episodes</a>
 
     <div class="related-wrapper">
       <div class="related-header">
@@ -181,15 +181,15 @@
 
 <script>
   const episodes = {};
-  const totalEpisodes = 366; // set actual number of episodes here
-  const rangeSize = 50; // 👈 how many episodes per page (I set 50 for easier navigation)
+  const totalEpisodes = 12; // set actual number of episodes here
+  const rangeSize = 12; // 👈 how many episodes per page (I set 50 for easier navigation)
 
   // Generate all episodes
   for (let i = 1; i <= totalEpisodes; i++) {
     episodes[i] = {
-      title: `Bleach episode ${i}`,
-      video: `https://vidnest.fun/anime/269/${i}/sub`,
-      thumb: "/images/Bleach official.png"
+      title: `Dan Da Dan ${i}`,
+      video: `https://vidnest.fun/anime/171018/${i}/sub`,
+      thumb: "/images/dan da dan banner.jpg"
     };
   }
 
@@ -242,3 +242,5 @@
     nav.innerHTML += `<a disabled>Next →</a>`
   }
 </script>
+</body>
+</html>
