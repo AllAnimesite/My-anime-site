@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name - Episodes</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+  body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  .episode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .ep-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #444;
+    transition: 0.2s;
+  }
+  .ep-button:hover {
+    background: #000;
+    border-color: #6A1AA5;
+    box-shadow: 0 0 10px #6A1AA5;
+    transform: scale(1.02);
+  }
+  .ep-button .sub {
+    font-size: 12px;
+    color: #ccc;
+    margin-left: 6px;
+  }
+  .ep-button.active {
+    background-color: #6A1AA5;
+    color: #000;
+    font-weight: bold;
+  }
+  .back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s;
+  }
+  .back-button:hover {
+    background: linear-gradient(to right, #4a00e0, #8e2de2);
+    transform: scale(1.03);
+    cursor: pointer;
+  }
+  .back-button:active {
+    transform: scale(0.98);
+  }
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    color: firebrick;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .related-wrapper {
+    padding: 20px;
+    background: #1a1a1a;
+    color: #fff;
+  }
+  .related-header {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    background: #6A1AA5;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+  .related-header .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .range-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #000;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid #6A1Aa5;
+  }
+  .range-links a {
+    color: #6A1Aa5;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .range-links a:hover {
+    text-decoration: underline;
+  }
+  .range-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  .range-nav a {
+    background: #6A1AA5;
+    color: #000;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .range-nav a:hover {
+    background: #4a00e0;
+    color: #fff;
+    transform: scale(1.05);
+  }
+  .range-nav a:disabled {
+    pointer-events: none;
+    background: #555;
+    color: #999;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="episode-container">
+    <h1 id="episode-title">Loading...</h1>
+
+    <img id="episode-thumb" style="width:100%; max-width:800px; border-radius:10px;" />
+
+    <!-- Futuristic Styled Video Box -->
+    <div id="video-section" style="
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 6px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #ff0040, #00f0ff);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 64, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;"
+      onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 0 25px #0ff, 0 0 50px #f04';"
+      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(255, 0, 64, 0.3)';">
+      <div id="video-box" style="margin-top: 20px;">
+        <iframe id="episode-video" width="100%" height="250" allow="autoplay" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <a href="/windbreaker.html" class="back-button">← Back to Episodes</a>
+
+    <div class="related-wrapper">
+      <div class="related-header">
+        <img src="/images/p logo.png" class="avatar" alt="Character">
+        <span>RELATED EPISODE</span>
+      </div>
+
+      <!-- Episode Range Links -->
+      <div class="range-links" id="range-links"></div>
+
+      <!-- Episode navigation -->
+      <div class="episode-grid" id="episode-links"></div>
+
+      <!-- Next / Previous -->
+      <div class="range-nav" id="range-nav"></div>
+    </div>
+  </div>
+
+  <script>
+    const episodes = {};
+    const totalEpisodes = 1; // 👈 up to episode 1142
+    const rangeSize = 50;
+
+    // Generate all episodes
+    for (let i = 1; i <= totalEpisodes; i++) {
+      episodes[i] = {
+        title: `Your Name Episode ${i}`,
+        video: `https://vidnest.fun/anime/21519/${i}/sub`,
+        thumb: "/images/your name.jpg"
+      };
+    }
+
+    // Parse URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const ep = parseInt(urlParams.get("ep")) || 1;
+    const page = Math.floor((ep - 1) / rangeSize) + 1; // which range page
+    const totalPages = Math.ceil(totalEpisodes / rangeSize);
+
+    // Load episode info
+    const episode = episodes[ep];
+    if (episode) {
+      document.getElementById("episode-title").innerText = episode.title;
+      document.getElementById("episode-thumb").src = episode.thumb;
+      document.getElementById("episode-video").src = episode.video;
+    }
+
+    // Generate range links
+    const rangeLinks = document.getElementById("range-links");
+    for (let start = 1; start <= totalEpisodes; start += rangeSize) {
+      const end = Math.min(start + rangeSize - 1, totalEpisodes);
+      const active = (page === Math.floor((start - 1) / rangeSize) + 1) ? "style='text-decoration:underline;'" : "";
+      rangeLinks.innerHTML += `<a href="?ep=${start}" ${active}>${start}-${end}</a>`;
+    }
+
+    // Show only current range episodes
+    const epLinks = document.getElementById("episode-links");
+    const startEp = (page - 1) * rangeSize + 1;
+    const endEp = Math.min(startEp + rangeSize - 1, totalEpisodes);
+    for (let i = startEp; i <= endEp; i++) {
+      epLinks.innerHTML += `
+        <a href="?ep=${i}" class="ep-button ${i === ep ? 'active' : ''}">
+          <span>EP ${i}</span><span class="sub">SUB</span>
+        </a>`;
+    }
+
+    // Next / Previous buttons with auto-scroll to top
+    const nav = document.getElementById("range-nav");
+    const scrollTop = () => {
+      document.getElementById("video-section").scrollIntoView({ behavior: "smooth" });
+    };
+    if (page > 1) {
+      nav.innerHTML += `<a href="?ep=${startEp - rangeSize}" onclick="scrollTop()">← Previous</a>`;
+    } else {
+      nav.innerHTML += `<a disabled>← Previous</a>`;
+    }
+    if (page < totalPages) {
+      nav.innerHTML += `<a href="?ep=${endEp + 1}" onclick="scrollTop()">Next →</a>`;
+    } else {
+      nav.innerHTML += `<a disabled>Next →</a>`
+    }
+  </script>
+
+</body>
+</html>
