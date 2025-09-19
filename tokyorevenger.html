@@ -23,7 +23,7 @@
 <body>
 
   <!-- Banner image -->
-  <img src="/images/T_revengers.jpg" class="banner" alt="Tokyo Ghoul">
+  <img src="/images/Tokyo revenge.jpg" class="banner" alt="Tokyo Ghoul">
 
   <div class="container">
     <div class="title">Tokyo revengers</div>
@@ -36,50 +36,131 @@
     </div>
 
     <!-- Play Button -->
-    <button class="play-btn">▶ Play Episode</button>
+      <a href="/all eps tokyorevenger/all eps Tokyo Revengers.html">
+      <button class="play-btn">▶ WATCH NOW</button>
+      </a>
 
     <!-- Description -->
     <div class="description">
-    Takemichi Hanagaki, a 26-year-old man whose life is in despair, as he discovers his former middle school girlfriend, Hinata Tachibana, has been murdered by the Tokyo Manji Gang.
-    </div>
+    Takemichi Hanagaki's second year of middle school was the highest point in his life. He had respect, a gang of friends he could count on, and even a girlfriend. But that was twelve years ago. Today, he's a nobody: a washed-up nonentity made fun of by children and always forced to apologize to his younger boss. A sudden news report on the Tokyo Manji Gang's cruel murder of the only girlfriend he ever had alongside her brother only adds insult to injury. Half a second before a train ends his pitiful life for good, Takemichi flashes back to that same day 12 years ago, when he was still dating Hinata Tachibana.
 
-    <!-- Episode Slider -->
-    <div class="episodes">
-      <h3>More Episodes</h3>
-      <div class="episode-list">
-      <a href="ds_ep1.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/T_revengers.jpg" alt="Episode 1">
-          <p>Episode 1</p>
-        </div>
-       </a>
-      <a href="ds_ep2.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/T_revengers.jpg" alt="Episode 2">
-          <p>Episode 2</p>
-        </div>
-       </a>
-      <a href="ds_ep3.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/T_revengers.jpg" alt="Episode 3">
-          <p>Episode 3</p>
-        </div>
-       </a>
-      <a href="ds_ep4.html" class="episode-link">
-       <div class="episode">
-         <img src="/images/T_revengers.jpg" alt="Episode 4">
-          <p>Episode 4</p>
-        </div>
-       </a>
-      <a href="ds_ep5.html" class="episode-link">
-        <div class="episode">
-          <img src="/images/T_revengers.jpg" alt="Episode 5">
-          <p>Episode 5</p>
+After being forced to relive the very same day that began his downward spiral, Takemichi meets Hinata's younger brother. Without thinking, he admits to his seeming death before flashing back to the past. Takemichi urges him to protect his sister before inexplicably returning to the future. Miraculously, he is not dead. Stranger still, the future has changed. It seems as though Takemichi can alter the flow of time. Given the chance to prevent his ex-girlfriend's tragic death at the hands of the Tokyo Manji Gang, Takemichi decides to fly through time to change the course of the future.
+
+[Written by MAL Rewrite]
+
        </div>
-      </a>
       </div>
     </div>
   </div>
 
+    <!-- More like this -->
+<h2>More like this</h2>
+<div class="more-like-this">
+  
+   <a href="/ep1.html">
+  <div class="anime-card">
+    <img src="/images/onepiece episodes.jpg" alt="One Piece">
+    <p>One Piece</p>
+  </div>
+   </a>
+  <a href="/naruto shipuden.html">
+  <div class="anime-card">
+    <img src="/images/naruto shipuden.jpg" alt="Naruto Shippuden">
+    <p>Naruto Shippuden</p>
+  </div>
+  </a>
+<a href="/demonslayer.html">
+  <div class="anime-card">
+    <img src="/Demon Slayer 1.jpg" alt="Demon slayer">
+    <p>Demon Slayer</p>
+  </div>
+</a>
+  <a href="/bleach.html">
+    <div class="anime-card">
+      <img src="/images/Bleach.jpg" alt="One Piece">
+      <p>Bleach</p>
+    </div>
+  </a>
+  <a href="/black clover.html">
+    <div class="anime-card">
+      <img src="/images/black clover.jpg" alt="Black Clover">
+      <p>Black Clover</p>
+    </div>
+  </a>
+  <a href="/dan da dan.html">
+    <div class="anime-card">
+      <img src="/images/dan da dan.jpg" alt="Demon slayer">
+      <p>Dan Da Dan</p>
+    </div>
+  </a>
+  <!-- Add more cards as needed -->
+</div>
+
+<!-- Comments Section -->
+<h2>Comments</h2>
+<div id="commentsSection">
+  <div id="commentForm" style="display: none;">
+    <textarea id="userComment" placeholder="Write a comment..."></textarea>
+    <button onclick="postComment()">Post</button>
+  </div>
+  <p id="loginMessage">Please <a href="login.html">login</a> or <a href="signup.html">sign up</a> to comment.</p>
+  <div id="commentList"></div>
+</div>
+<script>
+  // Check if user is logged in
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  const commentForm = document.getElementById("commentForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const commentList = document.getElementById("commentList");
+
+  if (loggedInUser) {
+    commentForm.style.display = "block";
+    loginMessage.style.display = "none";
+  }
+
+  // Load existing comments
+  const comments = JSON.parse(localStorage.getItem("akameComments")) || [];
+
+function renderComments() {
+  commentList.innerHTML = "";
+  comments.forEach((comment, index) => {
+    const div = document.createElement("div");
+    div.className = "comment";
+
+    div.innerHTML = `
+      <strong>${comment.user}</strong>: ${comment.text}
+      <button onclick="deleteComment(${index})" class="delete-btn">Delete</button>
+    `;
+
+    commentList.appendChild(div);
+  });
+}
+
+
+  function postComment() {
+    const commentText = document.getElementById("userComment").value.trim();
+    if (!commentText) return;
+
+    const newComment = {
+      user: loggedInUser.fullName,
+      text: commentText
+    };
+
+    comments.push(newComment);
+    localStorage.setItem("akameComments", JSON.stringify(comments));
+    document.getElementById("userComment").value = "";
+    renderComments();
+  }
+  function deleteComment(index) {
+  if (confirm("Are you sure you want to delete this comment?")) {
+    comments.splice(index, 1); // Remove the comment
+    localStorage.setItem("akameComments", JSON.stringify(comments)); // Save updated list
+    renderComments(); // Re-render comments
+  }
+}
+
+</script>
 </body>
 </html>
+
