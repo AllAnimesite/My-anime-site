@@ -313,7 +313,7 @@ body {
 }
 .all-popular-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 160px)); 
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
   justify-content: center; /* keep grid centered */
   gap: 12px; /* small fixed gap */
   padding: 12px;
