@@ -339,7 +339,11 @@ body {
   font-size: 16px;
   margin: 8px 0;
 }
-
+@media (max-width: 160px) {
+  .anime-card img {
+    height: 280px;
+  }
+}
 .anime-card button {
   background-color: #6A1AA5;
   color: white;
