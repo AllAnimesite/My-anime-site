@@ -92,7 +92,68 @@ function displayAnimeList(animeList, listContainer) {
     listContainer.appendChild(card);
   });
 }
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB9gjpoSDnpWUnPKOGVyK-UH26pvbWh1vE",
+  authDomain: "animecomments-bc4ba.firebaseapp.com",
+  projectId: "animecomments-bc4ba",
+  storageBucket: "animecomments-bc4ba.firebasestorage.app",
+  messagingSenderId: "172998302932",
+  appId: "1:172998302932:web:fa5766a027f68146322f41",
+  measurementId: "G-VZDG31F9JM"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+// Get anime ID from data attribute
+const animeId = document.getElementById("commentsSection").dataset.anime;
+
+// Check if user is logged in (from your signup/login system)
+const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+const commentForm = document.getElementById("commentForm");
+const loginMessage = document.getElementById("loginMessage");
+const commentList = document.getElementById("commentList");
+
+if (loggedInUser) {
+  commentForm.style.display = "block";
+  loginMessage.style.display = "none";
+}
+
+// Render comments in real-time
+db.collection("comments")
+  .where("animeId", "==", animeId)
+  .orderBy("timestamp", "asc")
+  .onSnapshot(snapshot => {
+    commentList.innerHTML = "";
+    snapshot.forEach(doc => {
+      const comment = doc.data();
+      const div = document.createElement("div");
+      div.className = "comment";
+      div.innerHTML = `
+        <strong>${comment.user}</strong>: ${comment.text}
+        ${comment.user === (loggedInUser?.name || loggedInUser?.fullName) 
+          ? `<button onclick="deleteComment('${doc.id}')">Delete</button>` 
+          : ""}
+      `;
+      commentList.appendChild(div);
+    });
+  });
+
+// Post comment
+async function postComment() {
+  const commentText = document.getElementById("userComment").value.trim();
+  if (!commentText) return;
+}
 
 
 
