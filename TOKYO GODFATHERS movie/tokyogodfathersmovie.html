@@ -160,12 +160,12 @@
       </div>
     </div>
 
-    <a href="/windbreaker.html" class="back-button">← Back to Episodes</a>
+    <a href="/tokyogodfathers.html" class="back-button">← Back to Episodes</a>
 
     <div class="related-wrapper">
       <div class="related-header">
         <img src="/images/p logo.png" class="avatar" alt="Character">
-        <span>RELATED EPISODE</span>
+        <span>Movie</span>
       </div>
 
       <!-- Episode Range Links -->
@@ -181,15 +181,15 @@
 
   <script>
     const episodes = {};
-    const totalEpisodes =; // 👈 up to episode 1142
-    const rangeSize = ;
+    const totalEpisodes = 1; // 👈 up to episode 1142
+    const rangeSize = 1;
 
     // Generate all episodes
     for (let i = 1; i <= totalEpisodes; i++) {
       episodes[i] = {
-        title: `WINDBREAKER Episode ${i}`,
+        title: `Tokyo Godfathers Movie ${i}`,
         video: `https://vidnest.fun/anime/759/${i}/sub`,
-        thumb: "/images/windbreaker.jpg"
+        thumb: "/images/tokyogodfathers.jpeg"
       };
     }
 
@@ -222,7 +222,7 @@
     for (let i = startEp; i <= endEp; i++) {
       epLinks.innerHTML += `
         <a href="?ep=${i}" class="ep-button ${i === ep ? 'active' : ''}">
-          <span>EP ${i}</span><span class="sub">SUB</span>
+          <span> ${i}</span><span class="sub">SUB</span>
         </a>`;
     }
 
