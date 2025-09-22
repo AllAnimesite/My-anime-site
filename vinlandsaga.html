@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Violet Evergarden</title></title>
+  <title>vinland saga</title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
   <style>
-    body { margin: 0; background: #111; color: white; font-family: Arial; }
+body { margin: 0; background: #111; color: white; font-family: Arial; }
     .banner { width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block;}
     .container { padding: 16px; }
     .title { font-size: 24px; font-weight: bold; }
@@ -24,10 +24,10 @@
 <body>
 
   <!-- Banner image -->
-  <img src="/images/violetevergarden.jpg" class="banner" alt="violetevergarden">
+  <img src="/images/vinlandsaga.jpg" class="banner" alt="Mob Psycho 100">
 
   <div class="container">
-    <div class="title">Violet Evergarden</div>
+    <div class="title">Vinland Saga</div>
 
     <div class="tags">
       <span class="tag">Season 1</span>
@@ -37,29 +37,30 @@
     </div>
 
     <!-- Play Button -->
-  <a href="/violet evergarden/violet all episodes.html">
-    <button class="play-btn">▶ WATCH NOW</button>
-  </a>
+  <a href="/vinland all epi/all episodes vinland.html">
+  <button class="play-btn">▶ WATCH NOW</button>
+</a>
 
     <!-- Description -->
     <div class="description">
-    Violet Evergarden follows Violet, a former child soldier who becomes a ghostwriter to understand the words "I love you." Through writing letters for clients, she embarks on a journey of self-discovery and learns the depth of human emotions and love.
+    Thorfinn is son to one of the Vikings' greatest warriors, but when his father is killed in battle by the mercenary leader Askeladd, he swears to have his revenge. Thorfinn joins Askeladd's band in order to challenge him to a duel, and ends up caught in the middle of a war for the crown of England.
     </div>
   </div>
+
 <!-- More like this -->
 <h2>More like this</h2>
 <div class="more-like-this">
   
-  <a href="/yourname.html">
+  <a href="/ep1.html">
     <div class="anime-card">
-      <img src="/images/your name.jpg" alt="One Piece">
-      <p>Your Name</p>
+      <img src="/images/onepiece episodes.jpg" alt="One Piece">
+      <p>One Piece</p>
     </div>
   </a>
-  <a href="/violetevergarden.html">
+  <a href="/naruto shipuden.html">
     <div class="anime-card">
-      <img src="/images/violet evergarden.jpg" alt="Naruto Shippuden">
-      <p>Violet Evergarden</p>
+      <img src="/images/naruto shipuden.jpg" alt="Naruto Shippuden">
+      <p>Naruto Shippuden</p>
     </div>
   </a>
   <a href="/demonslayer.html">
@@ -91,7 +92,7 @@
 
 <!-- Comments Section -->
 <h2>Comments</h2>
-<div id="commentsSection" data-anime="evergarden"> <!-- unique id for each anime -->
+<div id="commentsSection" data-anime="Vinland"> <!-- unique id for each anime -->
   <div id="commentForm" style="display: none;">
     <textarea id="userComment" placeholder="Write a comment..."></textarea>
     <button onclick="postComment()">Post</button>
@@ -103,7 +104,7 @@
 <script>
   // Get anime ID from attribute
   const animeId = document.getElementById("commentsSection").dataset.anime;
-  const storageKey = animeId + "evergardenComments"; // e.g. "akameComments"
+  const storageKey = animeId + "VinlandComments"; // e.g. "akameComments"
   
   // Check if user is logged in
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -173,6 +174,5 @@
 
 <!-- Your JS file -->
 <script type="module" src="script.js"></script>
-
-</body>
-</html>
+  </body>
+  </html>

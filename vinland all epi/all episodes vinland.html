@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Silent voice</title>
+  <title>My hero academia</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -160,12 +160,12 @@
       </div>
     </div>
 
-    <a href="/silent voice.html" class="back-button">← Back to Episodes</a>
+    <a href="/vinlandsaga.html" class="back-button">← Back to Episodes</a>
 
     <div class="related-wrapper">
       <div class="related-header">
         <img src="/images/p logo.png" class="avatar" alt="Character">
-        <span>Movie</span>
+        <span>RELATED EPISODE</span>
       </div>
 
       <!-- Episode Range Links -->
@@ -181,15 +181,15 @@
 
   <script>
     const episodes = {};
-    const totalEpisodes = 1; // 👈 up to episode 1142
-    const rangeSize = 1;
+    const totalEpisodes = 24; // 👈 up to episode 1142
+    const rangeSize = 24;
 
     // Generate all episodes
     for (let i = 1; i <= totalEpisodes; i++) {
       episodes[i] = {
-        title: `Silent voice Movie ${i}`,
-        video: `https://vidnest.fun/anime/20954/${i}/sub`,
-        thumb: "/images/silent voice ep.jpg"
+        title: `Vinland Saga episodes ${i}`,
+        video: `https://vidnest.fun/anime/101348/${i}/sub`,
+        thumb: "/images/vinlandsaga.jpg"
       };
     }
 
@@ -222,7 +222,7 @@
     for (let i = startEp; i <= endEp; i++) {
       epLinks.innerHTML += `
         <a href="?ep=${i}" class="ep-button ${i === ep ? 'active' : ''}">
-          <span> ${i}</span><span class="sub">SUB</span>
+          <span>EP ${i}</span><span class="sub">SUB</span>
         </a>`;
     }
 
