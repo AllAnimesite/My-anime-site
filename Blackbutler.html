@@ -2,31 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Code Geass</title></title>
+  <title>Black Butler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { margin: 0; background: #111; color: white; font-family: Arial; }
-    .banner { width: 100%; height: auto; max-height: 550px; object-fit: contain; display: block;}
+    .banner { width: 100%; height: 200px; object-fit: cover; }
     .container { padding: 16px; }
     .title { font-size: 24px; font-weight: bold; }
     .tags { margin: 10px 0; }
-    .tag { background: #6A1AA5; padding: 5px 10px; margin-right: 5px; border-radius: 4px; font-size: 12px; }
-    .play-btn { background: #6A1AA5; padding: 12px 25px; color: white; border: none; border-radius: 6px; font-size: 18px; margin: 15px 0; cursor: pointer; }
+    .tag { background: #e50914; padding: 5px 10px; margin-right: 5px; border-radius: 4px; font-size: 12px; }
+    .play-btn { background: #e50914; padding: 12px 25px; color: white; border: none; border-radius: 6px; font-size: 18px; margin: 15px 0; cursor: pointer; }
     .description { color: #ccc; font-size: 14px; }
     .episodes { margin-top: 20px; }
     .episode-list { display: flex; overflow-x: auto; }
     .episode { margin-right: 10px; background: #222; border-radius: 8px; width: 120px; text-align: center; flex-shrink: 0; }
     .episode img { width: 100%; border-radius: 8px 8px 0 0; }
     .episode p { padding: 5px; font-size: 13px; }
+    #player { margin-top: 20px; text-align: center; }
+    iframe { width: 80%; height: 480px; border: none; border-radius: 10px; }
+    .server-buttons { margin-top: 10px; text-align: center; }
+    .server-btn { background: #444; color: white; border: none; padding: 8px 16px; margin: 5px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+    .server-btn:hover { background: #666; }
   </style>
 </head>
 <body>
 
   <!-- Banner image -->
-  <img src="/images/codegeass.jpg" class="banner" alt="Code Geass: Hangyaku no Lelouch">
+  <img src="/images/blackbutler.jpg" class="banner" alt="Kuroshitsuji">
 
   <div class="container">
-    <div class="title">Code Geass</div>
+    <div class="title">black Butler</div>
 
     <div class="tags">
       <span class="tag">Season 1</span>
@@ -36,18 +41,28 @@
     </div>
 
     <!-- Play Button -->
-      <a href="/all eps codegeas/codegeas all eps.html">
+      <a href="/all eps Blackbutler/Blackbutler all eps.html">
       <button class="play-btn">▶ WATCH NOW</button>
       </a>
 
+    <!-- Video Player -->
+    <div id="player"></div>
+
+    <!-- Server Selector -->
+    <div class="server-buttons" id="serverButtons" style="display:none;">
+      <button class="server-btn" onclick="switchServer(1)">Server 1</button>
+      <button class="server-btn" onclick="switchServer(2)">Server 2</button>
+      <button class="server-btn" onclick="switchServer(3)">Server 3</button>
+    </div>
+
     <!-- Description -->
     <div class="description">
-   In the year 2010, the Holy Empire of Britannia is establishing itself as a dominant military nation, starting with the conquest of Japan. Renamed to Area 11 after its swift defeat, Japan has seen significant resistance against these tyrants in an attempt to regain independence.
+     Young Ciel Phantomhive is known as "the Queen's Guard Dog," taking care of the many unsettling events that occur in Victorian England for Her Majesty. Aided by Sebastian Michaelis, his loyal butler with seemingly inhuman abilities, Ciel uses whatever means necessary to get the job done. But is there more to this black-clad butler than meets the eye?
 
-Lelouch Lamperouge, a Britannian student, unfortunately finds himself caught in a crossfire between the Britannian and the Area 11 rebel armed forces. He is able to escape, however, thanks to the timely appearance of a mysterious girl named C.C., who bestows upon him Geass, the "Power of Kings." Realizing the vast potential of his newfound "power of absolute obedience," Lelouch embarks upon a perilous journey as the masked vigilante known as Zero, leading a merciless onslaught against Britannia in order to get revenge once and for all.
+In Ciel's past lies a secret tragedy that enveloped him in perennial darkness—during one of his bleakest moments, he formed a contract with Sebastian, a demon, bargaining his soul in exchange for vengeance upon those who wronged him. Today, not only is Sebastian one hell of a butler, but he is also the perfect servant to carry out his master's orders—all the while anticipating the delicious meal he will eventually make of Ciel's soul. As the two work to unravel the mystery behind Ciel's chain of misfortunes, a bond forms between them that neither heaven nor hell can tear apart.
 
 [Written by MAL Rewrite]
-
+      
        </div>
       </div>
     </div>

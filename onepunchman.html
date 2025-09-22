@@ -41,7 +41,9 @@
     </div>
 
     <!-- Play Button -->
-    <button class="play-btn" onclick="playEpisode(1)">▶ Play Episode</button>
+      <a href="/all eps onepunch/Onepunch all eps.html">
+      <button class="play-btn">▶ WATCH NOW</button>
+      </a>
 
     <!-- Video Player -->
     <div id="player"></div>
@@ -55,68 +57,143 @@
 
     <!-- Description -->
     <div class="description">
-      One-Punch Man is about Saitama, a superhero so powerful he can defeat any enemy with a single punch, which has left him bored and seeking a worthy challenge. 
-    </div>
+     The seemingly unimpressive Saitama has a rather unique hobby: being a hero. In order to pursue his childhood dream, Saitama relentlessly trained for three years, losing all of his hair in the process. Now, Saitama is so powerful, he can defeat any enemy with just one punch. However, having no one capable of matching his strength has led Saitama to an unexpected problem—he is no longer able to enjoy the thrill of battling and has become quite bored.
 
-    <!-- Episode Slider -->
-    <div class="episodes">
-      <h3>More Episodes</h3>
-      <div class="episode-list">
-        <a href="#" onclick="playEpisode(1)" class="episode-link">
-          <div class="episode">
-            <img src="/images/episodepageOPM.jpg" alt="Episode 1">
-            <p>Episode 1</p>
-          </div>
-        </a>
-        <a href="#" onclick="playEpisode(2)" class="episode-link">
-          <div class="episode">
-            <img src="/images/episodepageOPM.jpg" alt="Episode 2">
-            <p>Episode 2</p>
-          </div>
-        </a>
-        <a href="#" onclick="playEpisode(3)" class="episode-link">
-          <div class="episode">
-            <img src="/images/episodepageOPM.jpg" alt="Episode 3">
-            <p>Episode 3</p>
-          </div>
-        </a>
-        <!-- Add more episodes -->
+One day, Saitama catches the attention of 19-year-old cyborg Genos, who witnesses his power and wishes to become Saitama's disciple. Genos proposes that the two join the Hero Association in order to become certified heroes that will be recognized for their positive contributions to society. Saitama, who is shocked that no one knows who he is, quickly agrees. Meeting new allies and taking on new foes, Saitama embarks on a new journey as a member of the Hero Association to experience the excitement of battle he once felt.
+
+[Written by MAL Rewrite]
+      
+       </div>
       </div>
     </div>
   </div>
+<!-- More like this -->
+<h2>More like this</h2>
+<div class="more-like-this">
+  
+   <a href="/ep1.html">
+  <div class="anime-card">
+    <img src="/images/onepiece episodes.jpg" alt="One Piece">
+    <p>One Piece</p>
+  </div>
+   </a>
+  <a href="/naruto shipuden.html">
+  <div class="anime-card">
+    <img src="/images/naruto shipuden.jpg" alt="Naruto Shippuden">
+    <p>Naruto Shippuden</p>
+  </div>
+  </a>
+<a href="/demonslayer.html">
+  <div class="anime-card">
+    <img src="/Demon Slayer 1.jpg" alt="Demon slayer">
+    <p>Demon Slayer</p>
+  </div>
+</a>
+<a href="/bleach.html">
+  <div class="anime-card">
+    <img src="/images/Bleach.jpg" alt="One Piece">
+    <p>Bleach</p>
+  </div>
+   </a>
+  <a href="/black clover.html">
+  <div class="anime-card">
+    <img src="/images/black clover.jpg" alt="Black Clover">
+    <p>Black Clover</p>
+  </div>
+  </a>
+<a href="/dan da dan.html">
+  <div class="anime-card">
+    <img src="/images/dan da dan.jpg" alt="Demon slayer">
+    <p>Dan Da Dan</p>
+  </div>
+</a>
+  <!-- Add more cards as needed -->
+</div>
 
-  <script>
-    let currentEpisode = 1;
-    let currentServer = 1;
+<!-- Comments Section -->
+<h2>Comments</h2>
+<div id="commentsSection" data-anime="Blackclover"> <!-- unique id for each anime -->
+  <div id="commentForm" style="display: none;">
+    <textarea id="userComment" placeholder="Write a comment..."></textarea>
+    <button onclick="postComment()">Post</button>
+  </div>
+  <p id="loginMessage">Please <a href="login.html">login</a> or <a href="signup.html">sign up</a> to comment.</p>
+  <div id="commentList"></div>
+</div>
 
-    function playEpisode(epNumber) {
-      currentEpisode = epNumber;
-      currentServer = 1;
-      loadPlayer();
-      document.getElementById("serverButtons").style.display = "block";
+<script>
+  // Get anime ID from attribute
+  const animeId = document.getElementById("commentsSection").dataset.anime;
+  const storageKey = animeId + "BlackcloverComments"; // e.g. "akameComments"
+
+  // Check if user is logged in
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  const commentForm = document.getElementById("commentForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const commentList = document.getElementById("commentList");
+
+  if (loggedInUser) {
+    commentForm.style.display = "block";
+    loginMessage.style.display = "none";
+  }
+
+  // Load existing comments for this anime
+  const comments = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  function renderComments() {
+    commentList.innerHTML = "";
+    comments.forEach((comment, index) => {
+      const div = document.createElement("div");
+      div.className = "comment";
+
+      div.innerHTML = `
+        <strong>${comment.user}</strong>: ${comment.text}
+        <button onclick="deleteComment(${index})" class="delete-btn">Delete</button>
+      `;
+
+      commentList.appendChild(div);
+    });
+  }
+
+  function postComment() {
+    const commentText = document.getElementById("userComment").value.trim();
+    if (!commentText) return;
+
+    const newComment = {
+      user: loggedInUser.name || loggedInUser.fullName,
+      text: commentText
+    };
+
+    comments.push(newComment);
+    localStorage.setItem(storageKey, JSON.stringify(comments));
+    document.getElementById("userComment").value = "";
+    renderComments();
+  }
+
+  function deleteComment(index) {
+    if (confirm("Are you sure you want to delete this comment?")) {
+      comments.splice(index, 1);
+      localStorage.setItem(storageKey, JSON.stringify(comments));
+      renderComments();
     }
+  }
 
-    function switchServer(server) {
-      currentServer = server;
-      loadPlayer();
-    }
+  // Render on page load
+  renderComments();
+</script>
+ <script src="script.js"></script>
+<!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+  import { getFirestore, collection, query, where, orderBy, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics.js";
 
-    function loadPlayer() {
-      let embedUrl = "";
+  window.firebaseModules = { initializeApp, getFirestore, collection, query, where, orderBy, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp, getAnalytics };
+</script>
 
-      // Define different servers
-      if (currentServer === 1) {
-        embedUrl = `https://2anime.xyz/embed/one-punch-man-episode-${currentEpisode}`;
-      } else if (currentServer === 2) {
-        embedUrl = `https://example.com/server2/one-punch-man-episode-${currentEpisode}`;
-      } else if (currentServer === 3) {
-        embedUrl = `https://example.com/server3/one-punch-man-episode-${currentEpisode}`;
-      }
-
-      document.getElementById("player").innerHTML = 
-        `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
-    }
-  </script>
+<!-- Your JS file -->
+<script type="module" src="script.js"></script>
 
 </body>
 </html>
