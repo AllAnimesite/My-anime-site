@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#7f4ca5">
-  <title>86: Eighty Six - Episodes</title>
+<meta name="theme-color" content="#7f4ca5">
+  <title>Gintama The Final</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -161,12 +161,12 @@
       </div>
     </div>
 
-    <a href="/eighty-six.html" class="back-button">← Back to Episodes</a>
+    <a href="/gintama the final.html" class="back-button">← Back to Episodes</a>
 
     <div class="related-wrapper">
       <div class="related-header">
         <img src="/images/p logo.png" class="avatar" alt="Character">
-        <span>RELATED EPISODE</span>
+        <span>Movie</span>
       </div>
 
       <!-- Episode Range Links -->
@@ -182,15 +182,15 @@
 
   <script>
     const episodes = {};
-    const totalEpisodes = 11; // 👈 up to episode 1142
-    const rangeSize = 11;
+    const totalEpisodes = 1; // 👈 up to episode 1142
+    const rangeSize = 1;
 
     // Generate all episodes
     for (let i = 1; i <= totalEpisodes; i++) {
       episodes[i] = {
-        title: `86: Eighty Six Episode ${i}`,
-        video: `https://vidnest.fun/animepahe/116589/${i}/sub`,
-        thumb: "/images/86-eighty-six.jpg"
+        title: `Gintama The Final Movie ${i}`,
+        video: `https://vidnest.fun/anime/199/${i}/sub`,
+        thumb: "/images/gintama the final.jpg"
       };
     }
 
@@ -223,7 +223,7 @@
     for (let i = startEp; i <= endEp; i++) {
       epLinks.innerHTML += `
         <a href="?ep=${i}" class="ep-button ${i === ep ? 'active' : ''}">
-          <span>EP ${i}</span><span class="sub">SUB</span>
+          <span> ${i}</span><span class="sub">SUB</span>
         </a>`;
     }
 

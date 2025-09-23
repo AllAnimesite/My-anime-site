@@ -98,7 +98,7 @@ Determined to achieve his own mysterious ends, Shin, the captain of Spearhead Sq
 
 <!-- Comments Section -->
 <h2>Comments</h2>
-<div id="commentsSection" data-anime="eighty"> <!-- unique id for each anime -->
+<div id="commentsSection" data-anime="86: Eighty Six"> <!-- unique id for each anime -->
   <div id="commentForm" style="display: none;">
     <textarea id="userComment" placeholder="Write a comment..."></textarea>
     <button onclick="postComment()">Post</button>
@@ -110,7 +110,7 @@ Determined to achieve his own mysterious ends, Shin, the captain of Spearhead Sq
 <script>
   // Get anime ID from attribute
   const animeId = document.getElementById("commentsSection").dataset.anime;
-  const storageKey = animeId + "eightyComments"; // e.g. "akameComments"
+  const storageKey = animeId + "86eightysixComments"; // e.g. "akameComments"
 
   // Check if user is logged in
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -180,8 +180,5 @@ Determined to achieve his own mysterious ends, Shin, the captain of Spearhead Sq
 
 <!-- Your JS file -->
 <script type="module" src="script.js"></script>
-
-</script>
 </body>
 </html>
-
