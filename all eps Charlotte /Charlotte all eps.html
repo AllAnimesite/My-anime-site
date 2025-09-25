@@ -242,6 +242,86 @@
     } else {
       nav.innerHTML += `<a disabled>Next →</a>`
     }
+    // 🚀 Inject Server Switcher below video player
+const playerContainer = document.getElementById("video-section"); // Adjust if your container ID is different
+if (playerContainer) {
+  const serverDiv = document.createElement("div");
+  serverDiv.innerHTML = `
+    <p class="server-text">If current server doesn't work please try other servers below.</p>
+    <div class="server-options">
+      <button onclick="changeServer('vidcloud', this)" class="server-btn active">
+        ▶ Server <strong>VIDCloud</strong>
+      </button>
+      <button onclick="changeServer('akcloud', this)" class="server-btn">
+        ▶ Server <strong>AKCloud</strong>
+      </button>
+      <button onclick="changeServer('megacloud', this)" class="server-btn">
+        ▶ Server <strong>MegaCloud</strong>
+      </button>
+    </div>
+  `;
+  playerContainer.appendChild(serverDiv);
+
+  // Inject CSS
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .server-text {
+      margin: 15px 0;
+      color: #fff;
+      text-align: center;
+      background: none; /* ✅ removes gradient/animation background */
+    }
+
+    .server-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .server-btn {
+      background-color: #1a1a1a;
+      color: #ccc;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: left;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .server-btn.active,
+    .server-btn:hover {
+      border: 1px solid #00ff88;
+      color: #00ff88;
+      background-color: #101010;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+
+// 🧠 Server switching logic
+function changeServer(serverName, btnElement) {
+  const videoPlayer = document.getElementById("episode-video"); // Match your existing ID
+  if (!videoPlayer) return;
+
+  const episodeNumber = parseInt(new URLSearchParams(window.location.search).get("ep")) || 1;
+
+  const baseURLs = {
+    upcloud: `https://vidnest.fun/anime/20997/${i}/sub`,
+    akcloud: `https://akcloud.example.com/anime/20997/${episodeNumber}/sub`,
+    megacloud: `https://megacloud.example.com/anime/20997/${episodeNumber}/sub`
+  };
+
+  videoPlayer.src = baseURLs[serverName];
+
+  // Update active button style
+  document.querySelectorAll(".server-btn").forEach(btn => btn.classList.remove("active"));
+  btnElement.classList.add("active");
+}
+
   </script>
 
 </body>
