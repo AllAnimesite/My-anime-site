@@ -221,14 +221,14 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const totalEpisodes = 13;
-      const rangeSize = 50;
+      const rangeSize = 13;
       const episodes = {};
       for (let i = 1; i <= totalEpisodes; i++) {
         episodes[i] = {
           title: `Charlotte Episode ${i}`,
           servers: {
              upcloud: `https://vidnest.fun/anime/20997/${i}/sub`,
-             akcloud: `https://akcloud.example.com/anime/20997/${i}/sub`,
+             akcloud: `https://vidnest.fun/anime/20997/${i}/hindi`,
              megacloud: `https://vidnest.fun/animepahe/20997/${i}/sub`,
           },
         };
@@ -266,7 +266,8 @@
       }
       const serverDiv = createAndAppend(videoSectionEl, 'div');
       serverDiv.innerHTML = `
-        <p class="server-text">If the current server doesn't work, please try another one below.</p>
+        <p class="server-text">If the current server doesn't work, please try another one below If you prefer to watch anime in dubbed version, please switch to Server 2.
+          For subtitles, you may use either Server 1 or Server 3, depending on your preference.</p>
         <div class="server-options">
           <button onclick="changeServer('upcloud', this)" class="server-btn active">▶ <strong>Server 1</strong></button>
           <button onclick="changeServer('akcloud', this)" class="server-btn">▶ <strong>Server 2</strong></button>
