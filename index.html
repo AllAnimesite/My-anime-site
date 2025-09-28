@@ -1,379 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#6A1AA5">
-  <title>AllAnime</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* --- GENERAL STYLES --- */
-    :root {
-      --accent-primary: #6A1AA5;
-      --bg-dark: #0e0e0e;
-      --bg-card: #141414;
-      --text-light: #ffffff;
-      --text-medium: #ccc;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background-color: var(--bg-dark);
-      font-family: 'Arial', sans-serif;
-      color: var(--text-light);
-    }
-
-    /* --- LOADER --- */
-    #loader { position: fixed; inset: 0; background: #000; display: grid; place-items: center; z-index: 9999; transition: opacity 0.6s ease; }
-    .loader-content .logo img { width: 150px; margin-bottom: 20px; }
-    .loader-ellipsis { display: inline-flex; gap: 5px; }
-    .loader-ellipsis div { width: 10px; height: 10px; background-color: var(--accent-primary); border-radius: 50%; animation: loader-bounce 1.4s infinite both; }
-    .loader-ellipsis div:nth-child(1) { animation-delay: -0.32s; }
-    .loader-ellipsis div:nth-child(2) { animation-delay: -0.16s; }
-    @keyframes loader-bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
-
-    /* --- NAVBAR & MENU --- */
-    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: var(--bg-card); border-bottom: 1px solid #2a2a2a; position: sticky; top: 0; z-index: 100; }
-    .navbar-left a { color: var(--text-medium); text-decoration: none; margin-right: 20px; font-weight: bold; }
-    .navbar-center .logo { font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: bold; color: var(--accent-primary); }
-    .navbar-right { display: flex; align-items: center; }
-    .search-input { background-color: #2a2a2a; border: 1px solid #444; color: var(--text-light); border-radius: 20px; padding: 8px 15px; outline: none; }
-    .profile-icon { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; margin-left: 15px; }
-    .hamburger { display: none; font-size: 28px; cursor: pointer; }
-    .menu-container { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background-color: #111; box-shadow: 2px 0 10px rgba(0,0,0,0.2); transition: left 0.3s ease; z-index: 200; }
-    .menu-container.active { left: 0; }
-    .menu-header { padding: 20px; background-color: var(--accent-primary); color: var(--text-light); font-weight: bold; }
-    .menu-list { list-style: none; }
-    .menu-list li { display: flex; align-items: center; gap: 15px; padding: 15px 20px; cursor: pointer; border-bottom: 1px solid #2a2a2a; }
-    .menu-list .icon { width: 24px; height: 24px; }
-    .top-profile { display: none; }
-
-    /* --- FEATURED SLIDER (TOP SLIDER) --- */
-    .featured-slider { position: relative; width: 100%; overflow: hidden; }
-    .featured-slide { 
-      display: none; 
-      width: 100%;
-      height: 70vh;
-      max-height: 480px;
-      background-color: #000;
-    }
-    .featured-slide.active { display: block; }
-    .featured-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .featured-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); color: var(--text-light); }
-    .featured-content h2 { font-size: 36px; margin-bottom: 10px; }
-    .featured-content p { margin-bottom: 20px; }
-    .watch-btn, .list-btn { padding: 12px 25px; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; margin-right: 10px; background-color: var(--accent-primary); color: var(--text-light); text-decoration: none; }
-    .list-btn { background-color: rgba(50,50,50,0.7); border: 1px solid var(--text-light); }
-    .dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
-    .dot { width: 12px; height: 12px; background-color: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; }
-    .dot.active { background-color: var(--text-light); }
-
-    /* --- CONTENT SECTIONS & SLIDERS --- */
-    .section-header { display: flex; justify-content: space-between; align-items: center; padding: 40px 30px 20px; }
-    .section-header h2 { font-size: 24px; }
-    .see-all { font-weight: bold; color: var(--accent-primary); }
-    .episode-slider { display: grid; grid-auto-flow: column; grid-auto-columns: 200px; gap: 20px; overflow-x: auto; padding: 0 30px 30px; scrollbar-width: none; }
-    .episode-slider::-webkit-scrollbar { display: none; }
-    
-    .episode-slide { 
-      background-color: #1a1a1a; 
-      border-radius: 8px; 
-      overflow: hidden; 
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* SMOOTH TRANSITION */
-    }
-    .episode-slide:hover {
-      transform: translateY(-8px); /* LIFTS THE CARD */
-      box-shadow: 0 10px 30px rgba(106, 26, 165, 0.5); /* ADDS PURPLE GLOW */
-    }
-
-    .episode-slide img { width: 100%; height: 280px; object-fit: cover; }
-    .episode-slide .anime-title { font-size: 16px; padding: 10px 15px; }
-    .episode-slide button { width: 100%; padding: 12px; background-color: var(--accent-primary); color: var(--text-light); border: none; font-weight: bold; cursor: pointer; }
-
-    /* --- FOOTER --- */
-    footer { text-align: center; padding: 40px 20px; margin-top: 30px; background-color: #111; color: var(--text-muted); font-size: 14px; }
-    footer h2 { font-family: 'Orbitron', sans-serif; font-size: 26px; margin-bottom: 10px; }
-    footer h2 span:nth-child(1) { color: #b57edc; }
-    footer h2 span:nth-child(2) { color: #6A1AA5; }
-    footer h2 span:nth-child(3) { color: #620ea; }
-
-    /* --- RESPONSIVE DESIGN --- */
-    @media (max-width: 768px) {
-      .navbar-left, .navbar-right { display: none; }
-      .navbar { justify-content: center; position: relative; }
-      .hamburger, .top-profile { display: block; position: absolute; top: 18px; }
-      .hamburger { left: 20px; }
-      .top-profile { right: 20px; z-index: 101; }
-      .top-profile img { width: 40px; height: 40px; border-radius: 50%; }
-      .featured-content { padding: 20px; }
-      .featured-content h2 { font-size: 28px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7f4ca5">
+<title>anime</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="loader">
-    <div class="loader-content">
-      <div class="logo">
-        <img src="/images/loader2.PNG" alt="ALL.ANIME Logo">
-      </div>
-      <div class="loader-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-  </div>
+<!-- Loader Screen -->
+<div id="loader">
+<div class="loader-content">
+<div class="logo">
+<img src="/images/loader2.PNG" alt="ALL.ANIME Logo">
+</div>
+<div class="loader-ellipsis">
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+</div>
 
-  <div id="content" style="display:none;">
-    <header class="navbar">
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-      <div class="navbar-left">
-        <a href="/TM_see all.html">Movies</a>
-        <a href="/most popular.html">Series</a>
-        <a href="/most popular.html">TV Shows</a>
-      </div>
-      <div class="navbar-center">
-        <h1 class="logo">AllAnime</h1>
-      </div>
-      <div class="navbar-right">
-        <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-        <img src="/images/anime.png" alt="Profile" class="profile-icon">
-      </div>
-      <div class="top-profile">
-        <a href="/signup.html">
-          <img src="/images/profile2.jpg" alt="Profile">
-        </a>
-      </div>
-    </header>
-  
-    <div class="menu-container" id="menuContainer">
-      <div class="menu-header">
-        <span class="menu-title">MENU</span>
-      </div>
-      <ul class="menu-list">
-        <li><img src="/images/home.jpg" class="icon"> HOME</li>
-        <li onclick="location.href='/categories.html'"><img src="/images/categories.jpg" class="icon"> CATEGORIES</li>
-        <li onclick="location.href='/profile page.html'"><img src="/images/about us.jpg" class="icon"> PROFILE</li>
-        <li onclick="location.href='/my list.html'"><img src="/images/my list.jpg" class="icon"> MY LIST</li>
-      </ul>
-    </div>
+<!-- Main Content (hidden until loader is done) -->
+<div id="content" style="display:none;">
 
-    <div class="featured-slider">
-      <div class="featured-slide active">
-          <img src="/images/Onepiece big image.jpg" alt="Onepiece">
-          <div class="featured-content">
-              <h2>Onepiece</h2>
-              <p>1999 | Action, Adventure | Ongoing</p>
-              <a href="/ep1.html" class="watch-btn">Watch Now</a>
-              <button class="list-btn">My List</button>
-          </div>
-      </div>
-      <div class="featured-slide">
-          <img src="/Demon Slayer 1.jpg" alt="Demon slayer">
-          <div class="featured-content">
-              <h2>Demon Slayer</h2>
-              <p>2019 | Adventure, Action | Ongoing</p>
-              <a href="/demonslayer.html" class="watch-btn">Watch Now</a>
-              <button class="list-btn">My List</button>
-          </div>
-      </div>
-      <div class="featured-slide">
-          <img src="/images/black clover.jpg" alt="Black clover">
-          <div class="featured-content">
-              <h2>Black Clover</h2>
-              <p>2017 | Action, Fantasy | Ongoing</p>
-              <a href="/black clover.html" class="watch-btn">Watch Now</a>
-              <button class="list-btn">My List</button>
-          </div>
-      </div>
-      <div class="dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-      </div>
-    </div>
+<header class="navbar">
+<div class="navbar-left">
+<a href="/TM_see all.html">Movies</a>
+<a href="/most popular.html">Series</a>
+<a href="/most popular.html">TV Shows</a>
+</div>
 
-    <div class="section-header">
-      <h2>Most Popular</h2>
-      <a href="/most popular.html" class="see-all">See All</a>
-    </div>
+<div class="navbar-center">
+<h1 class="logo">AllAnime</h1>
+</div>
 
-    <div class="episode-slider">
-      <div class="episode-slide">
-        <img src="/images/one piece.jpg" alt="One Piece">
-        <h3 class="anime-title">One Piece</h3>
-        <button onclick="window.location.href='ep1.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/Demon Slayer 1.jpg" alt="Demon Slayer">
-        <h3 class="anime-title">Demon Slayer</h3>
-        <button onclick="window.location.href='demonslayer.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/black clover.jpg" alt="Black Clover">
-        <h3 class="anime-title">Black Clover</h3>
-        <button onclick="window.location.href='black clover.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/my hero academia.jpg" alt="My Hero Academia">
-        <h3 class="anime-title">My Hero Academia</h3>
-        <button onclick="window.location.href='my hero academia.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/chainsaw man.jpg" alt="Chainsaw Man">
-        <h3 class="anime-title">Chainsaw Man</h3>
-        <button onclick="window.location.href='chainsaw man.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/tougen anki.jpg" alt="Tougen Anki">
-        <h3 class="anime-title">Tougen Anki</h3>
-        <button onclick="window.location.href='/tougen aki.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/silent voice.jpg" alt="A Silent Voice">
-        <h3 class="anime-title">A Silent Voice</h3>
-        <button onclick="window.location.href='/silent voice.html'">Watch Now</button>
-      </div>
-    </div>
+<div class="navbar-right">
+<input type="text" id="searchInput"
+placeholder="search..." class="search-input"
+onfocus="window.location.href='most popular.html';">
 
-    <div class="section-header">
-      <h2>New Releases</h2>
-      <a href="/most popular.html" class="see-all">See All</a>
-    </div>
-    <div class="episode-slider">
-      <div class="episode-slide">
-        <img src="/images/jujutsu kaisen.jpg" alt="Jujutsu Kaisen">
-        <h3 class="anime-title">Jujutsu Kaisen</h3>
-        <button onclick="window.location.href='/jujutsu kaisen.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/tougen anki.jpg" alt="Tougen Anki">
-        <h3 class="anime-title">Tougen Anki</h3>
-        <button onclick="window.location.href='/tougen aki.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/hotel inhumans.jpg" alt="Hotel Inhumans">
-        <h3 class="anime-title">Hotel Inhumans</h3>
-        <button onclick="window.location.href='/hotel inhumans.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/Gacjiakuta.jpg" alt="Gachiakuta">
-        <h3 class="anime-title">Gachiakuta</h3>
-        <button onclick="window.location.href='/gacjiakuta.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/Tokyo revenge.jpg" alt="Tokyo Revengers">
-        <h3 class="anime-title">Tokyo Revengers</h3>
-        <button onclick="window.location.href='/tokyorevenger.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/blue lock.jpg" alt="Blue Lock">
-        <h3 class="anime-title">Blue Lock</h3>
-        <button onclick="window.location.href='/Blue lock.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/naruto shipuden.jpg" alt="Naruto Shippuden">
-        <h3 class="anime-title">Naruto Shippuden</h3>
-        <button onclick="window.location.href='/naruto shipuden.html'">Watch Now</button>
-      </div>
-    </div>
+<img src="/images/anime.png"= alt="Profile" class="profile-icon">
+</div>
+</header>
+<!-- Extra profile icon above navbar -->
+<div class="top-profile">
+<a href="/signup.html">
+<img src="/images/profile2.jpg" alt="Profile">
+</a>
+</div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
-    <div class="section-header">
-      <h2>Top Movies</h2>
-      <a href="/TM_see all.html" class="see-all">See All</a>
-    </div>
-    <div class="episode-slider">
-      <div class="episode-slide">
-        <img src="/images/silent voice ep.jpg" alt="A Silent Voice">
-        <h3 class="anime-title">A Silent Voice</h3>
-        <button onclick="window.location.href='/silent voice.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/violet evergarden.jpg" alt="Violet Evergarden: The Movie">
-        <h3 class="anime-title">Violet Evergarden</h3>
-        <button onclick="window.location.href='/violetevergarden.html'">Watch Now</button>
-      </div>
-      <div class="episode-slide">
-        <img src="/images/your name.jpg" alt="Your Name">
-        <h3 class="anime-title">Your Name</h3>
-        <button onclick="window.location.href='/yourname.html'">Watch Now</button>
-      </div>
-    </div>
-    
-    <footer>
-      <h2>
-        <span>ALL</span><span>ANIME</span><span>.TV</span>
-      </h2>
-      <p>Copyright © 2025 AllANIME. All Rights Reserved</p>
-      <p>Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</p>
-    </footer>
-  </div>
+<div class="menu-container" id="menuContainer">
+<div class="menu-header">
+<span class="menu-title">MENU LIST</span>
+</div>
+<ul class="menu-list">
+<li><img src="/images/home.jpg" class="icon"> HOME</li>
+<li onclick="location.href='/categories.html'" style="cursor: pointer;">
+<img src="/images/categories.jpg" class="icon"> CATEGORIES
+</li>
+<li onclick="location.href='/profile page.html'" style="cursor: pointer;">
+<img src="/images/about us.jpg" class="icon"> PROFILE
+</li>
+<li onclick="location.href='/my list.html'" style="cursor: pointer;">
+<img src="/images/my list.jpg" class="icon"> MY LIST
+</li>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById("menuContainer").classList.toggle("active");
-    }
+</ul>
+</div>
 
-    // Carousel Slider Logic
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".featured-slide");
-    const dots = document.querySelectorAll(".dot");
+<script>
+function toggleMenu() {
+const menu = document.getElementById("menuContainer");
+menu.classList.toggle("active");
+}
+</script>
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle("active", i === index);
-            if(dots[i]) dots[i].classList.toggle("active", i === index);
-        });
-    }
+</header>
+<!-- Featured Carousel Slider -->
+<div class="featured-slider">
+<!-- Slide 1 -->
+<div class="featured-slide active">
+<img src="/images/Onepiece big image.jpg" alt="Onepiece">
+<div class="featured-content">
+<h2>Onepiece</h2>
+<p>1999 |action, adventure| ongoing</p>
+<a href="/ep1.html" class="watch-btn">watch now</a>
+<button class="list-btn">My List</button>
+</div>
+</div>
 
-    dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-            slideIndex = index;
-            showSlide(slideIndex);
-        });
-    });
+<!-- Slide 2 -->
+<div class="featured-slide">
+<img src="/Demon Slayer 1.jpg" alt="Demon slayer">
+<div class="featured-content">
+<h2>Demon slayer</h2>
+<p>2019 | Adventure | Ongoing</p>
+<a href="/demonslayer.html" class="watch-btn">watch now</a>
+<button class="list-btn">My List</button>
+</div>
+</div>
 
-    function autoSlide() {
-        slideIndex = (slideIndex + 1) % slides.length;
-        showSlide(slideIndex);
-    }
+<!-- Slide 3 -->
+<div class="featured-slide">
+<img src="/images/black clover.jpg" alt="Black clover">
+<div class="featured-content">
+<h2>Black clover</h2>
+<p>2019 | Action | Ongoing</p>
+<a href="/black clover.html" class="watch-btn">watch now</a>
+<button class="list-btn">My List</button>
+</div>
+</div>
 
-    setInterval(autoSlide, 4000);
+<!-- Navigation Dots -->
+<div class="dots">
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+</div>
+<!-- Most Popular Section -->
+<div class="most-popular">
+<h2>Most Popular</h2>
+<a href="/most popular.html" class="see-all">See all</a>
+</div>
 
-    // Loader Logic
-    window.addEventListener("DOMContentLoaded", () => {
-      const loader = document.getElementById("loader");
-      const content = document.getElementById("content");
+<!-- Anime Episode Slider -->
+<div class="episode-slider">
+<div class="episode-slide">
+<img src="/images/one piece.jpg" alt="Episode 1">
+<h3 class="anime-title">OnePiece</h3>
+<button onclick="window.location.href='ep1.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/Demon Slayer 1.jpg" alt="demon slayer">
+<h3 class="anime-title">Demonslayer</h3>
+<button onclick="window.location.href='demonslayer.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/black clover.jpg" alt="season 1">
+<h3 class="anime-title">Black clover</h3>
+<button onclick="window.location.href='black clover.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/my hero academia.jpg" alt="seanson 1">
+<h3 class="anime-title">My Hero Academia</h3>
+<button onclick="window.location.href='my hero academia.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/chainsaw man.jpg" alt="season 1">
+<h3 class="anime-title">Chainsaw man</h3>
+<button onclick="window.location.href='chainsaw man.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/tougen anki.jpg" alt="season 1">
+<h3 class="anime-title">Tougen anki</h3>
+<button onclick="window.location.href='/tougen aki.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/silent voice.jpg" alt="season 1">
+<h3 class="anime-title">Silent voice</h3>
+<button onclick="window.location.href='/silent voice.html'">Watch Now</button>
+</div>
 
-      if (sessionStorage.getItem("visited")) {
-        loader.remove();
-        content.style.display = "block";
-      } else {
-        setTimeout(() => {
-          loader.style.opacity = "0";
-          setTimeout(() => {
-            loader.remove();
-            content.style.display = "block";
-          }, 600);
-        }, 3000);
-        sessionStorage.setItem("visited", "true");
-      }
-    });
+</div> <!-- last episode-slide ends here -->
 
-    // Search (placeholder)
-    function searchAnime() {
-      var query = document.getElementById('searchInput').value.toLowerCase().trim();
-      if(query) {
-        alert("Searching for: " + query);
-        // Implement actual search redirection or filtering here
-      }
-    }
-  </script>
+<!-- Second Anime Episode Slider -->
+<div class="section-header">
+<h2>New Releases</h2>
+<a href="/most popular.html" class="see-all">See All</a>
+</div>
+<h3 class="anime-title">Jujutsu kaisen</h3>
+<div class="episode-slider">
+<div class="episode-slide">
+<img src="/images/jujutsu kaisen.jpg" alt="Bleach">
+
+<button onclick="window.location.href='/jujutsu kaisen.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/tougen anki.jpg" alt="Naruto">
+<h3 class="anime-title"> tougen anki</h3>
+<button onclick="window.location.href='/tougen aki.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/hotel inhumans.jpg" alt="hotel inhumans">
+<h3 class="anime-title">hotel inhumans</h3>
+<button onclick="window.location.href='/hotel inhumans.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/Gacjiakuta.jpg" alt="Gachiakuta">
+<h3 class="anime-title">Gacjiakuta</h3>
+<button onclick="window.location.href='/gacjiakuta.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/Tokyo revenge.jpg" alt="Tokyo revenge">
+<h3 class="anime-title">Tokyo revenge</h3>
+<button onclick="window.location.href='/tokyorevenger.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/blue lock.jpg" alt="Blue lock">
+<h3 class="anime-title">Blue lock</h3>
+<button onclick="window.location.href='/Blue lock.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/naruto shipuden.jpg" alt="Blue lock">
+<h3 class="anime-title">Naruto shipuden</h3>
+<button onclick="window.location.href='/naruto shipuden.html'">Watch Now</button>
+</div>
+</div>
+<!-- third anime episode slider -->
+<div class="section-header">
+<h2>Top Movies</h2>
+<a href="/TM_see all.html" class="see-all">See All</a>
+</div>
+<div class="episode-slider">
+<div class="episode-slide">
+<img src="/images/silent voice ep.jpg" alt="Silent Voice">
+<h3 class="anime-title">silent voice</h3>
+<button onclick="window.location.href='/silent voice.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/violet evergarden.jpg" alt="Silent Voice">
+<h3 class="anime-title">Violet evergarden</h3>
+<button onclick="window.location.href='/violetevergarden.html'">Watch Now</button>
+</div>
+<div class="episode-slide">
+<img src="/images/your name.jpg" alt="Silent Voice">
+<h3 class="anime-title">Your name</h3>
+<button onclick="window.location.href='/yourname.html'">Watch Now</button>
+</div>
+</div>
+<footer style="text-align: center; padding: 20px; margin-top: 30px; background-color: #111; color: #aaa; font-size: 14px;">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+<!-- Footer Logo -->
+<h2 style="font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 2px; margin-bottom: 10px;">
+<span style="color: #b57edc;">ALL</span>
+<span style="color: #6A1AA5;">ANIME</span>
+<span style="color: #6200ea;">.TV</span>
+</h2>
+
+<p>Copyright © 2025 AllANIME. All Rights Reserved</p>
+<p style="max-width: 600px; margin: 10px auto; font-size: 13px; color: #bbb;">
+Disclaimer: This site <strong>AllAnime</strong> does not store any files on its server.
+All contents are provided by non-affiliated third parties.
+</p>
+
+</footer>
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll(".featured-slide");
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(index) {
+slides.forEach((slide, i) => {
+slide.classList.toggle("active", i === index);
+dots[i].classList.toggle("active", i === index);
+});
+}
+
+dots.forEach((dot, index) => {
+dot.addEventListener("click", () => {
+slideIndex = index;
+showSlide(slideIndex);
+});
+});
+
+function autoSlide() {
+slideIndex = (slideIndex + 1) % slides.length;
+showSlide(slideIndex);
+}
+
+setInterval(autoSlide, 4000); // Auto change every 4 seconds
+</script>
+
+<script src="script.js"></script>
+<script>
+function searchAnime() {
+var q = document.getElementById('searchInput').value.toLowerCase().trim();
+var slides = document.querySelectorAll('.episode-slide');
+
+slides.forEach(function(slide){
+var titleEl = slide.querySelector('.anime-title');
+var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+slide.style.display = title.includes(q) ? '' : 'none';
+});
+}
+</script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+const loader = document.getElementById("loader");
+const content = document.getElementById("content");
+
+// Check if already visited
+if (sessionStorage.getItem("visited")) {
+loader.remove(); // never show again
+content.style.display = "block";
+} else {
+// First visit show loader for 2s
+setTimeout(() => {
+loader.style.opacity = "0";
+setTimeout(() => {
+loader.remove();
+content.style.display = "block";
+}, 600);
+}, 3000);
+sessionStorage.setItem("visited", "true");
+}
+});
+</script>
+
 </body>
 </html>
