@@ -88,7 +88,7 @@ body {
   color: white;
   z-index: 1001;
   cursor: pointer;
-  display: none; /* only show on small screen */
+  display: block; /* only show on small screen */
 }
 
 
@@ -106,16 +106,11 @@ body {
   transform: scale(1.2);
 }
 
-/* Show hamburger on small screens */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
 
   .navbar {
     padding-left: 70px; /* prevent overlap */
   }
-}
+  
 .episode-slider {
   display: flex;
   overflow-x: auto;
