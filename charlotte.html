@@ -101,7 +101,7 @@ With Yuu begrudgingly assisting in council affairs, the group sets out to find a
 
 <!-- Comments Section -->
 <h2>Comments</h2>
-<div id="commentsSection" data-anime="Blackbutler"> <!-- unique id for each anime -->
+<div id="commentsSection" data-anime="Charlotte"> <!-- unique id for each anime -->
   <div id="commentForm" style="display: none;">
     <textarea id="userComment" placeholder="Write a comment..."></textarea>
     <button onclick="postComment()">Post</button>
@@ -113,7 +113,7 @@ With Yuu begrudgingly assisting in council affairs, the group sets out to find a
 <script>
   // Get anime ID from attribute
   const animeId = document.getElementById("commentsSection").dataset.anime;
-  const storageKey = animeId + "BlackbutlerComments"; // e.g. "akameComments"
+  const storageKey = animeId + "CharlotteComments"; // e.g. "akameComments"
 
   // Check if user is logged in
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
