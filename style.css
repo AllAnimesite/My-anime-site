@@ -971,5 +971,15 @@ header h1 {
   outline: none;
   cursor: pointer;
 }
+/* Add a smooth transition to the base card style */
+.episode-slide {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Define the hover effect */
+.episode-slide:hover {
+  transform: translateY(-8px); /* Lifts the card up */
+  box-shadow: 0 10px 30px rgba(106, 26, 165, 0.6); /* Adds a purple glow */
+}
 
 
