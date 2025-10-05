@@ -220,6 +220,7 @@ body {
     position: absolute;
     bottom: 56px;
     left: 50px;
+    z-index: 10;
     color: #fff;
 }
 
