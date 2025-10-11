@@ -57,6 +57,51 @@
   <span>My List</span>
 </button>
   </div>
+  <div class="anime-card">
+  <img src="images/One piecegold.jpeg" alt="kikisdeliveryservice" />
+  <h3 class="anime-title">Onepiece flim gold </h3>
+  <button onclick="window.location.href='onepiece flimgold.html'">Watch Now</button>
+  <button onclick="addToList('Onepiece gold', 'images/One piecegold.jpeg', 'onepiece flimgold.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/spiritedaway.jpg" alt="spiritedaway" />
+  <h3 class="anime-title">Spirited Away</h3>
+  <button onclick="window.location.href='spiritedaway.html'">Watch Now</button>
+  <button onclick="addToList('spiritedaway', 'images/spiritedaway.jpg', 'spiritedaway.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/paprika.jpg" alt="paprika" />
+  <h3 class="anime-title">Paprika</h3>
+  <button onclick="window.location.href='paprika.html'">Watch Now</button>
+  <button onclick="addToList('paprika', 'images/paprika.jpg', 'paprika.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/perfectblue.jpg" alt="perfectblue" />
+  <h3 class="anime-title">Perfect Blue</h3>
+  <button onclick="window.location.href='perfectblue.html'">Watch Now</button>
+  <button onclick="addToList('vivy', 'images/perfectblue.jpg', 'perfectblue.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/tokyogodfathers.jpeg" alt="tokyogodfathers" />
+  <h3 class="anime-title">Tokyo Godfathers</h3>
+  <button onclick="window.location.href='tokyogodfathers.html'">Watch Now</button>
+  <button onclick="addToList('tokyogodfathers', 'images/tokyogodfathers.jpeg', 'tokyogodfathers.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
   </div>
   
     <!-- Add more anime-card blocks -->
@@ -66,28 +111,28 @@
   function searchAnime() {
     var q = document.getElementById('searchInput').value.toLowerCase().trim();
     var slides = document.querySelectorAll('.anime-card');
-    slides.forEach(function(slide) {
+
+    slides.forEach(function (slide) {
       var titleEl = slide.querySelector('.anime-title') || slide.querySelector('h3');
-      var title = titleEl ? titleEl.textContent.toLowerCase() : '';
+          var title = titleEl ? titleEl.textContent.toLowerCase() : '';
       slide.style.display = title.includes(q) ? '' : 'none';
     });
   }
 
-  // ✅ Define addToList function
   function addToList(title, image, link) {
     let myList = JSON.parse(localStorage.getItem("myList")) || [];
 
-    // Avoid duplicates
     if (!myList.some(item => item.title === title)) {
       myList.push({ title, image, link });
       localStorage.setItem("myList", JSON.stringify(myList));
       alert(`${title} added to My List!`);
-} else {
-   alert(`${title} is already in My List.`);
-}
-
+    } else {
+      alert(`${title} is already in My List.`);
+    }
+  }
 </script>
-<script src="script.js"></script>
 
+<script src="script.js"></script>
+</script>
 </body>
 </html>
