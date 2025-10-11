@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#7f4ca5">
-  <title>Princess Mononoke - Episodes</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-   <style>
+  <title>Princess Mononoke</title>
+ <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
     /* CSS Variables */
     :root{
       --bg: #1a1a1a; /* Matches related episodes background */
@@ -169,14 +169,14 @@
             <iframe id="episode-video" allow="autoplay" allowfullscreen></iframe>
           </div>
           </div>
-        <a href="../princessmononoke.html" class="back-button">← Back to Episodes</a>
+        <a href="../princessmononoke.html" class="back-button">← Back to Movies</a>
       </div>
 
       <div class="layout-right-column">
         <div class="related-wrapper">
           <div class="related-header">
-            <img src="/images/p logo.png" class="avatar" alt="Character">
-            <span>RELATED EPISODES</span>
+            <img src="../images/p logo.png" class="avatar" alt="Character">
+            <span>Movies</span>
           </div>
           <div class="range-links" id="range-links"></div>
           <div class="episode-grid" id="episode-links"></div>
@@ -221,11 +221,11 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const totalEpisodes = 1;
-      const rangeSize = 50;
+      const rangeSize = 1;
       const episodes = {};
       for (let i = 1; i <= totalEpisodes; i++) {
         episodes[i] = {
-          title: `Princess Mononoke Episode ${i}`,
+          title: `princess mononoke Movie ${i}`,
           servers: {
              upcloud: `https://vidnest.fun/anime/164/${i}/sub`,
              akcloud: `https://vidnest.fun/anime/164/${i}/hindi`,
