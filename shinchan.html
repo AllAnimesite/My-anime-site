@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shinchan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7f4ca5">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { margin: 0; background: #111; color: white; font-family: Arial; }
+  .banner {
+  width: 100%;
+  height: 60vh; /* Sets height to 60% of the viewport height */
+  object-fit: cover; /* Fills the space without stretching/distorting */
+  object-position: center; /* Keeps the image centered */
+  display: block;
+}
+
+    .container { padding: 16px; }
+    .title { font-size: 24px; font-weight: bold; }
+    .tags { margin: 10px 0; }
+    .tag { background: #6A1AA5; padding: 5px 10px; margin-right: 5px; border-radius: 4px; font-size: 12px; }
+    .play-btn { background: #6A1AA5; padding: 12px 25px; color: white; border: none; border-radius: 6px; font-size: 18px; margin: 15px 0; cursor: pointer; }
+    .description { color: #ccc; font-size: 14px; }
+    .episodes { margin-top: 20px; }
+    .episode-list { display: flex; overflow-x: auto; }
+    .episode { margin-right: 10px; background: #222; border-radius: 8px; width: 120px; text-align: center; flex-shrink: 0; }
+    .episode img { width: 100%; border-radius: 8px 8px 0 0; }
+    .episode p { padding: 5px; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <!-- Banner image -->
+  <img src="images/Shinchan crayons.jpg" class="banner" alt="One Piece">
+
+  <div class="container">
+    <div class="title">Shinchan</div>
+
+    <div class="tags">
+      <span class="tag">Season 1</span>
+      <span class="tag">Episode 1</span>
+      <span class="tag">HD</span>
+      <span class="tag">SUB</span>
+    </div>
+
+    <!-- Play Button -->
+    <a href="all episodes shinchan/shinchaneps.html">
+    <button class="play-btn">▶ WATCH NOW</button>
+    </a>
+
+    <!-- Description -->
+    <div class="description">
+      Crayon Shin-chan follows the wacky antics and adventures of five-year-old Shinnosuke "Shin" Nohara and his parents, neighbors, and friends and is set in Kasukabe, Saitama Prefecture, Japan.
+
+Many of the jokes in the series stem from Shin-chan's occasionally weird, unnatural and inappropriate use of language, as well as from his inappropriate behavior. A typical gag involves Shin-chan confounding his parents by using the wrong phrase for the occasion; for example, saying "Welcome back!" instead of "I am back!" when he comes home.
+
+During the beginning of the series, the TV show was mostly based on the storyline in the original manga. As the show progressed, more and more episodes became anime-original.
+
+       </div>
+      </div>
+    </div>
+  </div>
+<!-- More like this -->
+<h2>More like this</h2>
+<div class="more-like-this">
+  
+   <a href="ep1.html">
+  <div class="anime-card">
+    <img src="images/onepiece episodes.jpg" alt="One Piece">
+    <p>One Piece</p>
+  </div>
+   </a>
+  <a href="naruto shipuden.html">
+  <div class="anime-card">
+    <img src="images/naruto shipuden.jpg" alt="Naruto Shippuden">
+    <p>Naruto Shippuden</p>
+  </div>
+  </a>
+<a href="demonslayer.html">
+  <div class="anime-card">
+    <img src="/images/Demon Slayer 1.jpg" alt="Demon slayer">
+    <p>Demon Slayer</p>
+  </div>
+</a>
+<a href="bleach.html">
+  <div class="anime-card">
+    <img src="images/Bleach.jpg" alt="One Piece">
+    <p>Bleach</p>
+  </div>
+   </a>
+  <a href="black clover.html">
+  <div class="anime-card">
+    <img src="images/black clover.jpg" alt="Black Clover">
+    <p>Black Clover</p>
+  </div>
+  </a>
+<a href="dan da dan.html">
+  <div class="anime-card">
+    <img src="images/dan da dan.jpg" alt="Demon slayer">
+    <p>Dan Da Dan</p>
+  </div>
+</a>
+  <!-- Add more cards as needed -->
+</div>
+
+<!-- Comments Section -->
+<h2>Comments</h2>
+<div id="commentsSection" data-anime="Shinchan"> <!-- unique id for each anime -->
+  <div id="commentForm" style="display: none;">
+    <textarea id="userComment" placeholder="Write a comment..."></textarea>
+    <button onclick="postComment()">Post</button>
+  </div>
+  <p id="loginMessage">Please <a href="login.html">login</a> or <a href="signup.html">sign up</a> to comment.</p>
+  <div id="commentList"></div>
+</div>
+
+<script>
+  // Get anime ID from attribute
+  const animeId = document.getElementById("commentsSection").dataset.anime;
+  const storageKey = animeId + "ShinchanComments"; // e.g. "akameComments"
+
+  // Check if user is logged in
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  const commentForm = document.getElementById("commentForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const commentList = document.getElementById("commentList");
+
+  if (loggedInUser) {
+    commentForm.style.display = "block";
+    loginMessage.style.display = "none";
+  }
+
+  // Load existing comments for this anime
+  const comments = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+  function renderComments() {
+    commentList.innerHTML = "";
+    comments.forEach((comment, index) => {
+      const div = document.createElement("div");
+      div.className = "comment";
+
+      div.innerHTML = `
+        <strong>${comment.user}</strong>: ${comment.text}
+        <button onclick="deleteComment(${index})" class="delete-btn">Delete</button>
+      `;
+
+      commentList.appendChild(div);
+    });
+  }
+
+  function postComment() {
+    const commentText = document.getElementById("userComment").value.trim();
+    if (!commentText) return;
+
+    const newComment = {
+      user: loggedInUser.name || loggedInUser.fullName,
+      text: commentText
+    };
+
+    comments.push(newComment);
+    localStorage.setItem(storageKey, JSON.stringify(comments));
+    document.getElementById("userComment").value = "";
+    renderComments();
+  }
+
+  function deleteComment(index) {
+    if (confirm("Are you sure you want to delete this comment?")) {
+      comments.splice(index, 1);
+      localStorage.setItem(storageKey, JSON.stringify(comments));
+      renderComments();
+    }
+  }
+
+  // Render on page load
+  renderComments();
+</script>
+ <script src="script.js"></script>
+<!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+  import { getFirestore, collection, query, where, orderBy, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics.js";
+
+  window.firebaseModules = { initializeApp, getFirestore, collection, query, where, orderBy, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp, getAnalytics };
+</script>
+
+<!-- Your JS file -->
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
