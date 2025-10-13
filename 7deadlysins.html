@@ -8,12 +8,26 @@
    <link rel="stylesheet" href="style.css">
   <style>
     body { margin: 0; background: #111; color: white; font-family: Arial; }
-  .banner {
+ .banner {
   width: 100%;
-  height: 60vh; /* Sets height to 60% of the viewport height */
-  object-fit: cover; /* Fills the space without stretching/distorting */
-  object-position: center; /* Keeps the image centered */
+  height: 60vh; /* Sets a responsive height */
+  max-height: 500px; /* NEW: Prevents the banner from getting too tall */
+  object-fit: contain; /* Fills the space without stretching */
+  object-position: center;
   display: block;
+  background-color: #000;
+}
+.banner-container {
+  position: relative; /* Required for the overlay */
+  line-height: 0; /* Removes any extra space below the image */
+}
+
+/* This pseudo-element creates the gradient overlay */
+.banner-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #111 5%, transparent 50%);
 }
 
     .container { padding: 16px; }
@@ -31,8 +45,10 @@
 </head>
 <body>
 
-  <!-- Banner image -->
-  <img src="images/7deadlysinsEps.jpg" class="banner" alt="Ansatsu Kyoushitsu">
+<div class="banner-container">
+  <img src="images/7deadlysinsEps.jpg" class="banner" alt="The Seven Deadly Sins">
+</div>
+
 
   <div class="container">
     <div class="title">The Seven deadly sins</div>
