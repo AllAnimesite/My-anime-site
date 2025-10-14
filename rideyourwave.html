@@ -8,12 +8,45 @@
 <link rel="stylesheet" href="style.css">
   <style>
     body { margin: 0; background: #111; color: white; font-family: Arial; }
-  .banner {
+/* This is the main container for the banner */
+.banner-container {
+  position: relative;
   width: 100%;
-  height: 60vh; /* Sets height to 60% of the viewport height */
-  object-fit: cover; /* Fills the space without stretching/distorting */
-  object-position: center; /* Keeps the image centered */
-  display: block;
+  height: 60vh; /* Sets a responsive height */
+  max-height: 500px; /* Caps the height on large screens */
+  overflow: hidden; /* Hides the parts of the image that zoom out */
+  background-color: #000; /* Fallback color */
+  line-height: 0; /* Removes extra space */
+}
+
+/* This creates the gradient overlay on top of the container */
+.banner-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #111 5%, transparent 50%);
+}
+
+/* This is the actual image inside the container */
+.banner {
+  width: 100%;
+  height: 100%; /* Make the image fill its container */
+  object-fit: contain; /* Fill the space without stretching */
+  object-position: center;
+  /* Apply the zoom animation ONLY to the image */
+  animation: kenburnsZoom 15s infinite alternate ease-in-out;
+}
+
+/* This defines the zoom animation */
+@keyframes kenburnsZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08); /* A slightly larger zoom for more impact */
+  }
+
+
 }
 
     .container { padding: 16px; }
@@ -31,9 +64,9 @@
 </head>
 <body>
 
-  <!-- Banner image -->
+<div class="banner-container">
   <img src="images/rideyourwave.jpg" class="banner" alt="Ride Your Wave">
-
+</div>
   <div class="container">
     <div class="title">Ride Your Wave</div>
 
