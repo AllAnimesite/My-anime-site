@@ -1,67 +1,564 @@
-<!-- new-releases.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#7f4ca5">
-  <title>Top Movies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#7f4ca5">
+  <title>All Anime</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-  <h1 class="page-title">Top Movies</h1>
-  <a href="index.html" class="back-home">← Back to Home</a>
+    <h1>All Anime</h1>
+    <a href="index.html" class="back-home">← Back to Home</a>
   </div>
-    <div class="navbar-right">
+   <div class="navbar-right">
       <input type="text" id="searchInput"
         placeholder="search..." class="search-input" oninput="searchAnime()">
       <img src="https://cdn-icons-png.flaticon.com/512/622/622669.png" alt="Search Icon" class="search-img" />
         </div>
       </header>
-  <div class="all-popular-list">
-    <!-- Add all your new release anime cards here -->
-    <div class="anime-card search-item">
-      <img src="images/gintama the final.jpg" alt="Anime Title">
-      <h3 class="anime-title">Gintama: the final</h3>
+  <main class="all-popular-list">
+    <!-- Add your anime cards or thumbnails here -->
+    <div class="anime-card">
+      <img src="images/silent voice ep.jpg" alt="Silent voice" />
+      <h3 class="anime-title">Onepiece</h3>
+      <button onclick="window.location.href='silent voice.html'">Watch Now</button>
+       <button onclick="addToList('Silent voice', 'images/silent voice ep.jpg', 'silent voice.html')" class="icon-button">
+     <img src="images/my list2.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+ </button>
+    </div>
+
+    <div class="anime-card">
+      <img src="images/one piece flim gold.jpg" alt="Death note" />
+      <h3 class="anime-title">One piece flim gold</h3>
+      <button onclick="window.location.href='onepiece flimgold.html'">Watch Now</button>
+     <button onclick="addToList('One piece flim gold', 'images/one piece flim gold.jpg', 'onepiece flimgold.html')" class="icon-button">
+  <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+  <span>My List</span>
+</button>
+
+    </div>
+
+    <div class="anime-card">
+      <img src="images/gintama the final.jpg" alt="Gintama the final" />
+      <h3 class="anime-title">Gintama the final</h3>
       <button onclick="window.location.href='gintama the final.html'">Watch Now</button>
-      <button onclick="addToList('Gintama: the final', 'images/gintama the final.jpg', 'gintama the final.html')" class="icon-button">
+      <button onclick="addToList('Gintama the final', 'images/gintama the final.jpg', 'gintama the final.html')" class="icon-button">
   <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
   <span>My List</span>
 </button>
     </div>
-    <div class="anime-card search-items">
-    <img src="images/silent voice ep.jpg" alt="Silent Voice">
-    <h3 class="anime-title">silent voice</h3>
-    <button onclick="window.location.href='silent voice.html'">Watch Now</button>
-    <button onclick="addToList('Silent voice', 'images/silent voice ep.jpg', 'silent voice.html')" class="icon-button">
+
+    <div class="anime-card">
+      <img src="images/violet evergarden.jpg" alt="Chainsaw man" />
+      <h3 class="anime-title">Violet evergarden</h3>
+      <button onclick="window.location.href='violetevergarden.html'">Watch Now</button>
+      <button onclick="addToList('Violet evergarden', 'images/violet evergarden.jpg', 'violetevergarden.html')" class="icon-button">
   <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
   <span>My List</span>
 </button>
-    </div>
-    <div class="anime-card search-items">
-    <img src="images/violet evergarden.jpg" alt="Silent Voice">
-    <h3 class="anime-title">Violet evergarden</h3>
-    <button onclick="window.location.href='violetevergarden.html'">Watch Now</button>
-    <button onclick="addToList('Violet evergarden', 'images/violet evergarden.jpg', 'violetevergarden.html')" class="icon-button">
-  <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
-  <span>My List</span>
+        </div>
+        
+    <div class="anime-card">
+     <img src="images/your name.jpg" alt="Attack on Titans" />
+     <h3 class="anime-title">Your name</h3>
+    <button onclick="window.location.href='yourname.html'">Watch Now</button>
+    <button onclick="addToList('Your name', 'images/your name.jpg', 'yourname.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
 </button>
-  </div>
-  <div class="anime-card search-items">
-  <img src="images/your name.jpg" alt="Your name">
-  <h3 class="anime-title">Your name</h3>
-  <button onclick="window.location.href='yourname.html'">Watch Now</button>
-  <button onclick="addToList('Violet evergarden', 'images/your name.jpg', 'yourname.html')" class="icon-button">
-  <img src="/images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
-  <span>My List</span>
+   </div>
+   <div class="anime-card">
+     <img src="images/spiritedaway.jpg" alt="Spirited away" />
+     <h3 class="anime-title">Spirited away</h3>
+     <button onclick="window.location.href='spiritedaway.html'">Watch Now</button>
+     <button onclick="addToList('Spirited away', 'images/spiritedaway.jpg', 'spiritedaway.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
 </button>
-  </div>
+</div>
   <div class="anime-card">
-  <img src="images/One piecegold.jpeg" alt="kikisdeliveryservice" />
-  <h3 class="anime-title">Onepiece flim gold </h3>
-  <button onclick="window.location.href='onepiece flimgold.html'">Watch Now</button>
-  <button onclick="addToList('Onepiece gold', 'images/One piecegold.jpeg', 'onepiece flimgold.html')" class="icon-button">
+     <img src="images/tokyogodfathers.jpeg" alt="Tokyo godfather" />
+     <h3 class="anime-title">Tokyo godfather</h3>
+     <button onclick="window.location.href='tokyogodfathers.html'">Watch Now</button>
+     <button onclick="addToList('Tokyo godfather', 'images/tokyogodfathers.jpeg', 'tokyogodfathers.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
+</button>
+</div>
+  <div class="anime-card">
+     <img src="images/paprika.jpg" alt="Paprika" />
+     <h3 class="anime-title">Paprika</h3>
+     <button onclick="window.location.href='paprika.html'">Watch Now</button>
+     <button onclick="addToList('Paprika', 'images/paprika.jpg', 'paprika.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
+</button>
+</div>
+ <div class="anime-card">
+     <img src="images/perfectblue.jpg" alt="Perfect blue" />
+     <h3 class="anime-title">Perfect blue</h3>
+     <button onclick="window.location.href='perfectblue.html'">Watch Now</button>
+     <button onclick="addToList('Perfect blue','images/perfectblue.jpg', 'perfectblue.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
+</button>
+</div>
+  <div class="anime-card">
+     <img src="images/vinlandsaga.jpg" alt="Vinland Saga" />
+     <h3 class="anime-title">Vinland Saga</h3>
+     <button onclick="window.location.href='vinlandsaga.html'">Watch Now</button>
+     <button onclick="addToList('vinlandsaga', 'images/vinlandsaga.jpg', 'vinlandsaga.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
+</button>
+</div>
+ <div class="anime-card">
+     <img src="images/hunterxhunter.jpeg" alt="hunterxhunter" />
+     <h3 class="anime-title">HunterXHunter</h3>
+     <button onclick="window.location.href='hunterxhunter.html'">Watch Now</button>
+     <button onclick="addToList('Hunterxhunter', 'images/hunterxhunter.jpeg', 'hunterxhunter.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
+</button>
+</div>
+ <div class="anime-card">
+     <img src="images/paranoia agent.jpg" alt="paranoia agent" />
+     <h3 class="anime-title">Paranoia Agent</h3>
+     <button onclick="window.location.href='paranoiaagent.html'">Watch Now</button>
+     <button onclick="addToList('paranoia', 'images/paranoia agent.jpg', 'paranoiaagent.html')" class="icon-button">
+    <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+    <span>My List</span>
+</button>
+</div>  
+<div class="anime-card">
+  <img src="images/onepunchman.jpg" alt="one punch man" />
+  <h3 class="anime-title">Onepunch man</h3>
+  <button onclick="window.location.href='onepunchman.html'">Watch Now</button>
+  <button onclick="addToList('paranoia', 'images/onepunchman.jpg', 'onepunchman.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="images/hell'sparadise.jpg" alt="Hell's Paradise" />
+  <h3 class="anime-title">Hell's Paradise</h3>
+  <button onclick="window.location.href='hell'sparadise.html'">Watch Now</button>
+  <button onclick="addToList('hell's paradise', 'images/hell'sparadise.jpg', 'hell'sparadise.html)" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/thesevendeadly.jpg" alt="the seven deadly sins" />
+  <h3 class="anime-title">The Seven Deadly Sins</h3>
+  <button onclick="window.location.href='7deadlysins.html'">Watch Now</button>
+  <button onclick="addToList('thesevendeadlysins', 'images/thesevendeadly.jpg', '7deadlysins.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+  <div class="anime-card">
+  <img src="images/silent voice.jpg" alt="the seven deadly sins" />
+  <h3 class="anime-title">Silent voice </h3>
+  <button onclick="window.location.href='silent voice.html'">Watch Now</button>
+  <button onclick="addToList('Silent voice', 'images/silent voice.jpg', 'silent voice.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+  <div class="anime-card">
+  <img src="images/tougen anki.jpg" alt="tougen anki" />
+  <h3 class="anime-title">Tougen anki </h3>
+  <button onclick="window.location.href='tougen aki.html'">Watch Now</button>
+  <button onclick="addToList('Tougen anki', 'images/tougen anki.jpg', 'tougen aki.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+
+<div class="anime-card">
+  <img src="images/jojobizarreadventure.jpg" alt="jojobizarreadventure" />
+  <h3 class="anime-title">JoJo's Bizarre Adventure</h3>
+  <button onclick="window.location.href='jojoadventure.html'">Watch Now</button>
+  <button onclick="addToList('JoJo Bizarre Adventure', 'images/jojobizarreadventure.jpg', 'jojoadventure.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card" data-genre="Adventure,Action">
+  <img src="images/monster.jpg" alt="monster" />
+  <h3 class="anime-title">Monster</h3>
+  <button onclick="window.location.href='monster.html'">Watch Now</button>
+  <button onclick="addToList('Monster', 'images/monster.jpg', 'monster.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card" data-genre="Superpower,Action">
+  <img src="images/mobpyscho100.jpg" alt="monster" />
+  <h3 class="anime-title">Mob Psycho 100</h3>
+  <button onclick="window.location.href='mobpyscho100.html'">Watch Now</button>
+  <button onclick="addToList('Mob Psycho 100', 'images/mobpyscho100.jpg', 'mobpyscho100.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/TokyoGhoul.jpg" alt="tokyo ghoul" />
+  <h3 class="anime-title">Tokyo Ghoul</h3>
+  <button onclick="window.location.href='tokyoghoul.html'">Watch Now</button>
+  <button onclick="addToList('Tokyo Ghoul', 'images/TokyoGhoul.jpg', 'jojoadventure.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/codegeass.jpg" alt="code geass" />
+  <h3 class="anime-title">Code Geass</h3>
+  <button onclick="window.location.href='codegeass.html'">Watch Now</button>
+  <button onclick="addToList('Code Geass', 'images/codegeass.jpg', 'codegeass.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/yuyuhakusho.jpg" alt="code geass" />
+  <h3 class="anime-title">YuYu Hakusho</h3>
+  <button onclick="window.location.href='yuyuhakusho.html'">Watch Now</button>
+  <button onclick="addToList('YuYu Hakusho', 'images/yuyuhakusho.jpg', 'yuyuhakusho.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/RurouniKenshin.jpg" alt="Rurouni Kenshin" />
+  <h3 class="anime-title">Rurouni Kenshin</h3>
+  <button onclick="window.location.href='rurounikenshin.html'">Watch Now</button>
+  <button onclick="addToList('Rurouni Kenshin', 'images/RurouniKenshin.jpg', 'rurounikenshin.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/fairytail.jpg" alt="fairy tail" />
+  <h3 class="anime-title">Fairy Tail</h3>
+  <button onclick="window.location.href='fairytail.html'">Watch Now</button>
+  <button onclick="addToList('Fairy Tail', 'images/fairytail.jpg', 'fairytail.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/yourlieinapril.jpg" alt="Your Lies in April" />
+  <h3 class="anime-title">Your Lies in April</h3>
+  <button onclick="window.location.href='yourlieinapril.html'">Watch Now</button>
+  <button onclick="addToList('Your Lies in April', 'images/yourlieinapril.jpg', 'yourlieinapril.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/gintama the final.jpg" alt="gintama the final" />
+  <h3 class="anime-title">Gintama</h3>
+  <button onclick="window.location.href='gintama the final.html'">Watch Now</button>
+  <button onclick="addToList('Your Lies in April', 'images/gintama the final.jpg', 'gintama the final.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/dan da dan.jpg" alt="gintama the final" />
+  <h3 class="anime-title">dan da dan</h3>
+  <button onclick="window.location.href='dan da dan.html'">Watch Now</button>
+  <button onclick="addToList('Your Lies in April', 'images/dan da dan.jpg', 'dan da dan.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/Tokyo revenge.jpg" alt="Tokyo revenger" />
+  <h3 class="anime-title">tokyo revenge</h3>
+  <button onclick="window.location.href='tokyorevenger.html'">Watch Now</button>
+  <button onclick="addToList('Your Lies in April', 'images/Tokyo revenge.jpg', 'tokyorevenger.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/blue lock.jpg" alt="Tokyo revenger" />
+  <h3 class="anime-title">Blue lock</h3>
+  <button onclick="window.location.href='Blue lock.html'">Watch Now</button>
+  <button onclick="addToList('Blue lock', 'images/blue lock.jpg', 'Blue lock.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/cowboybebop.jpg" alt="cowboy bebop" />
+  <h3 class="anime-title">Cowboy Bebop</h3>
+  <button onclick="window.location.href='cowboybebop.html'">Watch Now</button>
+  <button onclick="addToList('Cowboy Bebop', 'images/cowboybebop.jpg', 'cowboybebop.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/trigun.jpg" alt="trigun" />
+  <h3 class="anime-title">Trigun</h3>
+  <button onclick="window.location.href='trigun.html'">Watch Now</button>
+  <button onclick="addToList('Trigun', 'images/trigun.jpg', 'trigun.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/psycho-pass.jpg" alt="trigun" />
+  <h3 class="anime-title">Psycho-Pass</h3>
+  <button onclick="window.location.href='psycho-pass.html'">Watch Now</button>
+  <button onclick="addToList('Trigun', 'images/psycho-pass.jpg', 'psycho-pass.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/mobilesuitgundams.jpg" alt="mobile suit gundams" />
+  <h3 class="anime-title">Mobile Suit Gundam: Iron-Blooded Orphans</h3>
+  <button onclick="window.location.href='mobilesuitgundams.html'">Watch Now</button>
+  <button onclick="addToList('Trigun', 'images/mobilesuitgundams.jpg', 'mobilesuitgundams.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/elfen-lied.jpg" alt="elfen lied" />
+  <h3 class="anime-title">Elfen Lied</h3>
+  <button onclick="window.location.href='elfenlied.html'">Watch Now</button>
+  <button onclick="addToList('Elfen Lied', 'images/elfen-lied.jpg', 'elfenlied.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/akamegakill.jpg" alt="aka me ga kill!" />
+  <h3 class="anime-title">Akame Ga Kill!</h3>
+  <button onclick="window.location.href='akamegakill.html'">Watch Now</button>
+  <button onclick="addToList('aka me ga kill!','images/akamegakill.jpg', 'akamegakill.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/hellsing.jpg" alt="hellsing" />
+  <h3 class="anime-title">Hellsing</h3>
+  <button onclick="window.location.href='hellsing.html'">Watch Now</button>
+  <button onclick="addToList('hellsing', 'images/hellsing.jpg', 'hellsing.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/parasyte.jpg" alt="hellsing" />
+  <h3 class="anime-title">Parasyte</h3>
+  <button onclick="window.location.href='parasyte.html'">Watch Now</button>
+  <button onclick="addToList('Parasyte', 'images/parasyte.jpg', 'parasyte.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/lookism.jpg" alt="hellsing" />
+  <h3 class="anime-title">Lookism</h3>
+  <button onclick="window.location.href='lookism.html'">Watch Now</button>
+  <button onclick="addToList('parasyte', 'images/lookism.jpg', 'lookism.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/sakamoto.jpg" alt="sakamoto days" />
+  <h3 class="anime-title">Sakamoto days season 1</h3>
+  <button onclick="window.location.href='sakamotodays2.html'">Watch Now</button>
+  <button onclick="addToList('parasyte', 'images/sakamoto.jpg', 'sakamotodays2.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/madeinabyssep.jpg" alt="madeinabyss" />
+  <h3 class="anime-title">made in abyss</h3>
+  <button onclick="window.location.href='madeinabyss.html'">Watch Now</button>
+  <button onclick="addToList('Made In Abyss', 'images/madeinabyssep.jpg', 'madeinabyss.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/samuraichamploo.jpg" alt="samuraichamploo" />
+  <h3 class="anime-title">Samurai Champloo</h3>
+  <button onclick="window.location.href='samuraichamploo.html'">Watch Now</button>
+  <button onclick="addToList('Samurai Champloo', 'images/samuraichamploo.jpg', 'samuraichamploo.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/no-game-no-life.jpg" alt="nogamenolife" />
+  <h3 class="anime-title">No Game No Life</h3>
+  <button onclick="window.location.href='nogamenolife.html'">Watch Now</button>
+  <button onclick="addToList('No Game No Life', 'images/no-game-no-life.jpg', 'nogamenolife.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/fatezero.jpg" alt="fatezero" />
+  <h3 class="anime-title">Fate/Zero</h3>
+  <button onclick="window.location.href='fatezero.html'">Watch Now</button>
+  <button onclick="addToList('Fate/Zero', 'images/fatezero.jpg', 'fatezero.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/ReZero.jpg" alt="fatezero" />
+  <h3 class="anime-title">Re:Zero-Starting life in another world</h3>
+  <button onclick="window.location.href='rezero.html'">Watch Now</button>
+  <button onclick="addToList('rezero', 'images/ReZero.jpg', 'rezero.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/clannads2.jpg" alt="clannad" />
+  <h3 class="anime-title">Clannad After Story Season 2 </h3>
+  <button onclick="window.location.href='clannad.html'">Watch Now</button>
+  <button onclick="addToList('CLANNAD: After Story, 'images/clannads2.jpg', 'clannad.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/anohana.jpg" alt="anohana" />
+  <h3 class="anime-title">Anohana: The Flower We Saw That Day</h3>
+  <button onclick="window.location.href='anohana.html'">Watch Now</button>
+  <button onclick="addToList('anohana', 'images/anohana.jpg', 'anohana.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/toradora.jpg" alt="toradara" />
+  <h3 class="anime-title">Toradora!</h3>
+  <button onclick="window.location.href='toradora.html'">Watch Now</button>
+  <button onclick="addToList('toradora', 'images/toradora.jpg', 'toradora.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/vivy.jpg" alt="vivy" />
+  <h3 class="anime-title">Vivy: Fluorite Eye's Song</h3>
+  <button onclick="window.location.href='vivy.html'">Watch Now</button>
+  <button onclick="addToList('vivy', 'images/vivy.jpg', 'vivy.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/grandbluedreaming.jpg" alt="vivy" />
+  <h3 class="anime-title">Grand blue dreaming</h3>
+  <button onclick="window.location.href='grand blue dreaming.html'">Watch Now</button>
+  <button onclick="addToList('vivy', 'images/grandbluedreaming.jpg', 'grand blue dreaming.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/my-dress-up-darling.jpg" alt="anohana" />
+  <h3 class="anime-title">My Dress-Up Darling </h3>
+  <button onclick="window.location.href='my dress upD.html'">Watch Now</button>
+  <button onclick="addToList('anohana' 'images/my-dress-up-darling.jpg', 'my dress upD.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+
+<div class="anime-card">
+  <img src="images/tobe hero x.jpg" alt="vivy" />
+  <h3 class="anime-title">To be hero x</h3>
+  <button onclick="window.location.href='tobe hero x.html'">Watch Now</button>
+  <button onclick="addToList('vivy', 'images/tobe hero x.jpg', 'tobe hero x.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/call-of-the-night.jpg" alt="vivy" />
+  <h3 class="anime-title">call of the night</h3>
+  <button onclick="window.location.href='the call of the night.html'">Watch Now</button>
+  <button onclick="addToList('Call of the Night', 'images/call-of-the-night.jpg', 'the call of the night.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/berserk.jpg" alt="berserk" />
+  <h3 class="anime-title">Berserk</h3>
+  <button onclick="window.location.href='berserk.html'">Watch Now</button>
+  <button onclick="addToList('berserk', 'images/berserk.jpg', 'berserk.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/perfectblue.jpg" alt="perfectblue" />
+  <h3 class="anime-title">Perfect Blue</h3>
+  <button onclick="window.location.href='perfectblue.html'">Watch Now</button>
+  <button onclick="addToList('vivy', 'images/perfectblue.jpg', 'perfectblue.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/tokyogodfathers.jpeg" alt="tokyogodfathers" />
+  <h3 class="anime-title">Tokyo Godfathers</h3>
+  <button onclick="window.location.href='tokyogodfathers.html'">Watch Now</button>
+  <button onclick="addToList('tokyogodfathers', 'images/tokyogodfathers.jpeg', 'tokyogodfathers.html')" class="icon-button">
       <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
       <span>My List</span>
   </button>
@@ -85,28 +582,787 @@
   </button>
 </div>
 <div class="anime-card">
-  <img src="images/perfectblue.jpg" alt="perfectblue" />
-  <h3 class="anime-title">Perfect Blue</h3>
-  <button onclick="window.location.href='perfectblue.html'">Watch Now</button>
-  <button onclick="addToList('vivy', 'images/perfectblue.jpg', 'perfectblue.html')" class="icon-button">
+  <img src="images/with you and the rain.jpg" alt="spiritedaway" />
+  <h3 class="anime-title">With you and the rain</h3>
+  <button onclick="window.location.href='with you and the rain.html'">Watch Now</button>
+  <button onclick="addToList('spiritedaway', 'images/with you and the rain.jpg', 'with you and the rain.html')" class="icon-button">
       <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
       <span>My List</span>
   </button>
 </div>
 <div class="anime-card">
-  <img src="images/tokyogodfathers.jpeg" alt="tokyogodfathers" />
-  <h3 class="anime-title">Tokyo Godfathers</h3>
-  <button onclick="window.location.href='tokyogodfathers.html'">Watch Now</button>
-  <button onclick="addToList('tokyogodfathers', 'images/tokyogodfathers.jpeg', 'tokyogodfathers.html')" class="icon-button">
+  <img src="images/witch watch.jpg" alt="paprika" />
+  <h3 class="anime-title">Witch watch</h3>
+  <button onclick="window.location.href='witch watch.html'">Watch Now</button>
+  <button onclick="addToList('paprika', 'images/witch watch.jpg', 'witch watch.html')" class="icon-button">
       <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
       <span>My List</span>
   </button>
 </div>
-  </div>
-  
-    <!-- Add more anime-card blocks -->
-  
-    </main>
+<div class="anime-card">
+  <img src="images/drstonesciencefuture.jpg" alt="dr stone science future" />
+  <h3 class="anime-title">Dr Stone: Science Future</h3>
+  <button onclick="window.location.href='/dr stone future.html'">Watch Now</button>
+  <button onclick="addToList('drstonesciencefuture', 'images/drstonesciencefuture.jpg', '/dr stone future.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/assassinationclass.jpg" alt="assassination" />
+  <h3 class="anime-title">Assassination Classroom </h3>
+  <button onclick="window.location.href='/assassinationclass.html'">Watch Now</button>
+  <button onclick="addToList('assassination', 'images/assassinationclass.jpg', '/assassinationclass.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/cyberpunkedge.jpg" alt="cyberpunk" />
+  <h3 class="anime-title">Cyberpunk Edgerunners</h3>
+  <button onclick="window.location.href='/cyberpunkedge.html'">Watch Now</button>
+  <button onclick="addToList('cyberpunk', 'images/cyberpunkedge.jpg', '/cyberpunkedge.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/the-legendary-hero-is-dead.jpg" alt="thelegendaryhero" />
+  <h3 class="anime-title">the legendary hero is dead!</h3>
+  <button onclick="window.location.href='/thelegendaryhero.html'">Watch Now</button>
+  <button onclick="addToList('thelegendaryhero', 'images/the-legendary-hero-is-dead.jpg', '/thelegendaryhero.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/inuyasha.jpg" alt="inuyasha" />
+  <h3 class="anime-title">inuyasha</h3>
+  <button onclick="window.location.href='/inuyasha.html'">Watch Now</button>
+  <button onclick="addToList('Inuyasha', 'images/inuyasha.jpg', '/inuyasha.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/detective conan.jpg" alt="detectiveconan" />
+  <h3 class="anime-title">detective conan</h3>
+  <button onclick="window.location.href='/detectiveconan.html'">Watch Now</button>
+  <button onclick="addToList('Detective Conan', 'images/detective conan.jpg', '/detectiveconan.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/haikyuu.jpg" alt="haikyuu!!" />
+  <h3 class="anime-title">Haikyuu!!</h3>
+  <button onclick="window.location.href='/haikyuu!!.html'">Watch Now</button>
+  <button onclick="addToList('HAIKYUU!!', 'images/haikyuu.jpg', '/haikyuu!!.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/linkclick.jpg" alt="linkclick" />
+  <h3 class="anime-title">Link Click</h3>
+  <button onclick="window.location.href='/linkclick.html'">Watch Now</button>
+  <button onclick="addToList('detectiveconan', 'images/linkclick.jpg', '/linkclick.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/erased.jpg" alt="erased" />
+  <h3 class="anime-title">Erased</h3>
+  <button onclick="window.location.href='/erasedep.html'">Watch Now</button>
+  <button onclick="addToList('detectiveconan', 'images/erased.jpg', '/erasedep.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/classroomofthelite.jpg" alt="classroomoftheelite" />
+  <h3 class="anime-title">classroom of the elite</h3>
+  <button onclick="window.location.href='/classroomoftheelite.html'">Watch Now</button>
+  <button onclick="addToList('Classroom Of The Elite', 'images/classroomofthelite.jpg', '/classroomoftheelite.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/eighty-six.jpg" alt="classroomoftheelite" />
+  <h3 class="anime-title">Eighty-Six</h3>
+  <button onclick="window.location.href='/eighty-six.html'">Watch Now</button>
+  <button onclick="addToList('eighty-six', 'images/eighty-six.jpg', '/eighty-six.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/goldenkamuy.jpg" alt="goldenkamuy" />
+  <h3 class="anime-title">Golden Kamuy</h3>
+  <button onclick="window.location.href='/goldenkamuy.html'">Watch Now</button>
+  <button onclick="addToList('goldenkamuy', 'images/goldenkamuy.jpg', '/goldenkamuy.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/drifters-2016.jpg" alt="drifters" />
+  <h3 class="anime-title">Drifters</h3>
+  <button onclick="window.location.href='/drifters.html'">Watch Now</button>
+  <button onclick="addToList('drifters', 'images/drifters-2016.jpg', '/drifters.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/Blood c.jpg" alt="bloodc" />
+  <h3 class="anime-title">Blood-C</h3>
+  <button onclick="window.location.href='/bloodc.html'">Watch Now</button>
+  <button onclick="addToList('bloodc', 'images/bloodc.jpg', '/bloodc.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/hyouka.jpg" alt="hyouka" />
+  <h3 class="anime-title">Hyouka</h3>
+  <button onclick="window.location.href='/hyouka.html'">Watch Now</button>
+  <button onclick="addToList('hyouka', 'images/hyouka.jpg', '/hyouka.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/angelsofdeath.jpg" alt="angelsofdeath" />
+  <h3 class="anime-title">Angels of Death</h3>
+  <button onclick="window.location.href='/angelsofdeath.html'">Watch Now</button>
+  <button onclick="addToList('angelsofdeath', '/images/angelsofdeath.jpg', '/angelsofdeath.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/bananafish.jpg" alt="bananafish" />
+  <h3 class="anime-title">Banana Fish</h3>
+  <button onclick="window.location.href='/bananafish.html'">Watch Now</button>
+  <button onclick="addToList('bananafish', 'images/bananafish.jpg', '/bananafish.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/spyxfamily.jpg" alt="spyxfamily" />
+  <h3 class="anime-title">Spy x Family</h3>
+  <button onclick="window.location.href='/spyxfamily.html'">Watch Now</button>
+  <button onclick="addToList('spyxfamily', 'images/spyxfamily.jpg', '/spyxfamily.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/blue-spring-ride.jpg" alt="bluespringride" />
+  <h3 class="anime-title">blue spring ride</h3>
+  <button onclick="window.location.href='/bluespringride.html'">Watch Now</button>
+  <button onclick="addToList('Blue Spring Ride', 'images/blue-spring-ride.jpg', '/bluespringride.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/kamisamakiss.jpeg" alt="kamisamakiss" />
+  <h3 class="anime-title">Kamisama Kiss</h3>
+  <button onclick="window.location.href='/kamisamakiss.html'">Watch Now</button>
+  <button onclick="addToList('kamisamakiss', 'images/kamisamakiss.jpeg', '/kamisamakiss.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/swordartonline.jpg" alt="swordartonline" />
+  <h3 class="anime-title">sword art online</h3>
+  <button onclick="window.location.href='/swordartonline.html'">Watch Now</button>
+  <button onclick="addToList('swordartonline', 'images/swordartonline.jpg', '/swordartonline.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/sololeveling.jpg" alt="ore dare level up na ken" />
+  <h3 class="anime-title">Solo Leveling</h3>
+  <button onclick="window.location.href='/sololeveling.html'">Watch Now</button>
+  <button onclick="addToList('sololeveling', 'images/sololeveling.jpg', '/sololeveling.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/disastrouslifeofsaikik.jpg" alt="disastrouslifeofsaikik" />
+  <h3 class="anime-title">the disastrous life of saiki k</h3>
+  <button onclick="window.location.href='/disastrouslifeofsaikik.html'">Watch Now</button>
+  <button onclick="addToList('The Disastrous Life Of Saiki K', 'images/disastrouslifeofsaikik.jpg', '/disastrouslifeofsaikik.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/violetevergarden.jpg" alt="violetevergarden" />
+  <h3 class="anime-title">Violet Evergarden</h3>
+  <button onclick="window.location.href='/violetevergarden.html'">Watch Now</button>
+  <button onclick="addToList('violetevergarden', 'images/violetevergarden.jpg', '/violetevergarden.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/outlawstars.jpg" alt="outlawstars" />
+  <h3 class="anime-title">outlaw star</h3>
+  <button onclick="window.location.href='/outlawstars.html'">Watch Now</button>
+  <button onclick="addToList('Outlaw Star', 'images/outlawstars.jpg', '/outlawstars.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/Blacklagoon.jpg" alt="blacklagoon" />
+  <h3 class="anime-title">Black Lagoon</h3>
+  <button onclick="window.location.href='/blacklagoon.html'">Watch Now</button>
+  <button onclick="addToList('blacklagoon', 'images/blacklagoon.png', '/blacklagoon.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/yurucamp.jpg" alt="yurucamp" />
+  <h3 class="anime-title">Yuru Camp</h3>
+  <button onclick="window.location.href='/yurucamp.html'">Watch Now</button>
+  <button onclick="addToList('yurucamp', 'images/yurucamp.jpg', '/yurucamp.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/kinosjourney.jpg" alt="kinosjourney" />
+  <h3 class="anime-title">kino's Journey</h3>
+  <button onclick="window.location.href='/kinos.html'">Watch Now</button>
+  <button onclick="addToList('Kino's Journey, 'images/kinosjourney.jpg', '/kinos.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/avatarthelastairbender.jpg" alt="avatarthelastairbender" />
+  <h3 class="anime-title">Avatar: The Last Airbender</h3>
+  <button onclick="window.location.href='/avatarthelastairbender.html'">Watch Now</button>
+  <button onclick="addToList('avatarthelastairbender', 'images/avatarthelastairbender.jpg', '/avatarthelastairbender.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/beastars.jpg" alt="beastars" />
+  <h3 class="anime-title">Beastars</h3>
+  <button onclick="window.location.href='/beastars.html'">Watch Now</button>
+  <button onclick="addToList('beastars', 'images/beastars.jpg', '/beastars.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/plasticmemories.jpg" alt="plasticmemories" />
+  <h3 class="anime-title">Plastic Memories</h3>
+  <button onclick="window.location.href='/plasticmemories.html'">Watch Now</button>
+  <button onclick="addToList('plasticmemories', 'images/plasticmemories.jpg', '/plasticmemories.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/ninja-scroll-the-series.jpg" alt="ninjascroll" />
+  <h3 class="anime-title">ninja scroll: the series</h3>
+  <button onclick="window.location.href='/ninjascroll.html'">Watch Now</button>
+  <button onclick="addToList('Ninja Scroll: The Series', 'images/ninja-scroll-the-series.jpg', '/ninjascroll.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/higurashi-when-they-cry.jpg" alt="whentheycry" />
+  <h3 class="anime-title">When They Cry</h3>
+  <button onclick="window.location.href='/whentheycry.html'">Watch Now</button>
+  <button onclick="addToList('When They Cry', 'images/higurashi-when-they-cry.jpg', '/whentheycry.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/from-the-new-world.jpg" alt="fromthenewworld" />
+  <h3 class="anime-title">From the New World</h3>
+  <button onclick="window.location.href='/fromthenewworld.html'">Watch Now</button>
+  <button onclick="addToList('fromthenewworld', 'images/from-the-new-world.jpg', '/fromthenewworld.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/grave-of-the-fireflies.jpg" alt="graveofthefireflies" />
+  <h3 class="anime-title">grave of the fireflies</h3>
+  <button onclick="window.location.href='/graveofthefireflies.html'">Watch Now</button>
+  <button onclick="addToList('Grave Of The Fireflies', 'images/grave-of-the-fireflies.jpg', '/graveofthefireflies.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/my-neighbor-totoro.jpg" alt="myneighbourtotoro" />
+  <h3 class="anime-title">my neighbour totoro</h3>
+  <button onclick="window.location.href='/myneighbourtortoro.html'">Watch Now</button>
+  <button onclick="addToList('myneighbourtotoro', 'images/myneighbourtotoro.jpg', '/myneighbourtortoro.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/rideyourwave.jpg" alt="rideyourwave" />
+  <h3 class="anime-title">Ride Your Wave</h3>
+  <button onclick="window.location.href='/rideyourwave.html'">Watch Now</button>
+  <button onclick="addToList('rideyourwave', 'images/rideyourwave.jpg', '/rideyourwave.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/kikisdeliveryservice.jpg" alt="kikisdeliveryservice" />
+  <h3 class="anime-title">Kiki's Delivery Service </h3>
+  <button onclick="window.location.href='/kikisdeliveryservice.html'">Watch Now</button>
+  <button onclick="addToList('kikisdeliveryservice', 'images/kikisdeliveryservice.jpg', '/kikisdeliveryservice.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/castleinthesky.jpg" alt="castleinthesky" />
+  <h3 class="anime-title">Castle In The Sky</h3>
+  <button onclick="window.location.href='castleinthesky.html'">Watch Now</button>
+  <button onclick="addToList('castleinthesky', 'images/castleinthesky.jpg', 'castleinthesky.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/whenmarniewasthere.jpg" alt="whenmarniewasthere" />
+  <h3 class="anime-title">When Marnie Was There </h3>
+  <button onclick="window.location.href='whenmarniewasthere.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'images/whenmarniewasthere.jpg', 'whenmarniewasthere.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/One piecegold.jpeg" alt="kikisdeliveryservice" />
+  <h3 class="anime-title">Onepiece flim gold </h3>
+  <button onclick="window.location.href='onepiece flimgold.html'">Watch Now</button>
+  <button onclick="addToList('Onepiece gold', 'images/One piecegold.jpeg', 'onepiece flimgold.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/naruto shipuden.jpg" alt="castleinthesky" />
+  <h3 class="anime-title">Naruto shipuden</h3>
+  <button onclick="window.location.href='naruto shipuden.html'">Watch Now</button>
+  <button onclick="addToList('Naruto shipuden', 'images/naruto shipuden.jpg', 'naruto shipuden.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/your name.jpg" alt="whenmarniewasthere" />
+  <h3 class="anime-title">Your name</h3>
+  <button onclick="window.location.href='yourname.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'images/your name.jpg', 'yourname.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/Gacjiakuta.jpg" alt="Gacjiakuta" />
+  <h3 class="anime-title">Gacjiakuta</h3>
+  <button onclick="window.location.href='gacjiakuta.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'images/Gacjiakuta.jpg', 'gacjiakuta.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/hotel inhumans.jpg" alt="Gacjiakuta" />
+  <h3 class="anime-title">Hotel inhumans</h3>
+  <button onclick="window.location.href='hotel inhumans.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'images/hotel inhumans.jpg', 'hotel inhumans.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/dragon-ball-z.jpg" alt="Gacjiakuta" />
+  <h3 class="anime-title">Dragon ball Z</h3>
+  <button onclick="window.location.href='dragonball z.html'">Watch Now</button>
+  <button onclick="addToList('Dragon Ball Z', 'images/dragonballz.jpg', 'dragonball z.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="images/tomorrows-joe.jpg" alt="ashitanojoe" />
+  <h3 class="anime-title">Ashita No Joe</h3>
+  <button onclick="window.location.href='ashitanojoe.html'">Watch Now</button>
+  <button onclick="addToList('ashitanojoe', 'images/tomorrows-joe.jpg', 'ashitanojoe.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="images/bocchitherock.jpg" alt="bocchitherock" />
+  <h3 class="anime-title">Bocchi The Rock</h3>
+  <button onclick="window.location.href='bocchitherock.html'">Watch Now</button>
+  <button onclick="addToList('boccitherock', 'images/bocchitherock.jpg', 'bocchitherock.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="images/greatteacheronizuka.jpg" alt="greatteacheronizuka" />
+  <h3 class="anime-title">great teacher onizuka</h3>
+  <button onclick="window.location.href='greatteacheronizuka.html'">Watch Now</button>
+  <button onclick="addToList('Great Teacher Onizuka', 'images/greatteacheronizuka.jpg', 'greatteacheronizuka.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="images/hajimenoipponew.jpg" alt="hajimenoipponew" />
+  <h3 class="anime-title">hajime no ippo: new challenger</h3>
+  <button onclick="window.location.href='hajimenoipponew.html'">Watch Now</button>
+  <button onclick="addToList('Hajime No Ippo: New Challenger', 'images/hajimenoipponew.jpg', 'hajimenoipponew.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="images/mushishi.jpg" alt="Gacjiakuta" />
+  <h3 class="anime-title">mushishi</h3>
+  <button onclick="window.location.href='mushishi.html'">Watch Now</button>
+  <button onclick="addToList('Mushishi', 'images/mushishi.jpg', 'mushishi.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="Takopii.jpg" alt="Takopii no Genzai" />
+  <h3 class="anime-title">takopi's original sin</h3>
+  <button onclick="window.location.href='Takopii.html'">Watch Now</button>
+  <button onclick="addToList('Takopi's Original Sin', 'Takopii.jpg', 'Takopii.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="Kingdom 1.jpg" alt="kingdom" />
+  <h3 class="anime-title">Kingdom</h3>
+  <button onclick="window.location.href='Kingdom1.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'Kingdom 1.jpg', 'Kingdom1.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="Wind Rises.jpg" alt="Kaze Tachinu" />
+  <h3 class="anime-title">The Wind Rises</h3>
+  <button onclick="window.location.href='Wind Rises.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'Wind Rises.jpg', 'Wind Rises.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="Bakuman 1ra temporada.jpg" alt="Kaze Tachinu" />
+  <h3 class="anime-title">Bakuman </h3>
+  <button onclick="window.location.href='Bakukman 1.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'Bakuman 1ra temporada.jpg', 'Bakukman 1.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="look back.jpg" alt="Look Back" />
+  <h3 class="anime-title">Look Back </h3>
+  <button onclick="window.location.href='Look Back.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'look back.jpg', 'Look Back.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+</div>
+<div class="anime-card">
+  <img src="Sword of the Stranger.jpg" alt="Stranger Mukou Hadan" />
+  <h3 class="anime-title">Sword of the Stranger </h3>
+  <button onclick="window.location.href='Sword of the Stranger.html'">Watch Now</button>
+  <button onclick="addToList('Sword Art Online', 'Sword of the Stranger.jpg', 'Sword of the Stranger.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+
+</div>
+<div class="anime-card">
+  <img src="images/princessmononoke.jpg" alt="Gacjiakuta" />
+  <h3 class="anime-title">Princess Mononoke</h3>
+  <button onclick="window.location.href='princessmononoke.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'images/princessmononoke.jpg', 'princessmononoke.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/angelbeats.jpg" alt="angelbeats" />
+  <h3 class="anime-title">Angel Beats!</h3></h3>
+  <button onclick="window.location.href='angelbeats.html'">Watch Now</button>
+  <button onclick="addToList('whenmarniewasthere', 'images/angelbeats.jpg', 'angelbeats.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/noragami.jpg" alt="noragami" />
+  <h3 class="anime-title">noragami</h3>
+  <button onclick="window.location.href='noragami.html'">Watch Now</button>
+  <button onclick="addToList('Noragami', 'images/noragami.jpg', 'noragami.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/thefuturediary.jpg" alt="mirainikki" />
+  <h3 class="anime-title">The Future Diary</h3>
+  <button onclick="window.location.href='thefuturediary.html'">Watch Now</button>
+  <button onclick="addToList('mirainikki', 'images/thefuturediary.jpg', 'thefuturediary.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/the-promised-neverland (1).jpg" alt="yakusokunoeverland" />
+  <h3 class="anime-title">The Promised Neverland</h3>
+  <button onclick="window.location.href='thepromisedneverland.html'">Watch Now</button>
+  <button onclick="addToList('yakusokunoeverland', 'images/the-promised-neverland (1).jpg', 'thepromisedneverland.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/loghorizon.jpg" alt="loghorizon" />
+  <h3 class="anime-title">Log Horizon</h3>
+  <button onclick="window.location.href='loghorizon.html'">Watch Now</button>
+  <button onclick="addToList('loghorizon', 'images/loghorizon.jpg', 'loghorizon.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/rascal-does-not-dream-of-bunny-girlsenpai.jpg" alt="seishunbutayarouwabunnygirlsenpainoyumewominai" />
+  <h3 class="anime-title">Rascal Does Not Dream of Bunny Girl Senpai</h3>
+  <button onclick="window.location.href='../rascal-bunnygirleps.html'">Watch Now</button>
+  <button onclick="addToList('seishunbutayarouwabunnygirlsenpainoyumewominai', 'images/rascal-does-not-dream-of-bunny-girlsenpai.jpg', '../rascal-bunnygirleps.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/windbreaker.jpg" alt="windbreaker" />
+  <h3 class="anime-title">Windbreaker</h3>
+  <button onclick="window.location.href='windbreaker.html'">Watch Now</button>
+  <button onclick="addToList('windbreaker', 'images/windbreaker.jpg','windbreaker.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/bye-bye-earth.jpg" alt="byebyearth" />
+  <h3 class="anime-title">Bye Bye, Earth</h3>
+  <button onclick="window.location.href='byebye,earth.html'">Watch Now</button>
+  <button onclick="addToList('byebyeearth', 'images/bye-bye-earth.jpg', 'byebye,earth.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/overlord.jpg" alt="overlod" />
+  <h3 class="anime-title">overlord</h3>
+  <button onclick="window.location.href='/overlord.html'">Watch Now</button>
+  <button onclick="addToList('Overlord', 'images/overlord.jpg', 'overlord.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/darling-in-the-franxx.jpg" alt="darling in the franxx" />
+  <h3 class="anime-title">darling in the franxx</h3>
+  <button onclick="window.location.href='/darlinginthefranxx.html'">Watch Now</button>
+  <button onclick="addToList('Darling in the Franxx', 'images/darling-in-the-franxx.jpg', 'darlinginthefranxx.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/blue-exorcist.jpg" alt="aonoexorcist" />
+  <h3 class="anime-title">blue exorcist</h3>
+  <button onclick="window.location.href='/blueexorcist.html'">Watch Now</button>
+  <button onclick="addToList('Blue Exorcist', 'images/blue-exorcist.jpg', 'blueexorcist.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/death-parade.jpg" alt="deathparade" />
+  <h3 class="anime-title">Death Parade</h3>
+  <button onclick="window.location.href='/deathparade.html'">Watch Now</button>
+  <button onclick="addToList('Death Parade', 'images/death-parade.jpg', 'deathparade.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/another.jpg" alt="another" />
+  <h3 class="anime-title">Another</h3>
+  <button onclick="window.location.href='/another.html'">Watch Now</button>
+  <button onclick="addToList('another', 'images/another.jpg', 'another.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/kill-la-kill.jpg" alt="killlakill" />
+  <h3 class="anime-title">kill la kill</h3>
+  <button onclick="window.location.href='/killlakill.html'">Watch Now</button>
+  <button onclick="addToList('Kill la Kill', 'images/kill-la-kill.jpg', 'killlakill.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/charlotte.jpg" alt="charlotte" />
+  <h3 class="anime-title">Charlotte</h3>
+  <button onclick="window.location.href='charlotte.html'">Watch Now</button>
+  <button onclick="addToList('charlotte', 'images/charlotte.jpg', 'charlotte.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+<div class="anime-card">
+  <img src="images/the-rising-of-the-shield-hero.jpg" alt="therisingofshieldhero" />
+  <h3 class="anime-title">The Rising of the Shield Hero</h3>
+  <button onclick="window.location.href='risingofshieldhero.html'">Watch Now</button>
+  <button onclick="addToList('The Rising Of The Shield Hero', '/images/the-rising-of-the-shield-hero.jpg', 'risingofshieldhero.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+<div class="anime-card">
+  <img src="images/Shinchan crayons.jpg" alt="therisingofshieldhero" />
+  <h3 class="anime-title">Shinchan</h3>
+  <button onclick="window.location.href='shinchan.html'">Watch Now</button>
+  <button onclick="addToList('The Rising Of The Shield Hero', 'images/Shinchan crayons.jpg', 'shinchan.html')" class="icon-button">
+      <img src="images/my list.png" alt="Add to My List" class="mylist-icon" style="width: 20px; height: 20px; object-fit: contain;">
+      <span>My List</span>
+  </button>
+</div>
+
+
+<!-- Pagination -->
+<div style="width: 100%; display: flex; justify-content: center; margin-top: -17px;">
+<div id="pagination"></div>
+</div>
+    <!-- Add more anime here -->
+  </main>
 <script>
   function searchAnime() {
     var q = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -133,6 +1389,202 @@
 </script>
 
 <script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Get filters from localStorage or default to empty array
+  const filters = JSON.parse(localStorage.getItem('selectedFilters')) || [];
+
+  // Get all anime cards
+  const cards = document.querySelectorAll('.anime-card');
+
+  cards.forEach(card => {
+    const genreAttr = card.getAttribute('data-genre');
+    const genres = genreAttr
+      ? genreAttr.toLowerCase().split(',').map(g => g.trim())
+      : [];
+      console.log("Filters:", filters);
+console.log("Card genres:", genres);
+
+
+    const matches = (
+      filters.length === 0 ||
+      filters.includes('all') ||
+      filters.some(filter => genres.includes(filter.toLowerCase()))
+    );
+
+    card.style.display = matches ? 'block' : 'none';
+  });
+});
 </script>
+
+
+<script>
+(function(){
+  if (window._animePaginationInit) return;
+  window._animePaginationInit = true;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const cards = Array.from(document.querySelectorAll('.anime-card'));
+    if (!cards.length) {
+      console.warn('Pagination: no elements found with class .anime-card');
+      return;
+    }
+
+    // store original display (so we restore correct layout)
+    cards.forEach(card => {
+      const d = getComputedStyle(card).display;
+      card.dataset._origDisplay = (d && d !== 'none') ? d : 'block';
+      card.dataset._match = '1'; // used for search filtering
+    });
+
+    const cardsPerPage = 20;
+    let currentPage = 1;
+    const paginationId = 'pagination';
+    let pagination = document.getElementById(paginationId);
+    if (!pagination) {
+      pagination = document.createElement('div');
+      pagination.id = paginationId;
+      document.body.appendChild(pagination);
+    }
+
+    function getFilteredCards() {
+      return cards.filter(c => c.dataset._match !== '0');
+    }
+
+    function renderPagination() {
+      const filtered = getFilteredCards();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
+
+      // hide pagination when no results
+      if (filtered.length === 0) {
+        pagination.innerHTML = '';
+        return;
+      }
+
+      // build << < current > >>
+      pagination.innerHTML = '';
+      const makeBtn = (html, token, disabled) => {
+        const a = document.createElement('a');
+        a.href = '#';
+        a.innerHTML = html;
+        a.dataset.page = token;
+        if (disabled) a.classList.add('disabled');
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (a.classList.contains('disabled')) return;
+          handleNav(token);
+        });
+        return a;
+      };
+
+      pagination.appendChild(makeBtn('«', 'first', currentPage === 1));
+      pagination.appendChild(makeBtn('‹', 'prev', currentPage === 1));
+
+      const span = document.createElement('span');
+      span.className = 'page-num';
+      span.textContent = currentPage;
+      pagination.appendChild(span);
+
+      pagination.appendChild(makeBtn('›', 'next', currentPage === totalPages));
+      pagination.appendChild(makeBtn('»', 'last', currentPage === totalPages));
+    }
+
+    function handleNav(token) {
+      const filtered = getFilteredCards();
+      const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
+
+      if (token === 'first') showPage(1);
+      else if (token === 'prev') showPage(Math.max(1, currentPage - 1));
+      else if (token === 'next') showPage(Math.min(totalPages, currentPage + 1));
+      else if (token === 'last') showPage(totalPages);
+    }
+
+    function showPage(page) {
+      const filtered = getFilteredCards();
+      if (filtered.length === 0) {
+        // nothing matches: hide all cards and hide pagination
+        cards.forEach(c => c.style.display = 'none');
+        renderPagination();
+        return;
+      }
+
+      const totalPages = Math.max(1, Math.ceil(filtered.length / cardsPerPage));
+      if (page < 1) page = 1;
+      if (page > totalPages) page = totalPages;
+      currentPage = page;
+
+      // hide everything then show slice from filtered list
+      cards.forEach(c => c.style.display = 'none');
+
+      const start = (page - 1) * cardsPerPage;
+      const end = start + cardsPerPage;
+      filtered.slice(start, end).forEach(card => {
+        card.style.display = card.dataset._origDisplay || '';
+      });
+
+      renderPagination();
+    }
+
+    // search wiring (optional)
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        const q = this.value.trim().toLowerCase();
+        if (q === '') {
+          cards.forEach(c => c.dataset._match = '1');
+        } else {
+          cards.forEach(c => {
+            const text = (c.textContent || '').toLowerCase();
+            c.dataset._match = text.includes(q) ? '1' : '0';
+          });
+        }
+        // reset to first page after filter change
+        showPage(1);
+      });
+    }
+
+    // initialize
+    showPage(1);
+
+    // for debugging from console if needed
+    window._paginate = {
+      showPage,
+      renderPagination,
+      cardsCount: cards.length
+    };
+    console.log('Pagination initialized — cards:', cards.length);
+  });
+})();
+</script>
+<script>
+function addToList(title, image, link) {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    // 🔒 If user is not logged in → redirect to login
+    if (!loggedInUser) {
+        alert("Please log in to add anime to your list.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // 🔑 Unique list key for each user
+    const myListKey = "myList_" + loggedInUser.email;
+    let myList = JSON.parse(localStorage.getItem(myListKey)) || [];
+
+    // ✅ Avoid duplicates
+    const exists = myList.some(anime => anime.title === title);
+    if (exists) {
+        alert("This anime is already in your list!");
+        return;
+    }
+
+    // ➕ Add new anime
+    myList.push({ title, image, link });
+    localStorage.setItem(myListKey, JSON.stringify(myList));
+
+    alert(title + " has been added to your list!");
+}
+</script>
+
 </body>
 </html>
