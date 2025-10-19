@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Millenium Old Journal: Tale of Genji</title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7f4ca5">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { margin: 0; background: #111; color: white; font-family: Arial; }
+/* This is the main container for the banner */
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Sets a responsive height */
+  max-height: 500px; /* Caps the height on large screens */
+  overflow: hidden; /* Hides the parts of the image that zoom out */
+  background-color: #000; /* Fallback color */
+  line-height: 0; /* Removes extra space */
+}
+
+/* This creates the gradient overlay on top of the container */
+.banner-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #111 5%, transparent 50%);
+}
+
+/* This is the actual image inside the container */
+.banner {
+  width: 100%;
+  height: 100%; /* Make the image fill its container */
+  object-fit: contain; /* Fill the space without stretching */
+  object-position: center;
+  /* Apply the zoom animation ONLY to the image */
+  animation: kenburnsZoom 15s infinite alternate ease-in-out;
+}
+
+/* This defines the zoom animation */
+@keyframes kenburnsZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08); /* A slightly larger zoom for more impact */
+  }
+
+
+}
+
+    .container { padding: 16px; }
+    .title { font-size: 24px; font-weight: bold; }
+    .tags { margin: 10px 0; }
+    .tag { background: #6A1AA5; padding: 5px 10px; margin-right: 5px; border-radius: 4px; font-size: 12px; }
+    .play-btn { background: #6A1AA5; padding: 12px 25px; color: white; border: none; border-radius: 6px; font-size: 18px; margin: 15px 0; cursor: pointer; }
+    .description { color: #ccc; font-size: 14px; }
+    .episodes { margin-top: 20px; }
+    .episode-list { display: flex; overflow-x: auto; }
+    .episode { margin-right: 10px; background: #222; border-radius: 8px; width: 120px; text-align: center; flex-shrink: 0; }
+    .episode img { width: 100%; border-radius: 8px 8px 0 0; }
+    .episode p { padding: 5px; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<div class="banner-container">
+  <img src="images/the-tale-of-genji.jpg" class="banner" alt="windbreaker">
+</div>
+  <div class="container">
+    <div class="title">Millenium Old Journal: Tale of Genji</div>
+
+    <div class="tags">
+      <span class="tag">Season 1</span>
+      <span class="tag">Episode 1</span>
+      <span class="tag">HD</span>
+      <span class="tag">SUB</span>
+    </div>
+
+    <!-- Play Button -->
+    <a href="MILLENNIUM OLD JOURNAL EPISODES/taleofgenji.html">
+    <button class="play-btn">▶ WATCH NOW</button>
+    </a>
+
+    <!-- Description -->
+    <div class="description">
+
+
+From an early age, Haruka Sakura was made an outcast due to his unconventional appearance and lack of social skills. However, the rough treatment turned him into a proficient fighter, which is now the only thing he prides himself on. Starting at Furin High School, where it is rumored that strength is valued over academics, Sakura has only one goal—taking the top spot.
+
+Involved in a street brawl the day before his enrollment, Sakura happens to meet a group of his future schoolmates. Instead of the usual rejection, they fight alongside him, demonstrating that what the school actually cares about is protecting the town of Makochi from any harm—hence why the students call themselves "Bofurin." Surprised by the support and appreciation of the townspeople, Sakura has a hard time accepting their goodwill.
+
+Though unfamiliar with kindness being shown to him, Sakura must learn to push past his discomfort when Bofurin is pitted against formidable enemies. After experiencing the feeling of acceptance, he finds himself fighting for the sake of others for the first time.
+
+       </div>
+      </div>
+    </div>
+  </div>
+<!-- More like this -->
+<h2>More like this</h2>
+<div class="more-like-this">
+  
+   <a href="ep1.html">
+  <div class="anime-card">
+    <img src="images/onepiece episodes.jpg" alt="One Piece">
+    <p>One Piece</p>
+  </div>
+   </a>
+  <a href="naruto shipuden.html">
+  <div class="anime-card">
+    <img src="images/naruto shipuden.jpg" alt="Naruto Shippuden">
+    <p>Naruto Shippuden</p>
+  </div>
+  </a>
+<a href="demonslayer.html">
+  <div class="anime-card">
+    <img src="images/Demon Slayer 1.jpg" alt="Demon slayer">
+    <p>Demon Slayer</p>
+  </div>
+</a>
+<a href="ep1.html">
+  <div class="anime-card">
+    <img src="images/Bleach.jpg" alt="One Piece">
+    <p>Bleach</p>
+  </div>
+   </a>
+  <a href="naruto shipuden.html">
+  <div class="anime-card">
+    <img src="images/black clover.jpg" alt="Black Clover">
+    <p>Black Clover</p>
+  </div>
+  </a>
+<a href="demonslayer.html">
+  <div class="anime-card">
+    <img src="images/dan da dan.jpg" alt="Demon slayer">
+    <p>Dan Da Dan</p>
+  </div>
+</a>
+  <!-- Add more cards as needed -->
+</div>
+
+<!-- Comments Section -->
+<h2>Comments</h2>
+<div id="commentsSection">
+  <div id="commentForm" style="display: none;">
+    <textarea id="userComment" placeholder="Write a comment..."></textarea>
+    <button onclick="postComment()">Post</button>
+  </div>
+  <p id="loginMessage">Please <a href="login.html">login</a> or <a href="signup.html">sign up</a> to comment.</p>
+  <div id="commentList"></div>
+</div>
+<script>
+  // Check if user is logged in
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  const commentForm = document.getElementById("commentForm");
+  const loginMessage = document.getElementById("loginMessage");
+  const commentList = document.getElementById("commentList");
+
+  if (loggedInUser) {
+    commentForm.style.display = "block";
+    loginMessage.style.display = "none";
+  }
+
+  // Load existing comments
+  const comments = JSON.parse(localStorage.getItem("blackcloverComments")) || [];
+
+function renderComments() {
+  commentList.innerHTML = "";
+  comments.forEach((comment, index) => {
+    const div = document.createElement("div");
+    div.className = "comment";
+
+    div.innerHTML = `
+      <strong>${comment.user}</strong>: ${comment.text}
+      <button onclick="deleteComment(${index})" class="delete-btn">Delete</button>
+    `;
+
+    commentList.appendChild(div);
+  });
+}
+
+
+  function postComment() {
+    const commentText = document.getElementById("userComment").value.trim();
+    if (!commentText) return;
+
+    const newComment = {
+      user: loggedInUser.fullName,
+      text: commentText
+    };
+
+    comments.push(newComment);
+    localStorage.setItem("akameComments", JSON.stringify(comments));
+    document.getElementById("userComment").value = "";
+    renderComments();
+  }
+  function deleteComment(index) {
+  if (confirm("Are you sure you want to delete this comment?")) {
+    comments.splice(index, 1); // Remove the comment
+    localStorage.setItem("akameComments", JSON.stringify(comments)); // Save updated list
+    renderComments(); // Re-render comments
+  }
+}
+
+</script>
+</body>
+</html>
